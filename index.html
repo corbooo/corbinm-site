@@ -12,25 +12,114 @@
   <header>
     <nav class="site-nav">
       <div class="nav-group nav-left">
-        <a href="/assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
+
       </div>
-        <a class="nav-logo" href="/" aria-label="Home">
-          <img src="/assets/img/logo.png" alt="CM Logo" height="100" />
+        <a class="nav-logo" href="index.html" aria-label="Home">
+          <img src="assets/img/logo.png" alt="CM Logo" height="100" />
         </a>
 
       <div class="nav-group nav-right">
-        <a href="/about/">About</a>
-        <a href="/projects/">Projects</a>
-        <a href="/experience/">Experience</a>
+        <a href="about/">About</a>
+        <a href="projects/">Projects</a>
+        <a href="experience/">Experience</a>
       </div>
     </nav>
   </header>
 
-  <main>
-    <h1>Corbin Moseman</h1>
-    <p>Computer Science student building real-world software systems.</p>
+  <main class="hero">
+    <h1 class="hero-name">Corbin Moseman</h1>
+
+    <p class="hero-tagline">
+      Computer Science student building
+      <span class="accent">real-world software systems</span>.
+    </p>
+
+    <p class="hero-subtext">
+      Focused on backend development, APIs, and turning ideas into reliable tools.
+    </p>
   </main>
+<section class="what-i-do">
+  <h2>What I Do</h2>
+
+  <div class="focus-grid">
+    <div class="focus-card">
+      <h3>Backend Development</h3>
+      <p>APIs, services, and application logic built for reliability.</p>
+    </div>
+
+    <div class="focus-card">
+      <h3>Data & Automation</h3>
+      <p>Tools that transform raw data into actionable insight.</p>
+    </div>
+
+    <div class="focus-card">
+      <h3>Systems Thinking</h3>
+      <p>Designing software that scales and stays maintainable.</p>
+    </div>
+  </div>
+</section>
+<section class="featured">
+  <h2>Featured Projects</h2>
+  <p class="section-subtitle">A few builds that reflect how I think and work.</p>
+
+  <div class="project-grid">
+    <article class="project-card">
+      <div class="project-top">
+        <h3>MacroCoachAPI</h3>
+        <div class="project-links">
+          <a href="https://github.com/corbooo/MacroCoachAPI" target="_blank" rel="noopener">GitHub</a>
+          <!-- Optional: add a live demo link later -->
+          <!-- <a href="#" target="_blank" rel="noopener">Demo</a> -->
+        </div>
+      </div>
+      <p class="project-desc">
+        Backend API for tracking weight, macros, and trends with clean endpoints and structured data models.
+      </p>
+      <div class="project-tags">
+        <span>FastAPI</span><span>SQLAlchemy</span><span>SQLite</span>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-top">
+        <h3>Expense Tracker</h3>
+        <div class="project-links">
+          <a class="disabled" href="#" aria-disabled="true">GitHub</a>
+        </div>
+      </div>
+      <p class="project-desc">
+        Lightweight tracker to log expenses, summarize categories, and keep spending visible with simple workflows.
+      </p>
+      <div class="project-tags">
+        <span>Python</span><span>CLI</span><span>JSON</span>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-top">
+        <h3>Personal Website</h3>
+        <div class="project-links">
+          <a href="https://github.com/corbooo/corbinm-site" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <p class="project-desc">
+        Responsive portfolio site with a clean design system and reusable components across pages.
+      </p>
+      <div class="project-tags">
+        <span>HTML</span><span>CSS</span><span>Responsive</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="featured-cta">
+    <a class="btn-outline" href="projects/">View all projects</a>
+  </div>
+</section>
+
+
+
 </body>
 </html>
