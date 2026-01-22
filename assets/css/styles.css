@@ -29,7 +29,7 @@ body {
   --surfaceHover: rgba(255,255,255,0.09);
   --border: rgba(255,255,255,0.14);
 
-  --accent: #00ffae;
+  --accent: #03d0d0;
 }
 
 /* ===============================
@@ -41,10 +41,13 @@ header {
 
 /* Centered layout: left | logo | right */
 .site-nav {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  max-width: 900px;
+  column-gap: 28px;
 }
 
 /* Link groups */
@@ -57,10 +60,12 @@ header {
 
 .nav-left {
   justify-content: flex-end;
+  padding-right: 24px;
 }
 
 .nav-right {
   justify-content: flex-start;
+  padding-left: 24px;
 }
 
 /* -------------------------------
@@ -70,6 +75,7 @@ header {
   font-weight: 800;
   font-size: 32px;
   letter-spacing: -0.05em;
+  margin: 0 28px;
   color: var(--accent);
   text-decoration: none;
 
@@ -81,7 +87,7 @@ header {
 }
 
 .nav-logo:hover {
-  text-shadow: 0 0 12px rgba(0,255,174,0.35);
+  text-shadow: 0 0 12px rgba(3,208,208,0.35);
 }
 
 /* -------------------------------
@@ -150,12 +156,24 @@ p {
 @media (max-width: 720px) {
   .site-nav {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     justify-items: center;
-    gap: 14px;
+    row-gap: 16px;
   }
 
-  .nav-left,
+  /* Force explicit order */
+  .nav-logo {
+    order: 1;
+    margin: 0;
+  }
+
+  .nav-left {
+    order: 2;
+    justify-content: center;
+  }
+
   .nav-right {
+    order: 3;
     justify-content: center;
   }
 }
