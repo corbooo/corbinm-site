@@ -54,11 +54,17 @@
             <option value="oldest">Oldest</option>
           </select>
 
-          <button id="clearFilters" class="btn btn-primary" type="button">Clear</button>
+          <details class="skill-dropdown" id="skillDropdown">
+            <summary class="skill-summary">
+              Skills <span class="caret">▾</span>
+            </summary>
+            <div class="skill-panel" id="skillPanel">
+              <!-- injected checkboxes -->
+            </div>
+          </details>
         </div>
-
-        <div id="chipRow" class="filters-right" aria-label="Skill filters">
-          <!-- injected -->
+        <div class="filters-right">
+          <button id="clearFilters" class="btn btn-primary" type="button">Clear</button>
         </div>
       </div>
     </section>
@@ -109,6 +115,12 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    document.addEventListener("click", (e) => {
+      const dd = document.getElementById("skillDropdown");
+      if (!dd) return;
+      if (!dd.contains(e.target)) dd.removeAttribute("open");
+    });
+
     const DATA_URL = "../assets/data/projects.json";
 
     const els = {
@@ -146,30 +158,27 @@
       return [...set].sort((a, b) => a.localeCompare(b));
     }
 
-    function renderChips(skills) {
-      els.chipRow.innerHTML = "";
-      for (const skill of skills) {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "chip";
-        btn.textContent = skill;
-        btn.dataset.skill = skill;
-        btn.setAttribute("aria-pressed", "false");
+    function renderSkillDropdown(skills) {
+      const panel = document.getElementById("skillPanel");
+      panel.innerHTML = "";
 
-        btn.addEventListener("click", () => {
-          const s = btn.dataset.skill;
-          if (state.skills.has(s)) state.skills.delete(s);
-          else state.skills.add(s);
+      skills.forEach(skill => {
+        const row = document.createElement("label");
+        row.className = "skill-item";
+        row.innerHTML = `
+          <input type="checkbox" value="${skill}">
+          <span>${skill}</span>
+        `;
 
-          const active = state.skills.has(s);
-          btn.classList.toggle("chip--active", active);
-          btn.setAttribute("aria-pressed", String(active));
-
+        const checkbox = row.querySelector("input");
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) state.skills.add(skill);
+          else state.skills.delete(skill);
           renderAll();
         });
 
-        els.chipRow.appendChild(btn);
-      }
+        panel.appendChild(row);
+      });
     }
 
     function projectMatches(p) {
@@ -252,16 +261,19 @@
       });
 
       els.clear.addEventListener("click", () => {
+        // reset state
         state.q = "";
         state.skills.clear();
         state.sort = "featured";
 
+        // reset inputs
         els.search.value = "";
         els.sort.value = "featured";
-        els.chipRow.querySelectorAll(".chip").forEach(btn => {
-          btn.classList.remove("chip--active");
-          btn.setAttribute("aria-pressed", "false");
-        });
+
+        // reset skill checkboxes
+        document
+          .querySelectorAll("#skillPanel input[type='checkbox']")
+          .forEach(cb => (cb.checked = false));
 
         renderAll();
       });
@@ -294,7 +306,7 @@
       }));
 
       state.allSkills = computeSkills(state.projects);
-      renderChips(state.allSkills);
+      renderSkillDropdown(state.allSkills);
       renderAll();
     }
 

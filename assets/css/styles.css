@@ -1,6 +1,4 @@
-/* ===============================
-   Base / Reset
-================================ */
+/* Base / Reset */
 * {
   box-sizing: border-box;
 }
@@ -17,9 +15,7 @@ body {
   color: #e9eef3;
 }
 
-/* ===============================
-   Theme variables
-================================ */
+/* Theme variables */
 :root {
   --bg: #111418;
   --text: #e9eef3;
@@ -32,9 +28,9 @@ body {
   --accent: #03d0d0;
 }
 
-/* ===============================
-   Header / Navigation
-================================ */
+
+
+/* Header / Navigation */
 header {
   padding: 18px;
 }
@@ -117,18 +113,14 @@ header {
   color: var(--accent);
 }
 
-/* ===============================
-   Main layout (GLOBAL)
-================================ */
+/* Main layout */
 main {
   max-width: 900px;
   margin: 0 auto;
   padding: 72px 18px 0;
 }
 
-/* ===============================
-   Shared components
-================================ */
+/* Shared components */
 .section-divider {
   width: 100%;
   max-width: 900px;
@@ -153,9 +145,7 @@ main {
   color: var(--accent);
 }
 
-/* ===============================
-   Footer
-================================ */
+/*    Footer */
 .site-footer {
   margin-top: 120px;
   padding: 32px 18px;

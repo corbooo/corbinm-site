@@ -166,7 +166,7 @@
         ...PRIORITY.filter(x => skills.includes(x)),
         ...skills.filter(x => !PRIORITY.includes(x))
       ];
-      const finalSkills = prioritized;
+      const finalSkills = prioritized.slice(0,14);
 
 
       grid.innerHTML = finalSkills.map(s => `<span>${s}</span>`).join("");
