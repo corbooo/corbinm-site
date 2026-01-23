@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/favicon.png">
-    <link rel="stylesheet" href="../assets/css/styles.css?v=3"/>
-    <title>Corbin - About Me</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="../assets/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1" />
+  <link rel="stylesheet" href="../assets/css/pages/about.css?v=1" />
+
+  <title>Corbin - About</title>
 </head>
+
 <body>
   <header>
     <nav class="site-nav">
@@ -15,9 +19,11 @@
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-        <a class="nav-logo" href="../index.html" aria-label="Home">
-          <img src="../assets/img/logo.png" alt="CM"/>
-        </a>
+
+      <a class="nav-logo" href="../index.html" aria-label="Home">
+        <img src="../assets/img/logo.png" alt="CM" />
+      </a>
+
       <div class="nav-group nav-right">
         <a href="../about/" class="active">About</a>
         <a href="../projects/">Projects</a>
@@ -25,15 +31,95 @@
       </div>
     </nav>
   </header>
-  <main>
-    <h1>About Page</h1>
-    <p>Computer Science student building real-world software systems.</p>
+
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="about-hero-grid">
+        <div class="about-hero-text">
+          <h1 class="about-title">About</h1>
+          <p class="about-lede">
+            I'm Corbin Moseman — a Computer Science student focused on building practical software systems.
+            I like projects that feel “real”: clean APIs, reliable data storage, and tools that solve a specific problem.
+          </p>
+
+          <div class="about-cta">
+            <a class="about-link" href="../projects/">View Projects</a>
+            <a class="about-link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+
+        <div class="about-hero-media">
+          <div class="about-photo">
+            <img src="../assets/img/headshot.jpg" alt="Headshot of Corbin" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="about-section">
+      <header class="section-head">
+        <h2 class="section-title">What I'm focused on</h2>
+        <p class="section-note">What I build and what I'm actively improving.</p>
+      </header>
+
+      <div class="about-grid">
+        <article class="card">
+          <h3 class="card-title">Backend & APIs</h3>
+          <p class="card-desc">
+            Designing endpoints, validation, and clean data models with clear separation between routing,
+            services, and persistence.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tools that save time</h3>
+          <p class="card-desc">
+            CLI and automation utilities that reduce manual steps and produce predictable, readable output.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Data + visualization</h3>
+          <p class="card-desc">
+            Turning exports and logs into useful insights with simple analysis and charts.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <header class="section-head">
+        <h2 class="section-title">Highlights</h2>
+        <p class="section-note">A few things I'm proud of.</p>
+      </header>
+
+      <div class="card">
+        <ul class="about-bullets">
+          <li><span class="bullet-strong">MacroCoachAPI:</span> FastAPI backend with storage + weekly insights.</li>
+          <li><span class="bullet-strong">Projects system:</span> Projects page is driven by a JSON data file (easy to update).</li>
+          <li><span class="bullet-strong">UI discipline:</span> Consistent components across pages (cards, tags, dropdown filters).</li>
+          <li><span class="bullet-strong">Iteration:</span> I ship, refine, and improve based on real usage.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <header class="section-head">
+        <h2 class="section-title">Tech</h2>
+        <p class="section-note">Most-used tools across my projects.</p>
+      </header>
+
+      <div class="skills-grid" id="aboutSkillsGrid">
+        <!-- injected -->
+      </div>
+    </section>
   </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-copy">
-        © <span id="year"></span> Corbin Moseman
-      </p>
+      <p class="footer-copy">© <span id="year"></span> Corbin Moseman</p>
       <div class="footer-links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -41,8 +127,38 @@
       </div>
     </div>
   </footer>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script>
+    async function loadMostUsedSkills(limit = 12) {
+      const grid = document.getElementById("aboutSkillsGrid");
+      if (!grid) return;
+
+      const res = await fetch("../assets/data/projects.json", { cache: "no-store" });
+      const projects = await res.json();
+
+      const counts = new Map();
+
+      (projects || []).forEach(p => {
+        (p.tags || []).forEach(tag => {
+          const t = String(tag).trim();
+          if (!t) return;
+          counts.set(t, (counts.get(t) || 0) + 1);
+        });
+      });
+
+      const ranked = [...counts.entries()]
+        .sort((a, b) => (b[1] - a[1]) || a[0].localeCompare(b[0]))
+        .slice(0, limit)
+        .map(([tag]) => tag);
+
+      grid.innerHTML = ranked.map(t => `<span>${t}</span>`).join("");
+    }
+
+    loadMostUsedSkills(12).catch(console.error);
+  </script>
+
 </body>
 </html>

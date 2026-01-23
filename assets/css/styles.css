@@ -26,6 +26,9 @@ body {
   --border: rgba(255,255,255,0.14);
 
   --accent: #03d0d0;
+  --accentSoft: rgba(3,208,208,.14);
+  --accentBorder: rgba(3,208,208,.38);
+
 }
 
 

@@ -121,11 +121,11 @@
 }
 
 .skill-summary:hover{
-  background: rgba(0,255,174,.18);
+  background: rgba(3,208,208,.18);
 }
 
 .skill-dropdown[open] .skill-summary{
-  background: rgba(0,255,174,.22);
+  background: rgba(3,208,208,.22);
   border-color: var(--accent);
 }
 
@@ -191,8 +191,8 @@
 }
 .chip:hover{ background:rgba(255,255,255,.06); }
 .chip--active{
-  background:rgba(0,255,174,.12);
-  border-color:rgba(0,255,174,.35);
+  background: rgba(3,208,208,.12);
+  border-color: rgba(3,208,208,.35);
 }
 
 /* Sections */
@@ -255,7 +255,7 @@
 .card-desc{ margin:.45rem 0 0; opacity:.85; line-height:1.45; }
 
 .card:has(.badge){
-  box-shadow: 0 0 0 1px rgba(0,255,174,.12);
+  box-shadow: 0 0 0 1px rgba(3,208,208,.12);
 }
 
 .badge{

@@ -1,0 +1,180 @@
+.about-page{
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2.75rem 0 3.5rem;
+}
+
+/* Hero */
+.about-hero{
+  margin-top: .25rem;
+}
+
+.about-hero-grid{
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1.35fr .65fr;
+  align-items: center;
+}
+
+.about-title{
+  margin: 0;
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.about-lede{
+  margin: .7rem 0 0;
+  max-width: 70ch;
+  opacity: .88;
+  line-height: 1.55;
+}
+
+.about-cta{
+  display: flex;
+  gap: .65rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Subtle hero links */
+.about-link{
+  color: var(--accent);
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0.85;
+  margin-right: 12px;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.about-link:hover{
+  opacity: 1;
+  border-bottom-color: var(--accent);
+}
+
+/* Photo */
+.about-photo{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  padding: .55rem;
+}
+
+.about-photo img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Sections */
+.about-section{
+  margin-top: 2.25rem;
+}
+
+.section-head{
+  display: grid;
+  gap: .25rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.section-title{
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.section-note{
+  margin: 0;
+  opacity: .8;
+}
+
+/* Grid */
+.about-grid{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+/* Cards */
+.card{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  padding: 1.2rem;
+}
+
+.card-title{
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.card-desc{
+  margin: .6rem 0 0;
+  opacity: .85;
+  line-height: 1.45;
+}
+
+/* Bullets */
+.about-bullets{
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: .5rem;
+}
+.bullet-strong{
+  color: var(--accent);
+}
+
+/* Skills chips */
+.skills-grid{
+  margin-top: .2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.skills-grid span{
+  font-size: .95rem;
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  border: 1px solid var(--accentBorder);
+  background: var(--accentSoft);
+}
+
+/* Divider */
+.section-divider{
+  height: 1px;
+  width: 100%;
+  margin: 2.1rem 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.14),
+    rgba(255,255,255,0)
+  );
+}
+
+@media (max-width: 860px){
+  .about-hero-grid{
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-hero-text{
+    order: 0;
+  }
+
+  .about-hero-media{
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-photo{
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .about-photo img{
+  border-radius: 16px;
+  }
+}
