@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/favicon.png">
-    <link rel="stylesheet" href="../assets/css/styles.css?v=2" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
     <title>Corbin - Projects</title>
 </head>
 <body>
@@ -18,7 +18,6 @@
         <a class="nav-logo" href="../index.html" aria-label="Home">
           <img src="../assets/img/logo.png" alt="CM Logo"/>
         </a>
-
       <div class="nav-group nav-right">
         <a href="../about/">About</a>
         <a href="../projects/" class="active">Projects</a>
@@ -26,10 +25,24 @@
       </div>
     </nav>
   </header>
-
   <main>
     <h1>Projects Page</h1>
     <p>Computer Science student building real-world software systems.</p>
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        © <span id="year"></span> Corbin Moseman
+      </p>
+      <div class="footer-links">
+        <a href="mailto:corbinm@pobox.com">Email</a>
+        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

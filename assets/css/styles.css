@@ -136,6 +136,22 @@ main {
 }
 
 /* ===============================
+   Section Divider
+================================ */
+.section-divider {
+  width: 100%;
+  max-width: 900px;
+  height: 1px;
+  margin: 96px auto 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--accent) 35%, var(--border)),
+    transparent
+  );
+}
+
+/* ===============================
    Home Hero
 ================================ */
 .hero {
@@ -318,6 +334,40 @@ p {
   margin-inline: auto;
 }
 
+/* ===============================
+   Footer
+================================ */
+.site-footer {
+  margin-top: 120px;
+  padding: 32px 18px;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+.footer-links a {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.footer-links a:hover {
+  color: var(--accent);
+}
 
 /* ===============================
    Mobile
@@ -341,5 +391,11 @@ p {
   .nav-right {
     order: 3;
     justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
   }
 }
