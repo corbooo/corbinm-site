@@ -1,0 +1,197 @@
+/* ===============================
+   Home Hero
+================================ */
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 18px 0;   /* main already has padding; keep this reasonable */
+  text-align: center;
+}
+
+.hero-name {
+  font-size: clamp(42px, 6vw, 56px);
+  margin: 0 0 18px;
+  letter-spacing: -0.02em;
+}
+
+.hero-tagline {
+  font-size: clamp(18px, 2.6vw, 22px);
+  color: var(--text);
+  margin: 0 0 14px;
+  max-width: 32ch;
+  margin-inline: auto;
+}
+
+.hero-subtext {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* ===============================
+   What I Do
+================================ */
+.what-i-do {
+  max-width: 900px;
+  margin: 96px auto 0;
+  padding: 0 18px;
+  text-align: center;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.focus-card {
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.focus-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.focus-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ===============================
+   Featured Projects (Home)
+================================ */
+.featured {
+  max-width: 900px;
+  margin: 96px auto 0;
+  padding: 0 18px;
+  text-align: center;
+}
+
+.project-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  text-align: left;
+}
+
+.project-card {
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.project-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-desc {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Small links (GitHub / Demo) */
+.project-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.project-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  border-bottom: 1px solid transparent;
+}
+
+.project-links a:hover {
+  color: var(--accent);
+  border-bottom-color: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.project-links a:visited {
+  color: var(--muted); /* prevents purple visited links */
+}
+
+.project-links a.disabled {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Tags */
+.project-tags {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags span {
+  font-size: 12px;
+  background: rgba(3,208,208,0.08);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+/* CTA */
+.featured-cta {
+  margin-top: 26px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: rgba(3,208,208,0.10);
+}
+
+/* ===============================
+   Skills (Home snapshot)
+================================ */
+.skills {
+  max-width: 900px;
+  margin: 96px auto 0;
+  padding: 0 18px;
+  text-align: center;
+}
+
+.skills-grid {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skills-grid span {
+  font-size: 13px;
+  background: rgba(3,208,208,0.08);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
