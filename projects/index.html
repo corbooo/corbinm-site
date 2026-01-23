@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/favicon.png">
-    <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
-    <title>Corbin - Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="../assets/css/pages/projects.css" />
+  <title>Corbin - Projects</title>
 </head>
+
 <body>
   <header>
     <nav class="site-nav">
@@ -15,9 +17,11 @@
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-        <a class="nav-logo" href="../index.html" aria-label="Home">
-          <img src="../assets/img/logo.png" alt="CM"/>
-        </a>
+
+      <a class="nav-logo" href="../index.html" aria-label="Home">
+        <img src="../assets/img/logo.png" alt="CM"/>
+      </a>
+
       <div class="nav-group nav-right">
         <a href="../about/">About</a>
         <a href="../projects/" class="active">Projects</a>
@@ -25,10 +29,75 @@
       </div>
     </nav>
   </header>
-  <main>
-    <h1>Projects Page</h1>
-    <p>Computer Science student building real-world software systems.</p>
+
+  <main class="projects-page">
+    <section class="projects-hero">
+      <h1 class="projects-title">Projects</h1>
+      <p class="projects-subtitle">
+        A curated set of software builds focused on practical problem-solving:
+        APIs, automation, data modeling, and polished UI.
+      </p>
+
+      <div class="filters" aria-label="Project filters">
+        <div class="filters-left">
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">⌕</span>
+            <label class="sr-only" for="projectSearch">Search projects</label>
+            <input id="projectSearch" type="text" placeholder="Search projects..." />
+          </div>
+
+          <label class="sr-only" for="projectSort">Sort projects</label>
+          <select id="projectSort" class="select">
+            <option value="featured">Featured first</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+
+          <button id="clearFilters" class="btn btn-primary" type="button">Clear</button>
+        </div>
+
+        <div id="chipRow" class="filters-right" aria-label="Skill filters">
+          <!-- chips injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section" aria-label="Featured projects">
+      <header class="section-head section-head-center">
+        <h2 class="section-title">Featured</h2>
+        <p class="section-note">Most polished, resume-ready builds.</p>
+      </header>
+
+      <div id="featuredGrid" class="row-grid">
+        <!-- featured cards injected by JS -->
+      </div>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="projects-section" aria-label="Mini projects">
+      <header class="section-head section-head-row">
+        <div>
+          <h2 class="section-title">Mini Projects</h2>
+          <p class="section-note">Smaller builds and experiments.</p>
+        </div>
+
+        <div class="slider-controls">
+          <button id="miniPrev" class="icon-btn" type="button" aria-label="Scroll mini projects left">‹</button>
+          <button id="miniNext" class="icon-btn" type="button" aria-label="Scroll mini projects right">›</button>
+        </div>
+      </header>
+
+      <div id="miniSlider" class="slider" tabindex="0" aria-label="Mini projects slider">
+        <!-- mini cards injected by JS -->
+      </div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        No projects match your filters. Try clearing or changing tags.
+      </div>
+    </section>
   </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-copy">
@@ -41,8 +110,243 @@
       </div>
     </div>
   </footer>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const DATA_URL = "../assets/data/projects.json";
+
+    const els = {
+      search: document.getElementById("projectSearch"),
+      sort: document.getElementById("projectSort"),
+      chipRow: document.getElementById("chipRow"),
+      clear: document.getElementById("clearFilters"),
+      featuredGrid: document.getElementById("featuredGrid"),
+      miniSlider: document.getElementById("miniSlider"),
+      emptyState: document.getElementById("emptyState"),
+      prev: document.getElementById("miniPrev"),
+      next: document.getElementById("miniNext"),
+    };
+
+    const state = {
+      search: "",
+      skills: new Set(),
+      sort: "featured",
+      projects: [],
+    };
+
+    const norm = (s) => (s || "").toLowerCase().trim();
+
+    function toDateMs(p) {
+      const d = p.date ? new Date(p.date) : null;
+      return d && !Number.isNaN(d.getTime()) ? d.getTime() : 0;
+    }
+
+    function uniqueSkills(projects) {
+      const set = new Set();
+      projects.forEach(p => (p.tags || []).forEach(t => set.add(t)));
+      return [...set].sort((a,b) => a.localeCompare(b));
+    }
+
+    function renderChips(skills) {
+      els.chipRow.innerHTML = "";
+      skills.forEach(skill => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip";
+        btn.textContent = skill;
+        btn.dataset.skill = skill;
+        btn.setAttribute("aria-pressed", "false");
+
+        btn.addEventListener("click", () => {
+          const key = btn.dataset.skill;
+          if (state.skills.has(key)) state.skills.delete(key);
+          else state.skills.add(key);
+
+          const active = state.skills.has(key);
+          btn.classList.toggle("chip--active", active);
+          btn.setAttribute("aria-pressed", String(active));
+
+          applyAll();
+        });
+
+        els.chipRow.appendChild(btn);
+      });
+    }
+
+    function cardHTML(p, isMini=false) {
+      const tags = (p.tags || []).join(" ");
+      const badge = p.tier === "featured" ? `<span class="badge">Featured</span>` : "";
+      const tagPills = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+
+      const githubBtn = p.github
+        ? `<a class="btn btn-primary" href="${p.github}" target="_blank" rel="noopener">GitHub</a>`
+        : "";
+
+      const liveBtn = p.live
+        ? `<a class="btn btn-quiet" href="${p.live}" target="_blank" rel="noopener">Live</a>`
+        : "";
+
+      return `
+        <article class="card ${isMini ? "card-mini" : ""}"
+          data-title="${p.title || ""}"
+          data-desc="${p.desc || ""}"
+          data-tags="${tags}"
+          data-date="${p.date || ""}"
+          data-tier="${p.tier || ""}">
+          <div class="card-title-row">
+            <h3 class="card-title">${p.title || ""}</h3>
+            ${badge}
+          </div>
+
+          <p class="card-desc">${p.desc || ""}</p>
+
+          <div class="tag-row" aria-label="Project tags">
+            ${tagPills}
+          </div>
+
+          <div class="actions">
+            ${githubBtn}
+            ${liveBtn}
+          </div>
+        </article>
+      `;
+    }
+
+    function matchesCard(card) {
+      const title = norm(card.dataset.title);
+      const desc  = norm(card.dataset.desc);
+      const tags  = norm(card.dataset.tags);
+
+      const q = norm(state.search);
+      const searchOk = !q || title.includes(q) || desc.includes(q) || tags.includes(q);
+      if (!searchOk) return false;
+
+      if (state.skills.size === 0) return true;
+
+      // OR logic across selected skills
+      for (const s of state.skills) {
+        if (tags.includes(norm(s))) return true;
+      }
+      return false;
+    }
+
+    function applyVisibility() {
+      const allCards = [
+        ...els.featuredGrid.querySelectorAll(".card"),
+        ...els.miniSlider.querySelectorAll(".card"),
+      ];
+
+      let visible = 0;
+      allCards.forEach(card => {
+        const ok = matchesCard(card);
+        card.hidden = !ok;
+        if (ok) visible++;
+      });
+
+      els.emptyState.hidden = visible !== 0;
+      els.miniSlider.scrollLeft = 0;
+    }
+
+    function applySort() {
+      const mode = state.sort;
+      const featuredCards = [...els.featuredGrid.querySelectorAll(".card")];
+      const miniCards = [...els.miniSlider.querySelectorAll(".card")];
+
+      if (mode === "featured") {
+        // Restore original DOM order by re-rendering from data
+        renderProjects(state.projects);
+        return;
+      }
+
+      const sorter = (a, b) => {
+        const A = a.dataset.date ? new Date(a.dataset.date).getTime() : 0;
+        const B = b.dataset.date ? new Date(b.dataset.date).getTime() : 0;
+        return mode === "newest" ? (B - A) : (A - B);
+      };
+
+      featuredCards.sort(sorter).forEach(c => els.featuredGrid.appendChild(c));
+      miniCards.sort(sorter).forEach(c => els.miniSlider.appendChild(c));
+    }
+
+    function applyAll() {
+      applySort();
+      applyVisibility();
+    }
+
+    function renderProjects(projects) {
+      // Featured: preserve JSON order
+      const featured = projects.filter(p => p.tier === "featured");
+      const mini = projects.filter(p => p.tier !== "featured");
+
+      els.featuredGrid.innerHTML = featured.map(p => cardHTML(p, false)).join("");
+      els.miniSlider.innerHTML = mini.map(p => cardHTML(p, true)).join("");
+    }
+
+    function wireUI() {
+      els.search.addEventListener("input", (e) => {
+        state.search = e.target.value || "";
+        applyAll();
+      });
+
+      els.sort.addEventListener("change", (e) => {
+        state.sort = e.target.value;
+        applyAll();
+      });
+
+      els.clear.addEventListener("click", () => {
+        state.search = "";
+        state.skills.clear();
+        state.sort = "featured";
+
+        els.search.value = "";
+        els.sort.value = "featured";
+
+        els.chipRow.querySelectorAll(".chip").forEach(btn => {
+          btn.classList.remove("chip--active");
+          btn.setAttribute("aria-pressed", "false");
+        });
+
+        applyAll();
+      });
+
+      const scrollByCard = (dir) => {
+        const firstCard = els.miniSlider.querySelector(".card");
+        const amount = firstCard ? (firstCard.getBoundingClientRect().width + 16) : 360;
+        els.miniSlider.scrollBy({ left: dir * amount, behavior: "smooth" });
+      };
+
+      els.prev.addEventListener("click", () => scrollByCard(-1));
+      els.next.addEventListener("click", () => scrollByCard(1));
+    }
+
+    async function init() {
+      wireUI();
+
+      const res = await fetch(DATA_URL, { cache: "no-store" });
+      const projects = await res.json();
+
+      // Normalize + stable order (featured first in JSON order; mini in JSON order)
+      state.projects = (projects || []).map(p => ({
+        ...p,
+        title: p.title || "",
+        desc: p.desc || "",
+        tags: Array.isArray(p.tags) ? p.tags : [],
+        date: p.date || "",
+        tier: p.tier || "mini",
+        github: p.github || null,
+        live: p.live || null,
+      }));
+
+      renderChips(uniqueSkills(state.projects));
+      renderProjects(state.projects);
+      applyVisibility();
+    }
+
+    init().catch(err => {
+      console.error(err);
+      els.featuredGrid.innerHTML = "<p>Could not load projects data.</p>";
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "macrocoachapi",
+    "title": "MacroCoachAPI",
+    "tier": "featured",
+    "date": "2026-01-20",
+    "desc": "FastAPI backend for tracking weight/macros, storing history, and generating weekly insights.",
+    "tags": ["Python", "FastAPI", "SQL", "SQLite", "APIs"],
+    "github": "https://github.com/corbooo/MacroCoachAPI",
+    "live": null
+  },
+  {
+    "id": "personal-website",
+    "title": "Personal Website",
+    "tier": "featured",
+    "date": "2026-01-22",
+    "desc": "Responsive portfolio website with modular page styles, clean navigation, and a projects system driven by JSON data.",
+    "tags": ["Web", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/corbin-site",
+    "live": null
+  },
+  {
+    "id": "list-manager",
+    "title": "List Manager",
+    "tier": "featured",
+    "date": "2026-01-18",
+    "desc": "Tkinter list manager with multi-list tabs, autosave to JSON, and add/edit/delete/reorder item workflows.",
+    "tags": ["Python", "Tkinter", "JSON", "UI"],
+    "github": null,
+    "live": null
+  },
+
+  {
+    "id": "expense-tracker",
+    "title": "Expense Tracker",
+    "tier": "mini",
+    "date": "2026-01-10",
+    "desc": "CLI expense tracker with JSON persistence, add/update/delete flows, and clean tabular viewing output.",
+    "tags": ["Python", "CLI", "JSON"],
+    "github": null,
+    "live": null
+  },
+  {
+    "id": "hangman-trivia",
+    "title": "Hangman Trivia",
+    "tier": "mini",
+    "date": "2026-01-08",
+    "desc": "Tkinter trivia + hangman game that pulls questions from an external API and updates UI state per answer.",
+    "tags": ["Python", "Tkinter", "APIs", "UI"],
+    "github": null,
+    "live": null
+  },
+  {
+    "id": "fitness-tracker",
+    "title": "Fitness Tracker",
+    "tier": "mini",
+    "date": "2026-01-12",
+    "desc": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations (calories, macros, weight, exercise).",
+    "tags": ["Python", "CLI", "Data", "Matplotlib"],
+    "github": null,
+    "live": null
+  },
+  {
+    "id": "banker",
+    "title": "Mediocre Banker",
+    "tier": "mini",
+    "date": "2026-01-05",
+    "desc": "CLI bank account simulator with deposits/withdrawals/transfers, account folders, and JSON log files by date.",
+    "tags": ["Python", "CLI", "JSON", "File I/O"],
+    "github": null,
+    "live": null
+  },
+  {
+    "id": "f1-stats",
+    "title": "F1 Stats Visualizer",
+    "tier": "mini",
+    "date": "2026-01-14",
+    "desc": "F1 stats explorer using an API to chart standings and driver/team performance using Matplotlib.",
+    "tags": ["Python", "APIs", "Matplotlib", "Data"],
+    "github": null,
+    "live": null
+  },
+  {
+    "id": "travel-planner",
+    "title": "Travel Planner",
+    "tier": "mini",
+    "date": "2026-01-03",
+    "desc": "CLI travel planner that validates date ranges, builds a packing checklist using rules, and saves itineraries to files.",
+    "tags": ["Python", "CLI", "File I/O"],
+    "github": null,
+    "live": null
+  }
+]
