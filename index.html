@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicon.png">
-  <link rel="stylesheet" href="assets/css/styles.css?v=3" />
-  <link rel="stylesheet" href="assets/css/pages/home.css?v=4" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=3"/>
+  <link rel="stylesheet" href="assets/css/pages/home.css?v=5"/>
   <title>Corbin - Home</title>
 </head>
 
@@ -31,14 +31,38 @@
   </header>
 
   <main class="home-page">
-    <section class="home-hero">
-      <h1 class="home-title">Corbin Moseman</h1>
-      <p class="home-subtitle">
-        Computer Science student building practical software—APIs, automation, and data-driven tools.
+    <section class="hero hero-centered">
+      <h1 class="hero-name">Corbin Moseman</h1>
+
+      <p class="hero-subtitle hero-subtitle-strong">
+        Computer Science student building
+        <span class="accent">real-world software systems.</span>
       </p>
-      <div class="home-cta">
-        <a class="btn btn-primary" href="projects/">View Projects</a>
-        <a class="btn btn-quiet" href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+
+      <p class="hero-subtitle hero-subtitle-small">
+        Focused on backend development, APIs, and turning ideas into reliable tools.
+      </p>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="what-i-do">
+      <h2>What I Do</h2>
+      <p class="section-subtitle">I build practical software tools with clean structure and real-world use cases.</p>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3>Backend & APIs</h3>
+          <p>FastAPI backends with clear endpoints, validation, and data persistence.</p>
+        </div>
+        <div class="focus-card">
+          <h3>Automation & CLI Tools</h3>
+          <p>Small utilities that improve workflows with file I/O, reporting, and clean output.</p>
+        </div>
+        <div class="focus-card">
+          <h3>Data & Visualizations</h3>
+          <p>Lightweight analysis scripts with charts and summaries to reveal trends.</p>
+        </div>
       </div>
     </section>
 
@@ -57,6 +81,17 @@
 
       <div id="homeFeaturedGrid" class="row-grid">
         <!-- injected by JS -->
+      </div>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <p class="section-subtitle">Derived automatically from my projects.</p>
+
+      <div class="skills-grid" id="skillsGrid">
+        <!-- injected -->
       </div>
     </section>
   </main>
@@ -112,6 +147,32 @@
     initFeatured().catch(() => {
       grid.innerHTML = "<p>Could not load featured projects.</p>";
     });
+
+    async function loadSkillsFromProjects() {
+      const grid = document.getElementById("skillsGrid");
+      if (!grid) return;
+
+      const res = await fetch("assets/data/projects.json", { cache: "no-store" });
+      const projects = await res.json();
+
+      const set = new Set();
+      (projects || []).forEach(p => (p.tags || []).forEach(t => set.add(t)));
+
+      // sort alphabetically
+      const skills = [...set].sort((a, b) => a.localeCompare(b));
+
+      const PRIORITY = ["Python","FastAPI","SQL","SQLite","APIs","Java","HTML","CSS","JavaScript"];
+      const prioritized = [
+        ...PRIORITY.filter(x => skills.includes(x)),
+        ...skills.filter(x => !PRIORITY.includes(x))
+      ];
+      const finalSkills = prioritized;
+
+
+      grid.innerHTML = finalSkills.map(s => `<span>${s}</span>`).join("");
+    }
+
+    loadSkillsFromProjects().catch(console.error);
   </script>
 </body>
 </html>
