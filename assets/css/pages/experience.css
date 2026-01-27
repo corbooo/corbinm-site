@@ -5,6 +5,34 @@
   padding: 28px 18px 56px;
 }
 
+.experience-page .section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  display: inline-block;
+  border-bottom: 1.5px solid #03d0d0;
+}
+
+
+.experience-page .section-divider {
+  height: 1px;
+  width: 100%;
+  margin: 2.1rem 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.14),
+    rgba(255,255,255,0)
+  );
+}
+
+.experience-page .section-note {
+  opacity: 0.65;
+  font-size: 0.95rem;
+  max-width: 560px;
+}
+
 .exp-hero {
   padding: 10px 0 18px;
   text-align: center;
