@@ -1,0 +1,31 @@
+[
+  {
+    "id": "uhcl-bs",
+    "school": "University of Houston–Clear Lake",
+    "degree": "B.S. in Computer Science",
+    "start": "2025-08",
+    "end": "2028-05",
+    "status": "expected",
+    "coursework": [
+      "Computer Science 1 (Python)",
+      "Discrete Mathematics",
+      "Physics 2",
+      "Statistics (in progress)",
+      "Linear Algebra (in progress)",
+      "Computer Science 2 (Java) (in progress)"
+    ]
+  },
+  {
+    "id": "tamu-galveston",
+    "school": "Texas A&M University at Galveston",
+    "degree": "Completed foundational coursework (transfer)",
+    "start": "2023-08",
+    "end": "2025-05",
+    "status": null,
+    "coursework": [
+        "Physics 1",
+        "Calculus I & II",
+        "Intro to Engineering"
+    ]
+  }
+]

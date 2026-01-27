@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../assets/favicon.png">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=3"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../assets/favicon.png"/>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1"/>
+  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=2"/>
   <script src="../assets/js/shared.js" defer></script>
   <script src="../assets/js/experience.js" defer></script>
-  <title>Corbin - Work Experience</title>
+  <title>Corbin - Experience</title>
 </head>
+
 <body>
   <header>
     <nav class="site-nav">
@@ -17,9 +19,11 @@
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-        <a class="nav-logo" href="../index.html" aria-label="Home">
-          <img src="../assets/img/logo.png" alt="CM Logo"/>
-        </a>
+
+      <a class="nav-logo" href="../index.html" aria-label="Home">
+        <img src="../assets/img/logo.png" alt="CM" />
+      </a>
+
       <div class="nav-group nav-right">
         <a href="../about/">About</a>
         <a href="../projects/">Projects</a>
@@ -27,15 +31,42 @@
       </div>
     </nav>
   </header>
-  <main>
-    <h1>Experience Page</h1>
-    <p>Computer Science student building real-world software systems.</p>
+
+  <main class="experience-page">
+    <section class="exp-hero">
+      <h1 class="exp-title">Experience</h1>
+      <p class="exp-subtitle">
+        Professional work and education background.
+      </p>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="exp-section" aria-label="Work experience">
+      <header class="section-head section-head-center">
+        <h2 class="section-title">Work</h2>
+        <p class="section-note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
+      </header>
+
+      <div id="workGrid" class="exp-grid"></div>
+    </section>
+
+    <div class="section-divider" role="separator" aria-hidden="true"></div>
+
+    <section class="exp-section" aria-label="Education">
+      <header class="section-head section-head-center">
+        <h2 class="section-title">Education</h2>
+        <p class="section-note">Academic background and relevant coursework.</p>
+      </header>
+
+      <div id="eduGrid" class="exp-grid"></div>
+    </section>
   </main>
+
+
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-copy">
-        © <span id="year"></span> Corbin Moseman
-      </p>
+      <p class="footer-copy">© <span id="year"></span> Corbin Moseman</p>
       <div class="footer-links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -43,8 +74,5 @@
       </div>
     </div>
   </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

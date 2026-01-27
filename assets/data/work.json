@@ -1,0 +1,31 @@
+[
+  {
+    "id": "canes-trainer",
+    "company": "Raising Cane’s Chicken Fingers",
+    "role": "Crew Member & Trainer",
+    "location": null,
+    "start": "2021-06",
+    "end": "present",
+    "highlights": [
+      "Trained new team members on procedures, safety standards, and customer service expectations.",
+      "Maintained accuracy and efficiency during high-volume periods while multitasking across stations.",
+      "Communicated with managers and teammates to resolve issues and support smooth operations.",
+      "Demonstrated leadership, reliability, and a strong work ethic across multiple responsibilities."
+    ],
+    "tags": ["Leadership", "Training", "Operations", "Communication"]
+  },
+  {
+    "id": "soccer-ref",
+    "company": "South Texas Youth Soccer Association",
+    "role": "Soccer Referee",
+    "location": null,
+    "start": "2018-07",
+    "end": "2021-06",
+    "highlights": [
+      "Officiated youth soccer matches while ensuring safety, fairness, and rule compliance.",
+      "Communicated decisions clearly to players, coaches, and parents in fast-paced environments.",
+      "Developed strong conflict-resolution, quick decision-making, and leadership skills."
+    ],
+    "tags": ["Decision-making", "Conflict Resolution", "Leadership"]
+  }
+]
