@@ -27,7 +27,7 @@
 
 .hero.hero-centered .hero-subtitle{
   margin: 0 auto;
-  max-width: 52ch;
+  /* max-width: 52ch; */
   line-height: 1.55;
 }
 
@@ -38,6 +38,7 @@
 
 .hero-subtitle-strong .accent{
   color: var(--accent);
+  white-space: nowrap;
 }
 
 .hero-subtitle-small{
