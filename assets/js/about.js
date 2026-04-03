@@ -1,19 +1,17 @@
+import { loadProjects } from "./lib/data.js";
 
 async function loadMostUsedSkills(limit = 12) {
   const grid = document.getElementById("aboutSkillsGrid");
   if (!grid) return;
 
-  const res = await fetch("../assets/data/projects.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to load projects");
-
-  const projects = await res.json();
+  const projects = await loadProjects("..");
   const counts = new Map();
 
-  projects.forEach(p => {
-    (p.tags || []).forEach(tag => {
-      const t = String(tag).trim();
-      if (!t) return;
-      counts.set(t, (counts.get(t) || 0) + 1);
+  (projects || []).forEach((project) => {
+    (project.tags || []).forEach((tag) => {
+      const value = String(tag).trim();
+      if (!value) return;
+      counts.set(value, (counts.get(value) || 0) + 1);
     });
   });
 
@@ -22,7 +20,7 @@ async function loadMostUsedSkills(limit = 12) {
     .slice(0, limit)
     .map(([tag]) => tag);
 
-  grid.innerHTML = ranked.map(t => `<span>${t}</span>`).join("");
+  grid.innerHTML = ranked.map((tag) => `<span>${tag}</span>`).join("");
 }
 
 loadMostUsedSkills(12).catch(console.error);

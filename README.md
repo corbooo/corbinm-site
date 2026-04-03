@@ -1,50 +1,14 @@
-# corbinm-site
+# Refactored Personal Site
 
-Personal portfolio website for **Corbin Moseman**, built to showcase software projects, experience, and background in a clean, readable, and maintainable way.
+This refactor keeps the same HTML structure, class names, and page layout while moving repeated JavaScript logic into shared modules:
 
-The site is fully static, data-driven where appropriate, and designed with scalability and clarity in mind.
+- `assets/js/lib/data.js` — shared JSON loading with caching
+- `assets/js/lib/components.js` — shared card renderers
+- `assets/js/lib/utils.js` — escaping, sorting, and date helpers
 
----
-
-## Live Site
-🌐 https://corbinm.com  
-(Hosted via Vercel)
-
----
-
-## Tech Stack
-
-- **HTML5** – semantic, accessible markup  
-- **CSS3** – custom styling with page-specific stylesheets  
-- **JavaScript (Vanilla)** – modular, per-page scripts  
-- **JSON** – data sources for projects, work experience, and education  
-- **Git & GitHub** – version control  
-- **Vercel** – deployment and hosting  
-
-No frameworks or build tools are used; the site is intentionally lightweight and dependency-free.
-
----
-
-## Project Structure
-
-```text
-/
-├── index.html
-├── about/
-├── projects/
-├── experience/
-├── assets/
-│   ├── css/
-│   │   ├── styles.css
-│   │   └── pages/
-│   ├── js/
-│   │   ├── shared.js
-│   │   ├── home.js
-│   │   ├── projects.js
-│   │   └── experience.js
-│   ├── data/
-│   │   ├── projects.json
-│   │   ├── work.json
-│   │   └── education.json
-│   └── img/
-└── README.md
+The page entry files remain:
+- `assets/js/home.js`
+- `assets/js/about.js`
+- `assets/js/projects.js`
+- `assets/js/experience.js`
+- `assets/js/shared.js`

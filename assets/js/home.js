@@ -1,70 +1,30 @@
+import { loadProjects } from "./lib/data.js";
+import { projectCardHTML } from "./lib/components.js";
+import { uniqueSorted, sortByPriority } from "./lib/utils.js";
 
-const grid = document.getElementById("homeFeaturedGrid");
-const DATA_URL = "assets/data/projects.json";
+const featuredGrid = document.getElementById("homeFeaturedGrid");
+const skillsGrid = document.getElementById("skillsGrid");
+const PRIORITY_SKILLS = ["Python", "FastAPI", "SQL", "SQLite", "APIs", "Java", "HTML", "CSS", "JavaScript"];
 
-function cardHTML(p) {
-  const tagPills = (p.tags || [])
-    .slice(0, 5)
-    .map(t => `<span class="tag">${t}</span>`)
+async function renderFeaturedProjects() {
+  if (!featuredGrid) return;
+  const projects = await loadProjects(".");
+  const featured = (projects || []).filter((project) => project.tier === "featured");
+  featuredGrid.innerHTML = featured
+    .map((project) => projectCardHTML(project, { featuredBadge: true }))
     .join("");
-
-  const githubBtn = p.github
-    ? `<a class="btn btn-primary" href="${p.github}" target="_blank" rel="noopener">GitHub</a>`
-    : "";
-
-  const liveBtn = p.live
-    ? `<a class="btn btn-quiet" href="${p.live}" target="_blank" rel="noopener">Live</a>`
-    : "";
-
-  return `
-    <article class="card">
-      <div class="card-title-row">
-        <h3 class="card-title">${p.title || ""}</h3>
-        <span class="badge">Featured</span>
-      </div>
-      <p class="card-desc">${p.desc || ""}</p>
-      <div class="tag-row">${tagPills}</div>
-      <div class="actions">${githubBtn}${liveBtn}</div>
-    </article>
-  `;
 }
 
-async function fetchProjects() {
-  const res = await fetch(DATA_URL, { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to load projects");
-  return res.json();
-}
-
-async function initFeatured() {
-  const projects = await fetchProjects();
-  const featured = (projects || []).filter(p => p.tier === "featured");
-  grid.innerHTML = featured.map(cardHTML).join("");
-}
-
-async function loadSkillsFromProjects() {
-  const skillsGrid = document.getElementById("skillsGrid");
+async function renderSkills() {
   if (!skillsGrid) return;
-
-  const projects = await fetchProjects();
-
-  const set = new Set();
-  projects.forEach(p => (p.tags || []).forEach(t => set.add(t)));
-
-  const skills = [...set].sort((a, b) => a.localeCompare(b));
-
-  const PRIORITY = ["Python","FastAPI","SQL","SQLite","APIs","Java","HTML","CSS","JavaScript"];
-  const prioritized = [
-    ...PRIORITY.filter(x => skills.includes(x)),
-    ...skills.filter(x => !PRIORITY.includes(x))
-  ];
-
-  skillsGrid.innerHTML = prioritized.slice(0, 14)
-    .map(s => `<span>${s}</span>`)
-    .join("");
+  const projects = await loadProjects(".");
+  const skills = uniqueSorted((projects || []).flatMap((project) => project.tags || []));
+  const ordered = sortByPriority(skills, PRIORITY_SKILLS).slice(0, 14);
+  skillsGrid.innerHTML = ordered.map((skill) => `<span>${skill}</span>`).join("");
 }
 
-initFeatured().catch(() => {
-  grid.innerHTML = "<p>Could not load featured projects.</p>";
+renderFeaturedProjects().catch(() => {
+  if (featuredGrid) featuredGrid.innerHTML = "<p>Could not load featured projects.</p>";
 });
 
-loadSkillsFromProjects().catch(console.error);
+renderSkills().catch(console.error);
