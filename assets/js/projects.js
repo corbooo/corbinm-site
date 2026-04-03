@@ -1,4 +1,3 @@
-document.getElementById("year").textContent = new Date().getFullYear();
 
 document.addEventListener("click", (e) => {
     const dd = document.getElementById("skillDropdown");

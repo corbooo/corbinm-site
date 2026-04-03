@@ -1,11 +1,4 @@
 
-
-console.log("home.js loaded", {
-  readyState: document.readyState,
-  featuredGrid: !!document.getElementById("homeFeaturedGrid"),
-  skillsGrid: !!document.getElementById("skillsGrid"),
-});
-
 const grid = document.getElementById("homeFeaturedGrid");
 const DATA_URL = "assets/data/projects.json";
 

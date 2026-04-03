@@ -1,8 +1,6 @@
 /* Layout */
 .home-page{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 72px 18px 0;
+  padding: 0 0 3.5rem;
 }
 
 .home-title{
@@ -27,7 +25,6 @@
 
 .hero.hero-centered .hero-subtitle{
   margin: 0 auto;
-  /* max-width: 52ch; */
   line-height: 1.55;
 }
 
@@ -49,7 +46,7 @@
 }
 
 /* Buttons */
-.home-page .btn{
+.btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -63,21 +60,17 @@
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.home-page .btn:hover{
+.btn:hover{
   background: var(--surfaceHover);
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
-.home-page .btn-primary{
+.btn-primary{
   border-color: color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
-.home-page .btn-quiet{
+.btn-quiet{
   color: var(--muted);
-}
-
-.section-divider{
-  margin-top: 64px; /* tighter for home */
 }
 
 /* Shared section header */
@@ -104,63 +97,28 @@
   font-size: 14px;
 }
 
-/* ===== Hero header ===== */
-.hero{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 72px 18px 0;
-  text-align: left;
-}
-
-.hero-name{
-  margin: 0 0 10px;
-  font-size: clamp(42px, 6vw, 56px);
-  letter-spacing: -0.02em;
-}
-
-.hero-subtitle{
-  margin: 0 0 12px;
-  color: var(--muted);
-  max-width: 65ch;
-  line-height: 1.55;
-}
-
-.hero-links{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.hero-links a{
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.hero-links a:hover{
-  border-bottom-color: var(--accent);
+.section-divider {
+  margin-top: 4rem;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--accent) 35%, var(--border)),
+    transparent
+  );
 }
 
 /* Featured cards (JSON injected) */
-.row-grid{
+.home-section__grid--featured{
   margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
 
-.card{
-  padding: 22px;
-  border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  transition: border-color 0.15s ease, transform 0.15s ease;
-  text-align: left;
-}
-
 .card:hover{
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   transform: translateY(-2px);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .card-title-row{
@@ -168,11 +126,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-}
-
-.card-title{
-  margin: 0;
-  font-size: 18px;
 }
 
 .badge{
@@ -185,11 +138,6 @@
   white-space: nowrap;
 }
 
-.card-desc{
-  margin: 12px 0 0;
-  font-size: 14px;
-  color: var(--muted);
-}
 
 .tag-row{
   margin-top: 14px;
@@ -218,25 +166,23 @@
   color: inherit;
 }
 
-.what-i-do,
-.skills{
+.home-section{
   margin-top: 64px;
   text-align: center;
 }
 
-.what-i-do .section-subtitle,
-.skills .section-subtitle{
+.home-section .section-subtitle{
   margin-top: 10px;
 }
 
-.focus-grid{
+.home-section__grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
   margin-top: 22px;
 }
 
-.focus-card{
+.card--focus{
   padding: 22px;
   border-radius: 16px;
   background: var(--surface);
@@ -244,12 +190,12 @@
   text-align: left;
 }
 
-.focus-card h3{
+.card--focus h3{
   margin: 0 0 8px;
   font-size: 18px;
 }
 
-.focus-card p{
+.card--focus p{
   margin: 0;
   font-size: 14px;
   color: var(--muted);
