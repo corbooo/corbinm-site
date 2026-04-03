@@ -71,8 +71,8 @@
   align-items: center;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(3, 208, 208, 0.35);
-  background: rgba(3, 208, 208, 0.08);
+  border: 1px solid var(--accentBorder);
+  background: var(--accentSoft);
   font-size: 0.9rem;
   line-height: 1;
 }

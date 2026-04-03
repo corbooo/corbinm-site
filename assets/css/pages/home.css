@@ -79,7 +79,7 @@
 }
 
 .home-page .badge {
-  background: rgba(3, 208, 208, 0.08);
+  background: var(--accentSoft);
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   color: var(--text);
 }
@@ -91,7 +91,7 @@
 
 .home-page .tag {
   font-size: 12px;
-  background: rgba(3, 208, 208, 0.08);
+  background: var(--accentSoft);
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   padding: 6px 10px;
 }
@@ -133,7 +133,7 @@
 
 .skills-grid span {
   font-size: 13px;
-  background: rgba(3, 208, 208, 0.08);
+  background: var(--accentSoft);
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   padding: 8px 12px;
   border-radius: 999px;

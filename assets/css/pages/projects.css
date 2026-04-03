@@ -51,8 +51,8 @@
   gap: 0.5rem;
   padding: 0.55rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  background: var(---surface);
 }
 
 .input-icon {
@@ -105,8 +105,7 @@
 
   padding: 12px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(15, 19, 23, 0.98);
+  border: 1px solid var(--border);
   backdrop-filter: blur(8px);
 }
 
@@ -119,7 +118,7 @@
 }
 
 .skill-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(---surface);
 }
 
 .skill-item input {
@@ -164,7 +163,7 @@
 }
 
 .slider::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--border);
   border-radius: 999px;
 }
 
