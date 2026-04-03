@@ -30,6 +30,16 @@
   "live": null
   },
   {
+  "id": "macrocoach-gui",
+  "title": "MacroCoachGUI",
+  "desc": "Desktop GUI application for tracking macros, visualizing trends, and interacting with the MacroCoach backend in a user-friendly interface.",
+  "tier": "mini",
+  "date": "2025-01",
+  "tags": ["Python", "Tkinter", "GUI", "APIs"],
+  "github": "https://github.com/corbooo/MacroCoachGUI",
+  "live": null
+  },
+  {
     "id": "list-manager",
     "title": "List Manager",
     "tier": "mini",

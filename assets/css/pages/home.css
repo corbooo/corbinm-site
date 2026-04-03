@@ -1,43 +1,36 @@
-/* Layout */
+
 .home-page{
   padding: 0 0 3.5rem;
 }
-
 .home-title{
   margin: 0 0 10px;
   font-size: clamp(42px, 6vw, 56px);
   letter-spacing: -0.02em;
 }
 
-/* Hero */
 .hero.hero-centered{
   max-width: 900px;
   margin: 0 auto;
   padding: 90px 18px 0;
   text-align: center;
 }
-
 .hero.hero-centered .hero-name{
   margin: 0 0 18px;
   font-size: clamp(44px, 6vw, 64px);
   letter-spacing: -0.02em;
 }
-
 .hero.hero-centered .hero-subtitle{
   margin: 0 auto;
   line-height: 1.55;
 }
-
 .hero-subtitle-strong{
   font-size: 18px;
   color: var(--color-text-primary);
 }
-
 .hero-subtitle-strong .accent{
   color: var(--color-accent);
   white-space: nowrap;
 }
-
 .hero-subtitle-small{
   margin-top: 12px !important;
   font-size: 13px;
@@ -45,7 +38,6 @@
   max-width: 60ch;
 }
 
-/* Buttons */
 .btn{
   display: inline-flex;
   align-items: center;
@@ -59,44 +51,47 @@
   font-size: 15px;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-
 .btn:hover{
   background: var(--color-surface-hover);
   border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-transparent));
 }
-
 .btn-primary{
   border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-transparent));
 }
-
 .btn-quiet{
   color: var(--color-text-muted);
 }
 
-/* Shared section header */
 .section-head{
   display: grid;
   gap: 6px;
   margin-top: 0;
 }
-
-.section-head-row{
-  grid-template-columns: 1fr auto;
+.section-head-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
+  text-align: center;
 }
-
+.section-head-content {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+.section-head-cta {
+  position: absolute;
+  right: 0;
+}
 .section-title{
   margin: 0;
   font-size: 20px;
 }
-
 .section-note{
   margin: 0;
   color: var(--color-text-muted);
   font-size: 14px;
 }
-
 .section-divider {
   margin-top: 4rem;
   background: linear-gradient(
@@ -107,7 +102,6 @@
   );
 }
 
-/* Featured cards (JSON injected) */
 .home-section__grid--featured{
   margin-top: 22px;
   display: grid;
@@ -120,12 +114,27 @@
   transform: translateY(-2px);
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
-
 .card-title-row{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+.card--focus{
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+.card--focus h3{
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.card--focus p{
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
 }
 
 .badge{
@@ -138,14 +147,12 @@
   white-space: nowrap;
 }
 
-
 .tag-row{
   margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .tag{
   font-size: 12px;
   background: var(--color-accent-soft);
@@ -160,8 +167,6 @@
   gap: 10px;
   flex-wrap: wrap;
 }
-
-/* Prevent purple visited links in cards */
 .actions a:visited{
   color: inherit;
 }
@@ -170,11 +175,9 @@
   margin-top: 64px;
   text-align: center;
 }
-
 .home-section .section-subtitle{
   margin-top: 10px;
 }
-
 .home-section__grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -182,24 +185,6 @@
   margin-top: 22px;
 }
 
-.card--focus{
-  padding: 22px;
-  border-radius: 16px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  text-align: left;
-}
-
-.card--focus h3{
-  margin: 0 0 8px;
-  font-size: 18px;
-}
-
-.card--focus p{
-  margin: 0;
-  font-size: 14px;
-  color: var(--color-text-muted);
-}
 
 .skills-grid{
   margin-top: 22px;
@@ -211,7 +196,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .skills-grid span{
   font-size: 13px;
   background: var(--color-accent-soft);
@@ -225,9 +209,11 @@
   .home-hero{ text-align: center; }
   .home-subtitle{ margin-inline: auto; }
   .home-cta{ justify-content: center; }
-
-  .section-head-row{
-    grid-template-columns: 1fr;
-    justify-items: start;
+  .section-head-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .section-head-cta {
+    position: static;
   }
 }
