@@ -4,7 +4,7 @@
     "title": "MacroCoachAPI",
     "tier": "featured",
     "date": "2026-01-20",
-    "desc": "FastAPI backend for tracking weight/macros, storing history, and generating weekly insights.",
+    "desc": "FastAPI backend for tracking weight/macros, storing history, and generating insights.",
     "tags": ["Python", "FastAPI", "SQL", "SQLite", "APIs"],
     "github": "https://github.com/corbooo/MacroCoachAPI",
     "live": null
@@ -24,7 +24,7 @@
   "title": "CorBrawl (Java Swing)",
   "tier": "featured",
   "date": "2026-02-10",
-  "desc": "A Java Swing game featuring an infinite world, spike hazards, timed enemy spawns (ramping cap), and a foundation for projectile combat. Built to practice game loops, collision detection, and clean OOP design.",
+  "desc": "A Java Swing game featuring an infinite world, spike hazards, timed enemy spawns with a ramping cap, and projectile combat. Built to practice game loops, collision detection, and OOP design.",
   "tags": ["Java", "Swing", "OOP"],
   "github": "https://github.com/corbooo/CorBrawl",
   "live": null

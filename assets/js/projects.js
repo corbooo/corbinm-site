@@ -1,200 +1,174 @@
 
 document.addEventListener("click", (e) => {
-    const dd = document.getElementById("skillDropdown");
-    if (!dd) return;
-    if (!dd.contains(e.target)) dd.removeAttribute("open");
+  const dd = document.getElementById("skillDropdown");
+  if (dd && !dd.contains(e.target)) dd.removeAttribute("open");
 });
 
 const DATA_URL = "../assets/data/projects.json";
 
 const els = {
-    search: document.getElementById("projectSearch"),
-    sort: document.getElementById("projectSort"),
-    chipRow: document.getElementById("chipRow"),
-    clear: document.getElementById("clearFilters"),
-    featuredGrid: document.getElementById("featuredGrid"),
-    miniSlider: document.getElementById("miniSlider"),
-    emptyState: document.getElementById("emptyState"),
-    prev: document.getElementById("miniPrev"),
-    next: document.getElementById("miniNext"),
+  search: document.getElementById("projectSearch"),
+  sort: document.getElementById("projectSort"),
+  clear: document.getElementById("clearFilters"),
+  featuredGrid: document.getElementById("featuredGrid"),
+  miniSlider: document.getElementById("miniSlider"),
+  emptyState: document.getElementById("emptyState"),
+  prev: document.getElementById("miniPrev"),
+  next: document.getElementById("miniNext"),
 };
 
 const state = {
-    q: "",
-    skills: new Set(),
-    sort: "featured",
-    projects: [],
-    allSkills: []
+  q: "",
+  skills: new Set(),
+  sort: "featured",
+  projects: [],
+  allSkills: []
 };
 
-const norm = (s) => (s || "").toLowerCase().trim();
+const norm = s => (s || "").toLowerCase().trim();
 
-function dateMs(p) {
-    const t = Date.parse(p.date || "");
-    return Number.isFinite(t) ? t : 0;
-}
+const dateMs = p => {
+  const t = Date.parse(p.date || "");
+  return Number.isFinite(t) ? t : 0;
+};
 
 function computeSkills(projects) {
-    const set = new Set();
-    for (const p of projects) {
-    for (const t of (p.tags || [])) set.add(t);
-    }
-    return [...set].sort((a, b) => a.localeCompare(b));
+  const set = new Set();
+  projects.forEach(p => (p.tags || []).forEach(t => set.add(t)));
+  return [...set].sort((a, b) => a.localeCompare(b));
 }
 
 function renderSkillDropdown(skills) {
-    const panel = document.getElementById("skillPanel");
-    panel.innerHTML = "";
+  const panel = document.getElementById("skillPanel");
+  panel.innerHTML = "";
 
-    skills.forEach(skill => {
+  skills.forEach(skill => {
     const row = document.createElement("label");
     row.className = "skill-item";
     row.innerHTML = `
-        <input type="checkbox" value="${skill}">
-        <span>${skill}</span>
+      <input type="checkbox" value="${skill}">
+      <span>${skill}</span>
     `;
 
-    const checkbox = row.querySelector("input");
-    checkbox.addEventListener("change", () => {
-        if (checkbox.checked) state.skills.add(skill);
-        else state.skills.delete(skill);
-        renderAll();
+    row.querySelector("input").addEventListener("change", (e) => {
+      e.target.checked ? state.skills.add(skill) : state.skills.delete(skill);
+      renderAll();
     });
 
     panel.appendChild(row);
-    });
+  });
 }
 
 function projectMatches(p) {
-    const q = norm(state.q);
-    const title = norm(p.title);
-    const desc = norm(p.desc);
-    const tags = norm((p.tags || []).join(" "));
+  const q = norm(state.q);
+  const tags = norm((p.tags || []).join(" "));
 
-    const searchOk = !q || title.includes(q) || desc.includes(q) || tags.includes(q);
-    if (!searchOk) return false;
+  if (q && !(
+    norm(p.title).includes(q) ||
+    norm(p.desc).includes(q) ||
+    tags.includes(q)
+  )) return false;
 
-    if (state.skills.size === 0) return true;
+  if (state.skills.size === 0) return true;
 
-    // OR match across selected skills
-    for (const s of state.skills) {
-    if (tags.includes(norm(s))) return true;
-    }
-    return false;
+  return [...state.skills].some(s => tags.includes(norm(s)));
 }
 
 function sortProjects(list) {
-    if (state.sort === "newest") return [...list].sort((a, b) => dateMs(b) - dateMs(a));
-    if (state.sort === "oldest") return [...list].sort((a, b) => dateMs(a) - dateMs(b));
-    // featured: keep JSON order
-    return list;
+  if (state.sort === "newest") return [...list].sort((a,b)=>dateMs(b)-dateMs(a));
+  if (state.sort === "oldest") return [...list].sort((a,b)=>dateMs(a)-dateMs(b));
+  return list;
 }
 
 function cardHTML(p, isMini) {
-    const badge = p.tier === "featured" ? `<span class="badge">Featured</span>` : "";
-    const pills = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
-
-    const github = p.github
-    ? `<a class="btn btn-primary" href="${p.github}" target="_blank" rel="noopener">GitHub</a>`
-    : "";
-
-    const live = p.live
-    ? `<a class="btn btn-quiet" href="${p.live}" target="_blank" rel="noopener">Live</a>`
-    : "";
-
-    return `
+  return `
     <article class="card ${isMini ? "card-mini" : ""}">
-        <div class="card-title-row">
+      <div class="card-title-row">
         <h3 class="card-title">${p.title}</h3>
-        ${badge}
-        </div>
-        <p class="card-desc">${p.desc}</p>
-        <div class="tag-row">${pills}</div>
-        <div class="actions">${github}${live}</div>
+        ${p.tier === "featured" ? `<span class="badge">Featured</span>` : ""}
+      </div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="tag-row">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+      <div class="actions">
+        ${p.github ? `<a class="btn btn-primary" href="${p.github}" target="_blank">GitHub</a>` : ""}
+        ${p.live ? `<a class="btn btn-quiet" href="${p.live}" target="_blank">Live</a>` : ""}
+      </div>
     </article>
-    `;
+  `;
 }
 
 function renderAll() {
-    const filtered = state.projects.filter(projectMatches);
+  const filtered = state.projects.filter(projectMatches);
 
-    const featured = filtered.filter(p => p.tier === "featured");
-    const mini = filtered.filter(p => p.tier !== "featured");
+  const featured = filtered.filter(p => p.tier === "featured");
+  const mini = filtered.filter(p => p.tier !== "featured");
 
-    const featuredSorted = state.sort === "featured" ? featured : sortProjects(featured);
-    const miniSorted = state.sort === "featured" ? mini : sortProjects(mini);
+  const f = state.sort === "featured" ? featured : sortProjects(featured);
+  const m = state.sort === "featured" ? mini : sortProjects(mini);
 
-    els.featuredGrid.innerHTML = featuredSorted.map(p => cardHTML(p, false)).join("");
-    els.miniSlider.innerHTML = miniSorted.map(p => cardHTML(p, true)).join("");
+  els.featuredGrid.innerHTML = f.map(p => cardHTML(p,false)).join("");
+  els.miniSlider.innerHTML = m.map(p => cardHTML(p,true)).join("");
 
-    const visibleCount = featuredSorted.length + miniSorted.length;
-    els.emptyState.hidden = visibleCount !== 0;
-
-    els.miniSlider.scrollLeft = 0;
+  els.emptyState.hidden = (f.length + m.length) !== 0;
+  els.miniSlider.scrollLeft = 0;
 }
 
 function wireUI() {
-    els.search.addEventListener("input", (e) => {
-    state.q = e.target.value || "";
+  els.search.addEventListener("input", e => {
+    state.q = e.target.value;
     renderAll();
-    });
+  });
 
-    els.sort.addEventListener("change", (e) => {
+  els.sort.addEventListener("change", e => {
     state.sort = e.target.value;
     renderAll();
-    });
+  });
 
-    els.clear.addEventListener("click", () => {
-    // reset state
+  els.clear.addEventListener("click", () => {
     state.q = "";
     state.skills.clear();
     state.sort = "featured";
 
-    // reset inputs
     els.search.value = "";
     els.sort.value = "featured";
 
-    // reset skill checkboxes
-    document
-        .querySelectorAll("#skillPanel input[type='checkbox']")
-        .forEach(cb => (cb.checked = false));
+    document.querySelectorAll("#skillPanel input").forEach(cb => cb.checked = false);
 
     renderAll();
-    });
+  });
 
-    const scrollByCard = (dir) => {
-    const first = els.miniSlider.querySelector(".card-mini");
-    const amount = first ? (first.getBoundingClientRect().width + 16) : 360;
-    els.miniSlider.scrollBy({ left: dir * amount, behavior: "smooth" });
-    };
+  const scroll = dir => {
+    const card = els.miniSlider.querySelector(".card-mini");
+    const width = card ? card.offsetWidth + 16 : 360;
+    els.miniSlider.scrollBy({ left: dir * width, behavior: "smooth" });
+  };
 
-    els.prev.addEventListener("click", () => scrollByCard(-1));
-    els.next.addEventListener("click", () => scrollByCard(1));
+  els.prev.addEventListener("click", () => scroll(-1));
+  els.next.addEventListener("click", () => scroll(1));
 }
 
 async function init() {
-    wireUI();
+  wireUI();
 
-    const res = await fetch(DATA_URL, { cache: "no-store" });
-    const raw = await res.json();
+  const res = await fetch(DATA_URL, { cache: "no-store" });
+  const raw = await res.json();
 
-    state.projects = (raw || []).map(p => ({
-    id: p.id || "",
+  state.projects = (raw || []).map(p => ({
     title: p.title || "",
     desc: p.desc || "",
     tier: p.tier === "featured" ? "featured" : "mini",
     date: p.date || "",
-    tags: Array.isArray(p.tags) ? p.tags : [],
+    tags: p.tags || [],
     github: p.github || null,
     live: p.live || null
-    }));
+  }));
 
-    state.allSkills = computeSkills(state.projects);
-    renderSkillDropdown(state.allSkills);
-    renderAll();
+  state.allSkills = computeSkills(state.projects);
+  renderSkillDropdown(state.allSkills);
+  renderAll();
 }
 
 init().catch(err => {
-    console.error(err);
-    els.featuredGrid.innerHTML = "<p>Could not load projects data.</p>";
+  console.error(err);
+  els.featuredGrid.innerHTML = "<p>Could not load projects.</p>";
 });
