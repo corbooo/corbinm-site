@@ -52,6 +52,7 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+
 .home__focus-card {
   padding: 22px;
   border-radius: 16px;

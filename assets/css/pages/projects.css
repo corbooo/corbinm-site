@@ -82,13 +82,17 @@
   outline: none;
   cursor: pointer;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .projects__select option {
   background: var(--color-bg-elevated);
   color: var(--color-text-primary);
+}
+
+.projects__select:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-2);
 }
 
 .projects__skills {
@@ -162,8 +166,7 @@
 }
 
 .projects__grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 1rem;
 }
 
@@ -171,6 +174,7 @@
   min-width: min(360px, 85%);
   scroll-snap-align: start;
 }
+
 
 .projects__slider-controls {
   display: flex;

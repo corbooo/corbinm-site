@@ -260,6 +260,15 @@ img {
   );
 }
 
+.section__divider-accent {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
+}
+
 
 .content-grid {
   display: grid;
@@ -277,7 +286,7 @@ img {
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-.card:hover {
+.card:not(.projects__card--mini):hover {
   border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
   transform: translateY(-2px);
 }
