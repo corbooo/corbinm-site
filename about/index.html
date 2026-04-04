@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
   <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/about.css?v=1"/>
+  <link rel="stylesheet" href="../assets/css/pages/about.css?v=3"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/about.js"></script>
   <title>Corbin - About</title>
 </head>
+
 <body>
   <header class="site-header">
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav">
       <div class="site-nav__group site-nav__group--left">
         <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -24,7 +25,7 @@
       </a>
 
       <div class="site-nav__group site-nav__group--right">
-        <a class="site-nav__link is-active" href="../about/">About</a>
+        <a class="site-nav__link site-nav__link--active" href="../about/">About</a>
         <a class="site-nav__link" href="../projects/">Projects</a>
         <a class="site-nav__link" href="../experience/">Experience</a>
       </div>
@@ -33,21 +34,21 @@
 
   <main class="site-main about">
     <section class="about__hero">
-      <div class="about__hero-layout">
-        <div class="about__hero-content">
+      <div class="about__hero-grid">
+        <div class="about__content">
           <h1 class="about__title">About</h1>
-          <p class="about__lead">
+          <p class="about__lede">
             I'm Corbin Moseman — a Computer Science student focused on building practical software systems.
             I like projects that feel “real”: clean APIs, reliable data storage, and tools that solve a specific problem.
           </p>
 
-          <div class="about__actions">
-            <a class="about__link" href="../projects/">View Projects</a>
-            <a class="about__link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <div class="about__links">
+            <a class="text-link" href="../projects/">View Projects</a>
+            <a class="text-link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
           </div>
         </div>
 
-        <div class="about__hero-media">
+        <div class="about__media">
           <div class="about__photo-frame">
             <img class="about__photo" src="../assets/img/headshot.jpg" alt="Headshot of Corbin" />
           </div>
@@ -55,62 +56,62 @@
       </div>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="about__section">
-      <header class="section-header">
-        <h2 class="section-header__title">What I'm focused on</h2>
-        <p class="section-header__note">What I build and what I'm actively improving.</p>
+    <section class="section" aria-label="What I'm focused on">
+      <header class="section__header">
+        <h2 class="section__title">What I'm focused on</h2>
+        <p class="section__note">What I build and what I'm actively improving.</p>
       </header>
 
-      <div class="about__grid">
-        <article class="content-card">
-          <h3 class="content-card__title">Backend & APIs</h3>
-          <p class="content-card__description">
+      <div class="content-grid">
+        <article class="card">
+          <h3 class="card__title">Backend &amp; APIs</h3>
+          <p class="card__description">
             Designing endpoints, validation, and clean data models with clear separation between routing,
             services, and persistence.
           </p>
         </article>
 
-        <article class="content-card">
-          <h3 class="content-card__title">Tools that save time</h3>
-          <p class="content-card__description">
+        <article class="card">
+          <h3 class="card__title">Tools that save time</h3>
+          <p class="card__description">
             CLI and automation utilities that reduce manual steps and produce predictable, readable output.
           </p>
         </article>
 
-        <article class="content-card">
-          <h3 class="content-card__title">Data + visualization</h3>
-          <p class="content-card__description">
+        <article class="card">
+          <h3 class="card__title">Data + visualization</h3>
+          <p class="card__description">
             Turning exports and logs into useful insights with simple analysis and charts.
           </p>
         </article>
       </div>
     </section>
 
-    <section class="about__section">
-      <header class="section-header">
-        <h2 class="section-header__title">Highlights</h2>
-        <p class="section-header__note">A few things I'm proud of.</p>
+    <section class="section" aria-label="Highlights">
+      <header class="section__header">
+        <h2 class="section__title">Highlights</h2>
+        <p class="section__note">A few things I'm proud of.</p>
       </header>
 
-      <article class="content-card">
-        <ul class="about__highlights">
-          <li><span class="about__highlight-strong">MacroCoachAPI:</span> FastAPI backend with storage + weekly insights.</li>
-          <li><span class="about__highlight-strong">Projects system:</span> Projects page is driven by a JSON data file (easy to update).</li>
-          <li><span class="about__highlight-strong">UI discipline:</span> Consistent components across pages (cards, tags, dropdown filters).</li>
-          <li><span class="about__highlight-strong">Iteration:</span> I ship, refine, and improve based on real usage.</li>
+      <div class="card">
+        <ul class="about__bullets">
+          <li><span class="about__bullet-strong">MacroCoachAPI:</span> FastAPI backend with storage + weekly insights.</li>
+          <li><span class="about__bullet-strong">Projects system:</span> Projects page is driven by a JSON data file (easy to update).</li>
+          <li><span class="about__bullet-strong">UI discipline:</span> Consistent components across pages (cards, tags, dropdown filters).</li>
+          <li><span class="about__bullet-strong">Iteration:</span> I ship, refine, and improve based on real usage.</li>
         </ul>
-      </article>
+      </div>
     </section>
 
-    <section class="about__section">
-      <header class="section-header">
-        <h2 class="section-header__title">Tech</h2>
-        <p class="section-header__note">Most-used tools across my projects.</p>
+    <section class="section" aria-label="Tech">
+      <header class="section__header">
+        <h2 class="section__title">Tech</h2>
+        <p class="section__note">Most-used tools across my projects.</p>
       </header>
 
-      <div class="skill-list" id="aboutSkillsGrid">
+      <div class="skills-cluster about__skills" id="aboutSkillsGrid">
         <!-- injected -->
       </div>
     </section>

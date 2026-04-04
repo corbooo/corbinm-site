@@ -16,11 +16,7 @@
   max-width: 760px;
   margin: 0 auto;
   line-height: 1.6;
-  color: color-mix(in srgb, var(--color-text-primary) 85%, transparent);
-}
-
-.experience__section {
-  margin-top: 4rem;
+  color: var(--color-text-muted);
 }
 
 .experience__grid {
@@ -30,51 +26,41 @@
   margin-top: 14px;
 }
 
-.experience-card {
+.experience__card {
   grid-column: span 12;
 }
 
-.experience-card__meta {
+.experience__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 8px;
   font-size: 0.95rem;
-  color: color-mix(in srgb, var(--color-text-primary) 85%, transparent);
+  color: var(--color-text-muted);
 }
 
-.experience-card__meta-separator::before {
+.experience__meta-separator::before {
   content: "•";
   margin: 0 8px 0 2px;
   opacity: 0.65;
 }
 
-.experience-card__bullets {
+.experience__bullets {
   margin: 12px 0 0;
   padding-left: 18px;
 }
 
-.experience-card__bullets li {
+.experience__bullets li {
   margin: 8px 0;
   line-height: 1.5;
 }
 
-.experience-card__coursework {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.experience__coursework {
   margin-top: 10px;
 }
 
-.experience-card__coursework .pill {
-  padding: 6px 10px;
-  border: 1px solid var(--color-accent-border);
-  background: var(--color-accent-soft);
-  font-size: 0.9rem;
-}
-
 @media (min-width: 800px) {
-  .experience-card {
+  .experience__card {
     grid-column: span 6;
   }
 }

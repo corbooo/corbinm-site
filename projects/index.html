@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
   <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/projects.css?v=1"/>
+  <link rel="stylesheet" href="../assets/css/pages/projects.css?v=3"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/projects.js"></script>
   <title>Corbin - Projects</title>
 </head>
+
 <body>
   <header class="site-header">
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav">
       <div class="site-nav__group site-nav__group--left">
         <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -25,7 +26,7 @@
 
       <div class="site-nav__group site-nav__group--right">
         <a class="site-nav__link" href="../about/">About</a>
-        <a class="site-nav__link is-active" href="../projects/">Projects</a>
+        <a class="site-nav__link site-nav__link--active" href="../projects/">Projects</a>
         <a class="site-nav__link" href="../experience/">Experience</a>
       </div>
     </nav>
@@ -42,20 +43,20 @@
         <div class="projects__filters-main">
           <div class="projects__search">
             <span class="projects__search-icon" aria-hidden="true">⌕</span>
-            <label class="visually-hidden" for="projectSearch">Search projects</label>
-            <input class="projects__search-input" id="projectSearch" type="search" placeholder="Search projects..." autocomplete="off" />
+            <label class="sr-only" for="projectSearch">Search projects</label>
+            <input id="projectSearch" class="projects__search-input" type="search" placeholder="Search projects..." autocomplete="off" />
           </div>
 
-          <label class="visually-hidden" for="projectSort">Sort projects</label>
+          <label class="sr-only" for="projectSort">Sort projects</label>
           <select id="projectSort" class="projects__select">
             <option value="featured">Featured first</option>
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
           </select>
 
-          <details class="projects__skills-dropdown" id="skillDropdown">
+          <details class="projects__skills" id="skillDropdown">
             <summary class="projects__skills-summary">
-              Skills <span class="projects__skills-caret">▾</span>
+              Skills <span class="projects__caret">▾</span>
             </summary>
             <div class="projects__skills-panel" id="skillPanel">
               <!-- injected checkboxes -->
@@ -64,32 +65,32 @@
         </div>
 
         <div class="projects__filters-actions">
-          <button id="clearFilters" class="button button--ghost button--small" type="button">Clear</button>
+          <button id="clearFilters" class="button button--quiet button--small" type="button">Clear</button>
         </div>
       </div>
     </section>
 
-    <section class="projects__section" aria-label="Featured projects">
-      <header class="section-header section-header--centered">
-        <h2 class="section-header__title">Featured</h2>
-        <p class="section-header__note">Most polished, resume-ready builds.</p>
+    <section class="section" aria-label="Featured projects">
+      <header class="section__header section__header--center">
+        <h2 class="section__title">Featured</h2>
+        <p class="section__note">Most polished, resume-ready builds.</p>
       </header>
 
-      <div id="featuredGrid" class="projects__featured-grid"></div>
+      <div id="featuredGrid" class="projects__grid"></div>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="projects__section" aria-label="Mini projects">
-      <header class="section-header section-header--split">
-        <div class="section-header__content">
-          <h2 class="section-header__title">Mini Projects</h2>
-          <p class="section-header__note">Smaller builds and experiments.</p>
+    <section class="section" aria-label="Mini projects">
+      <header class="section__header section__header-row">
+        <div>
+          <h2 class="section__title">Mini Projects</h2>
+          <p class="section__note">Smaller builds and experiments.</p>
         </div>
 
         <div class="projects__slider-controls">
-          <button id="miniPrev" class="icon-button" type="button" aria-label="Scroll mini projects left">‹</button>
-          <button id="miniNext" class="icon-button" type="button" aria-label="Scroll mini projects right">›</button>
+          <button id="miniPrev" class="button button--icon" type="button" aria-label="Scroll mini projects left">‹</button>
+          <button id="miniNext" class="button button--icon" type="button" aria-label="Scroll mini projects right">›</button>
         </div>
       </header>
 

@@ -20,7 +20,7 @@ async function loadMostUsedSkills(limit = 12) {
     .slice(0, limit)
     .map(([tag]) => tag);
 
-  grid.innerHTML = ranked.map((tag) => `<span>${tag}</span>`).join("");
+  grid.innerHTML = ranked.map((tag) => `<span class="skills-cluster__item">${tag}</span>`).join("");
 }
 
 loadMostUsedSkills(12).catch(console.error);

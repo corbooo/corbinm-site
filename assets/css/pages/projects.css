@@ -17,7 +17,7 @@
   max-width: 74ch;
   margin: 0.65rem auto 0;
   line-height: 1.55;
-  color: color-mix(in srgb, var(--color-text-primary) 85%, transparent);
+  color: var(--color-text-muted);
 }
 
 .projects__filters {
@@ -39,9 +39,9 @@
 
 .projects__filters-actions {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 0.55rem;
+  flex-wrap: wrap;
 }
 
 .projects__search {
@@ -50,21 +50,21 @@
   gap: 0.5rem;
   width: min(300px, 92%);
   padding: 0.55rem 0.85rem;
-  border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-1);
 }
 
 .projects__search-icon {
-  opacity: 0.7;
   user-select: none;
+  opacity: 0.7;
 }
 
 .projects__search-input {
   width: 100%;
+  background: transparent;
   border: none;
   outline: none;
-  background: transparent;
   color: inherit;
   font-size: 1rem;
 }
@@ -75,9 +75,9 @@
 
 .projects__select {
   padding: 0.7rem 0.95rem;
-  border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-1);
   color: inherit;
   outline: none;
   cursor: pointer;
@@ -88,10 +88,10 @@
 
 .projects__select option {
   background: var(--color-bg-elevated);
-  color: #e8eef5;
+  color: var(--color-text-primary);
 }
 
-.projects__skills-dropdown {
+.projects__skills {
   position: relative;
 }
 
@@ -101,29 +101,29 @@
   align-items: center;
   gap: 8px;
   padding: 0.7rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-accent-border-strong);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--radius-pill);
   background: var(--color-accent-soft);
   color: var(--color-text-primary);
+  font-weight: 500;
   cursor: pointer;
   user-select: none;
-  font-weight: 500;
 }
 
 .projects__skills-summary:hover {
   background: var(--color-accent-soft-hover);
 }
 
-.projects__skills-dropdown[open] .projects__skills-summary {
-  background: var(--color-accent-soft-active);
+.projects__skills[open] .projects__skills-summary {
   border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft-hover) 65%, transparent);
 }
 
-.projects__skills-dropdown[open] .projects__skills-caret {
+.projects__skills[open] .projects__caret {
   transform: rotate(180deg);
 }
 
-.projects__skills-caret {
+.projects__caret {
   font-size: 12px;
   opacity: 0.8;
   transition: transform 0.15s ease;
@@ -133,19 +133,19 @@
   position: absolute;
   top: calc(100% + 12px);
   left: 50%;
-  transform: translateX(-50%);
   z-index: 50;
   width: min(320px, 88vw);
   max-height: 320px;
   overflow: auto;
   padding: 12px;
-  border-radius: 14px;
   border: 1px solid var(--color-border);
-  background: rgba(15, 19, 23, 0.92);
+  border-radius: 14px;
+  background: rgba(15, 19, 23, 0.96);
+  transform: translateX(-50%);
   backdrop-filter: blur(8px);
 }
 
-.projects__skills-item {
+.projects__skill-item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -153,35 +153,23 @@
   border-radius: 10px;
 }
 
-.projects__skills-item:hover {
-  background: var(--color-surface);
+.projects__skill-item:hover {
+  background: var(--color-surface-2);
 }
 
-.projects__skills-item input {
+.projects__skill-item input {
   accent-color: var(--color-accent);
 }
 
-.projects__section {
-  margin-top: 4rem;
-}
-
-.projects__featured-grid {
+.projects__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-.project-card--compact {
+.projects__card--mini {
   min-width: min(360px, 85%);
   scroll-snap-align: start;
-}
-
-.project-card--featured {
-  box-shadow: 0 0 0 1px var(--color-accent-glow);
-}
-
-.project-card__tags {
-  gap: 0.45rem;
 }
 
 .projects__slider-controls {
@@ -204,14 +192,13 @@
 }
 
 .projects__slider::-webkit-scrollbar-thumb {
-  background: var(--color-surface-strong);
-  border-radius: 999px;
+  background: var(--color-border-strong);
+  border-radius: var(--radius-pill);
 }
 
 .projects__empty-state {
   margin-top: 1rem;
   padding: 1.25rem;
-  border-radius: 18px;
   border: 1px dashed var(--color-border-strong);
-  opacity: 0.9;
+  border-radius: 18px;
 }

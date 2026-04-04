@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
   <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=1"/>
+  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=3"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/experience.js"></script>
   <title>Corbin - Experience</title>
 </head>
+
 <body>
   <header class="site-header">
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav">
       <div class="site-nav__group site-nav__group--left">
         <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -26,7 +27,7 @@
       <div class="site-nav__group site-nav__group--right">
         <a class="site-nav__link" href="../about/">About</a>
         <a class="site-nav__link" href="../projects/">Projects</a>
-        <a class="site-nav__link is-active" href="../experience/">Experience</a>
+        <a class="site-nav__link site-nav__link--active" href="../experience/">Experience</a>
       </div>
     </nav>
   </header>
@@ -34,26 +35,28 @@
   <main class="site-main experience">
     <section class="experience__hero">
       <h1 class="experience__title">Experience</h1>
-      <p class="experience__subtitle">Professional work and education background.</p>
+      <p class="experience__subtitle">
+        Professional work and education background.
+      </p>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="experience__section" aria-label="Work experience">
-      <header class="section-header section-header--centered">
-        <h2 class="section-header__title">Work</h2>
-        <p class="section-header__note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
+    <section class="section" aria-label="Work experience">
+      <header class="section__header section__header--center">
+        <h2 class="section__title">Work</h2>
+        <p class="section__note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
       </header>
 
       <div id="workGrid" class="experience__grid"></div>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="experience__section" aria-label="Education">
-      <header class="section-header section-header--centered">
-        <h2 class="section-header__title">Education</h2>
-        <p class="section-header__note">Academic background and relevant coursework.</p>
+    <section class="section" aria-label="Education">
+      <header class="section__header section__header--center">
+        <h2 class="section__title">Education</h2>
+        <p class="section__note">Academic background and relevant coursework.</p>
       </header>
 
       <div id="eduGrid" class="experience__grid"></div>

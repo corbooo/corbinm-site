@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="assets/img/favicon.png">
   <link rel="stylesheet" href="assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="assets/css/pages/home.css?v=1"/>
+  <link rel="stylesheet" href="assets/css/pages/home.css?v=7"/>
   <script type="module" src="assets/js/shared.js"></script>
   <script type="module" src="assets/js/home.js"></script>
   <title>Corbin - Home</title>
 </head>
+
 <body>
   <header class="site-header">
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav">
       <div class="site-nav__group site-nav__group--left">
         <a class="site-nav__link site-nav__link--external" href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
@@ -33,64 +34,64 @@
 
   <main class="site-main home">
     <section class="home__hero">
-      <h1 class="home__title">Corbin Moseman</h1>
+      <h1 class="home__name">Corbin Moseman</h1>
 
-      <p class="home__lead">
+      <p class="home__intro home__intro--primary">
         Computer Science student building
-        <span class="text-accent">real-world software systems.</span>
+        <span class="accent">real-world software systems.</span>
       </p>
 
-      <p class="home__supporting-text">
+      <p class="home__intro home__intro--secondary section__subtitle">
         Focused on backend development, APIs, and turning ideas into reliable tools.
       </p>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="home__section home__section--focus">
-      <h2 class="home__section-title">What I Do</h2>
-      <p class="section-intro">I build practical software tools with clean structure and real-world use cases.</p>
+    <section class="home__section" aria-label="What I Do">
+      <h2>What I Do</h2>
+      <p class="section__subtitle">I build practical software tools with clean structure and real-world use cases.</p>
 
-      <div class="home__grid home__grid--focus">
-        <article class="content-card home__focus-card">
-          <h3 class="home__focus-title">Backend & APIs</h3>
-          <p class="home__focus-copy">FastAPI backends with clear endpoints, validation, and data persistence.</p>
-        </article>
-        <article class="content-card home__focus-card">
-          <h3 class="home__focus-title">Automation & CLI Tools</h3>
-          <p class="home__focus-copy">Small utilities that improve workflows with file I/O, reporting, and clean output.</p>
-        </article>
-        <article class="content-card home__focus-card">
-          <h3 class="home__focus-title">Data & Visualizations</h3>
-          <p class="home__focus-copy">Lightweight analysis scripts with charts and summaries to reveal trends.</p>
-        </article>
+      <div class="home__section-grid">
+        <div class="card home__focus-card">
+          <h3>Backend &amp; APIs</h3>
+          <p>FastAPI backends with clear endpoints, validation, and data persistence.</p>
+        </div>
+        <div class="card home__focus-card">
+          <h3>Automation &amp; CLI Tools</h3>
+          <p>Small utilities that improve workflows with file I/O, reporting, and clean output.</p>
+        </div>
+        <div class="card home__focus-card">
+          <h3>Data &amp; Visualizations</h3>
+          <p>Lightweight analysis scripts with charts and summaries to reveal trends.</p>
+        </div>
       </div>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section id="featured" class="home__section home__section--featured" aria-label="Featured projects">
-      <header class="section-header section-header--home-featured">
-        <div class="section-header__content">
-          <h2 class="section-header__title">Featured Projects</h2>
-          <p class="section-header__note">Most polished, resume-ready builds.</p>
+    <section id="featured" class="home__section" aria-label="Featured projects">
+      <header class="section__header section__header-row">
+        <div class="section__header-content">
+          <h2 class="section__title">Featured Projects</h2>
+          <p class="section__note">Most polished, resume-ready builds.</p>
         </div>
 
-        <a class="button button--primary section-header__action" href="projects/">All projects</a>
+        <a class="button button--primary section__header-action" href="projects/">All projects</a>
       </header>
 
-      <div id="homeFeaturedGrid" class="home__grid home__grid--featured">
+      <div id="homeFeaturedGrid" class="home__section-grid home__section-grid--featured">
         <!-- injected by JS -->
       </div>
     </section>
 
-    <div class="page-divider" role="separator" aria-hidden="true"></div>
+    <div class="section__divider" role="separator" aria-hidden="true"></div>
 
-    <section class="home__section home__section--skills">
-      <h2 class="home__section-title">Skills</h2>
-      <p class="section-intro">Derived automatically from my projects.</p>
+    <section class="home__section" aria-label="Skills">
+      <h2>Skills</h2>
+      <p class="section__subtitle">Derived automatically from my projects.</p>
 
-      <div class="skill-list skill-list--centered" id="skillsGrid">
+      <div class="skills-cluster home__skills" id="skillsGrid">
         <!-- injected -->
       </div>
     </section>
@@ -98,7 +99,9 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <p class="site-footer__copy">
+        © <span id="year"></span> Corbin Moseman
+      </p>
       <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>

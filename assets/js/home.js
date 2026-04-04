@@ -20,7 +20,7 @@ async function renderSkills() {
   const projects = await loadProjects(".");
   const skills = uniqueSorted((projects || []).flatMap((project) => project.tags || []));
   const ordered = sortByPriority(skills, PRIORITY_SKILLS).slice(0, 14);
-  skillsGrid.innerHTML = ordered.map((skill) => `<span>${skill}</span>`).join("");
+  skillsGrid.innerHTML = ordered.map((skill) => `<span class="skills-cluster__item">${skill}</span>`).join("");
 }
 
 renderFeaturedProjects().catch(() => {

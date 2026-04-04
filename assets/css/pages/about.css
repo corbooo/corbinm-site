@@ -6,7 +6,7 @@
   margin-top: 0.25rem;
 }
 
-.about__hero-layout {
+.about__hero-grid {
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
   align-items: center;
@@ -19,49 +19,26 @@
   letter-spacing: -0.02em;
 }
 
-.about__lead {
+.about__lede {
   max-width: 70ch;
   margin: 0.7rem 0 0;
   line-height: 1.55;
-  color: color-mix(in srgb, var(--color-text-primary) 88%, transparent);
+  color: var(--color-text-primary);
+  opacity: 0.88;
 }
 
-.about__actions {
+.about__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.8rem;
   margin-top: 1rem;
-}
-
-.about__link {
-  color: var(--color-accent);
-  font-size: 14px;
-  text-decoration: none;
-  opacity: 0.85;
-  border-bottom: 1px solid transparent;
-  transition: opacity 0.15s ease, border-color 0.15s ease;
-}
-
-.about__link:hover {
-  opacity: 1;
-  border-bottom-color: var(--color-accent);
-}
-
-.about__section {
-  margin-top: 4rem;
-}
-
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
 }
 
 .about__photo-frame {
   padding: 0.55rem;
-  border-radius: 18px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface-soft);
+  border-radius: 18px;
+  background: var(--color-surface-1);
 }
 
 .about__photo {
@@ -71,35 +48,27 @@
   border-radius: 14px;
 }
 
-.about__highlights {
+.about__bullets {
   display: grid;
   gap: 0.5rem;
   margin: 0;
   padding-left: 1.2rem;
 }
 
-.about__highlight-strong {
+.about__bullet-strong {
   color: var(--color-accent);
 }
 
-#aboutSkillsGrid {
+.about__skills {
   margin-top: 0.2rem;
 }
 
-#aboutSkillsGrid span {
-  font-size: 0.95rem;
-  padding: 0.5rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-accent-border-strong);
-  background: var(--color-accent-soft);
-}
-
 @media (max-width: 860px) {
-  .about__hero-layout {
+  .about__hero-grid {
     grid-template-columns: 1fr;
   }
 
-  .about__hero-media {
+  .about__media {
     display: flex;
     justify-content: center;
   }
