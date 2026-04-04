@@ -1,74 +1,80 @@
-
-.experience-page {
-  padding: 28px 0px 56px;
+.experience {
+  padding: 28px 0 56px;
 }
-.exp-hero {
+
+.experience__hero {
   padding: 10px 0 18px;
   text-align: center;
 }
-.exp-title {
-  font-size: clamp(2rem, 3vw, 2.6rem);
+
+.experience__title {
   margin: 0 0 10px;
+  font-size: clamp(2rem, 3vw, 2.6rem);
 }
-.exp-subtitle {
+
+.experience__subtitle {
   max-width: 760px;
   margin: 0 auto;
-  opacity: 0.85;
   line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text-primary) 85%, transparent);
 }
-.exp-section {
+
+.experience__section {
   margin-top: 4rem;
 }
-.exp-grid {
+
+.experience__grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
   margin-top: 14px;
 }
-.exp-card {
+
+.experience-card {
   grid-column: span 12;
 }
-.exp-meta {
+
+.experience-card__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 8px;
-  opacity: 0.85;
   font-size: 0.95rem;
+  color: color-mix(in srgb, var(--color-text-primary) 85%, transparent);
 }
-.exp-meta .dot::before {
+
+.experience-card__meta-separator::before {
   content: "•";
   margin: 0 8px 0 2px;
   opacity: 0.65;
 }
-.exp-bullets {
+
+.experience-card__bullets {
   margin: 12px 0 0;
   padding-left: 18px;
 }
-.exp-bullets li {
+
+.experience-card__bullets li {
   margin: 8px 0;
   line-height: 1.5;
 }
 
-.coursework {
-  margin-top: 10px;
+.experience-card__coursework {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 10px;
 }
-.coursework .pill {
-  display: inline-flex;
-  align-items: center;
+
+.experience-card__coursework .pill {
   padding: 6px 10px;
-  border-radius: 999px;
   border: 1px solid var(--color-accent-border);
   background: var(--color-accent-soft);
   font-size: 0.9rem;
-  line-height: 1;
 }
 
 @media (min-width: 800px) {
-  .exp-card {
+  .experience-card {
     grid-column: span 6;
   }
 }

@@ -38,7 +38,7 @@ function renderSkillDropdown(skills) {
 
   skills.forEach((skill) => {
     const row = document.createElement("label");
-    row.className = "skill-item";
+    row.className = "projects__skills-item";
     row.innerHTML = `
       <input type="checkbox" value="${skill}">
       <span>${skill}</span>
@@ -115,7 +115,7 @@ function resetFilters() {
 
 function scrollMiniProjects(direction) {
   if (!els.miniSlider) return;
-  const firstCard = els.miniSlider.querySelector(".card-mini");
+  const firstCard = els.miniSlider.querySelector(".project-card--compact");
   const amount = firstCard ? firstCard.getBoundingClientRect().width + 16 : 360;
   els.miniSlider.scrollBy({ left: direction * amount, behavior: "smooth" });
 }

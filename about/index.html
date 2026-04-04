@@ -4,123 +4,122 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=2"/>
-  <link rel="stylesheet" href="../assets/css/pages/about.css?v=2"/>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
+  <link rel="stylesheet" href="../assets/css/pages/about.css?v=1"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/about.js"></script>
   <title>Corbin - About</title>
 </head>
-
 <body>
-  <header>
-    <nav class="site-nav">
-      <div class="nav-group nav-left">
-        <a href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__group site-nav__group--left">
+        <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
+        <a class="site-nav__link site-nav__link--external" href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <a class="nav-logo" href="../index.html" aria-label="Home">
-        <img src="../assets/img/logo.png" alt="CM Logo" />
+      <a class="site-nav__logo" href="../index.html" aria-label="Home">
+        <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="CM Logo" />
       </a>
 
-      <div class="nav-group nav-right">
-        <a href="../about/" class="active">About</a>
-        <a href="../projects/">Projects</a>
-        <a href="../experience/">Experience</a>
+      <div class="site-nav__group site-nav__group--right">
+        <a class="site-nav__link is-active" href="../about/">About</a>
+        <a class="site-nav__link" href="../projects/">Projects</a>
+        <a class="site-nav__link" href="../experience/">Experience</a>
       </div>
     </nav>
   </header>
 
-  <main class="about-page">
-    <section class="about-hero">
-      <div class="about-hero-grid">
-        <div class="about-hero-text">
-          <h1 class="about-title">About</h1>
-          <p class="about-lede">
+  <main class="site-main about">
+    <section class="about__hero">
+      <div class="about__hero-layout">
+        <div class="about__hero-content">
+          <h1 class="about__title">About</h1>
+          <p class="about__lead">
             I'm Corbin Moseman — a Computer Science student focused on building practical software systems.
             I like projects that feel “real”: clean APIs, reliable data storage, and tools that solve a specific problem.
           </p>
 
-          <div class="about-cta">
-            <a class="about-link" href="../projects/">View Projects</a>
-            <a class="about-link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <div class="about__actions">
+            <a class="about__link" href="../projects/">View Projects</a>
+            <a class="about__link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
           </div>
         </div>
 
-        <div class="about-hero-media">
-          <div class="about-photo">
-            <img src="../assets/img/headshot.jpg" alt="Headshot of Corbin" />
+        <div class="about__hero-media">
+          <div class="about__photo-frame">
+            <img class="about__photo" src="../assets/img/headshot.jpg" alt="Headshot of Corbin" />
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="about-section">
-      <header class="section-head">
-        <h2 class="section-title">What I'm focused on</h2>
-        <p class="section-note">What I build and what I'm actively improving.</p>
+    <section class="about__section">
+      <header class="section-header">
+        <h2 class="section-header__title">What I'm focused on</h2>
+        <p class="section-header__note">What I build and what I'm actively improving.</p>
       </header>
 
-      <div class="about-grid">
-        <article class="card">
-          <h3 class="card-title">Backend & APIs</h3>
-          <p class="card-desc">
+      <div class="about__grid">
+        <article class="content-card">
+          <h3 class="content-card__title">Backend & APIs</h3>
+          <p class="content-card__description">
             Designing endpoints, validation, and clean data models with clear separation between routing,
             services, and persistence.
           </p>
         </article>
 
-        <article class="card">
-          <h3 class="card-title">Tools that save time</h3>
-          <p class="card-desc">
+        <article class="content-card">
+          <h3 class="content-card__title">Tools that save time</h3>
+          <p class="content-card__description">
             CLI and automation utilities that reduce manual steps and produce predictable, readable output.
           </p>
         </article>
 
-        <article class="card">
-          <h3 class="card-title">Data + visualization</h3>
-          <p class="card-desc">
+        <article class="content-card">
+          <h3 class="content-card__title">Data + visualization</h3>
+          <p class="content-card__description">
             Turning exports and logs into useful insights with simple analysis and charts.
           </p>
         </article>
       </div>
     </section>
 
-    <section class="about-section">
-      <header class="section-head">
-        <h2 class="section-title">Highlights</h2>
-        <p class="section-note">A few things I'm proud of.</p>
+    <section class="about__section">
+      <header class="section-header">
+        <h2 class="section-header__title">Highlights</h2>
+        <p class="section-header__note">A few things I'm proud of.</p>
       </header>
 
-      <div class="card">
-        <ul class="about-bullets">
-          <li><span class="bullet-strong">MacroCoachAPI:</span> FastAPI backend with storage + weekly insights.</li>
-          <li><span class="bullet-strong">Projects system:</span> Projects page is driven by a JSON data file (easy to update).</li>
-          <li><span class="bullet-strong">UI discipline:</span> Consistent components across pages (cards, tags, dropdown filters).</li>
-          <li><span class="bullet-strong">Iteration:</span> I ship, refine, and improve based on real usage.</li>
+      <article class="content-card">
+        <ul class="about__highlights">
+          <li><span class="about__highlight-strong">MacroCoachAPI:</span> FastAPI backend with storage + weekly insights.</li>
+          <li><span class="about__highlight-strong">Projects system:</span> Projects page is driven by a JSON data file (easy to update).</li>
+          <li><span class="about__highlight-strong">UI discipline:</span> Consistent components across pages (cards, tags, dropdown filters).</li>
+          <li><span class="about__highlight-strong">Iteration:</span> I ship, refine, and improve based on real usage.</li>
         </ul>
-      </div>
+      </article>
     </section>
 
-    <section class="about-section">
-      <header class="section-head">
-        <h2 class="section-title">Tech</h2>
-        <p class="section-note">Most-used tools across my projects.</p>
+    <section class="about__section">
+      <header class="section-header">
+        <h2 class="section-header__title">Tech</h2>
+        <p class="section-header__note">Most-used tools across my projects.</p>
       </header>
 
-      <div class="skills-grid" id="aboutSkillsGrid">
+      <div class="skill-list" id="aboutSkillsGrid">
         <!-- injected -->
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-copy">© <span id="year"></span> Corbin Moseman</p>
-      <div class="footer-links">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>

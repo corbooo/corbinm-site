@@ -4,107 +4,107 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1"/>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
   <link rel="stylesheet" href="../assets/css/pages/projects.css?v=1"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/projects.js"></script>
   <title>Corbin - Projects</title>
 </head>
-
 <body>
-  <header>
-    <nav class="site-nav">
-      <div class="nav-group nav-left">
-        <a href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__group site-nav__group--left">
+        <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
+        <a class="site-nav__link site-nav__link--external" href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <a class="nav-logo" href="../index.html" aria-label="Home">
-        <img src="../assets/img/logo.png" alt="CM" />
+      <a class="site-nav__logo" href="../index.html" aria-label="Home">
+        <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="CM" />
       </a>
 
-      <div class="nav-group nav-right">
-        <a href="../about/">About</a>
-        <a href="../projects/" class="active">Projects</a>
-        <a href="../experience/">Experience</a>
+      <div class="site-nav__group site-nav__group--right">
+        <a class="site-nav__link" href="../about/">About</a>
+        <a class="site-nav__link is-active" href="../projects/">Projects</a>
+        <a class="site-nav__link" href="../experience/">Experience</a>
       </div>
     </nav>
   </header>
 
-  <main class="projects-page">
-    <section class="projects-hero">
-      <h1 class="projects-title">Projects</h1>
-      <p class="projects-subtitle">
+  <main class="site-main projects">
+    <section class="projects__hero">
+      <h1 class="projects__title">Projects</h1>
+      <p class="projects__subtitle">
         A curated set of software builds focused on practical problem-solving: APIs, automation, data modeling, and polished UI.
       </p>
 
-      <div class="filters" aria-label="Project filters">
-        <div class="filters-left">
-          <div class="input-wrap">
-            <span class="input-icon" aria-hidden="true">⌕</span>
-            <label class="sr-only" for="projectSearch">Search projects</label>
-            <input id="projectSearch" type="search" placeholder="Search projects..." autocomplete="off" />
+      <div class="projects__filters" aria-label="Project filters">
+        <div class="projects__filters-main">
+          <div class="projects__search">
+            <span class="projects__search-icon" aria-hidden="true">⌕</span>
+            <label class="visually-hidden" for="projectSearch">Search projects</label>
+            <input class="projects__search-input" id="projectSearch" type="search" placeholder="Search projects..." autocomplete="off" />
           </div>
 
-          <label class="sr-only" for="projectSort">Sort projects</label>
-          <select id="projectSort" class="select">
+          <label class="visually-hidden" for="projectSort">Sort projects</label>
+          <select id="projectSort" class="projects__select">
             <option value="featured">Featured first</option>
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
           </select>
 
-          <details class="skill-dropdown" id="skillDropdown">
-            <summary class="skill-summary">
-              Skills <span class="caret">▾</span>
+          <details class="projects__skills-dropdown" id="skillDropdown">
+            <summary class="projects__skills-summary">
+              Skills <span class="projects__skills-caret">▾</span>
             </summary>
-            <div class="skill-panel" id="skillPanel">
+            <div class="projects__skills-panel" id="skillPanel">
               <!-- injected checkboxes -->
             </div>
           </details>
         </div>
-        <div class="filters-right">
-          <button id="clearFilters" class="btn btn-quiet btn-small" type="button">Clear</button>
+
+        <div class="projects__filters-actions">
+          <button id="clearFilters" class="button button--ghost button--small" type="button">Clear</button>
         </div>
       </div>
     </section>
 
-    <section class="projects-section" aria-label="Featured projects">
-      <header class="section-head section-head-center">
-        <h2 class="section-title">Featured</h2>
-        <p class="section-note">Most polished, resume-ready builds.</p>
+    <section class="projects__section" aria-label="Featured projects">
+      <header class="section-header section-header--centered">
+        <h2 class="section-header__title">Featured</h2>
+        <p class="section-header__note">Most polished, resume-ready builds.</p>
       </header>
 
-      <div id="featuredGrid" class="row-grid"></div>
+      <div id="featuredGrid" class="projects__featured-grid"></div>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="projects-section" aria-label="Mini projects">
-      <header class="section-head section-head-row">
-        <div>
-          <h2 class="section-title">Mini Projects</h2>
-          <p class="section-note">Smaller builds and experiments.</p>
+    <section class="projects__section" aria-label="Mini projects">
+      <header class="section-header section-header--split">
+        <div class="section-header__content">
+          <h2 class="section-header__title">Mini Projects</h2>
+          <p class="section-header__note">Smaller builds and experiments.</p>
         </div>
 
-        <div class="slider-controls">
-          <button id="miniPrev" class="icon-btn" type="button" aria-label="Scroll mini projects left">‹</button>
-          <button id="miniNext" class="icon-btn" type="button" aria-label="Scroll mini projects right">›</button>
+        <div class="projects__slider-controls">
+          <button id="miniPrev" class="icon-button" type="button" aria-label="Scroll mini projects left">‹</button>
+          <button id="miniNext" class="icon-button" type="button" aria-label="Scroll mini projects right">›</button>
         </div>
       </header>
 
-      <div id="miniSlider" class="slider" tabindex="0" aria-label="Mini projects slider"></div>
+      <div id="miniSlider" class="projects__slider" tabindex="0" aria-label="Mini projects slider"></div>
 
-      <div id="emptyState" class="empty-state" hidden>
+      <div id="emptyState" class="projects__empty-state" hidden>
         No projects match your filters. Try clearing or changing tags.
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-copy">© <span id="year"></span> Corbin Moseman</p>
-      <div class="footer-links">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>

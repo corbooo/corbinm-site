@@ -4,105 +4,102 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="assets/img/favicon.png">
-  <link rel="stylesheet" href="assets/css/styles.css?v=3"/>
-  <link rel="stylesheet" href="assets/css/pages/home.css?v=6"/>
+  <link rel="stylesheet" href="assets/css/styles.css?v=4"/>
+  <link rel="stylesheet" href="assets/css/pages/home.css?v=1"/>
   <script type="module" src="assets/js/shared.js"></script>
   <script type="module" src="assets/js/home.js"></script>
   <title>Corbin - Home</title>
 </head>
-
 <body>
-  <header>
-    <nav class="site-nav">
-      <div class="nav-group nav-left">
-        <a href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__group site-nav__group--left">
+        <a class="site-nav__link site-nav__link--external" href="assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
+        <a class="site-nav__link site-nav__link--external" href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <a class="nav-logo" href="index.html" aria-label="Home">
-        <img src="assets/img/logo.png" alt="CM Logo"/>
+      <a class="site-nav__logo" href="index.html" aria-label="Home">
+        <img class="site-nav__logo-image" src="assets/img/logo.png" alt="CM Logo"/>
       </a>
 
-      <div class="nav-group nav-right">
-        <a href="about/">About</a>
-        <a href="projects/">Projects</a>
-        <a href="experience/">Experience</a>
+      <div class="site-nav__group site-nav__group--right">
+        <a class="site-nav__link" href="about/">About</a>
+        <a class="site-nav__link" href="projects/">Projects</a>
+        <a class="site-nav__link" href="experience/">Experience</a>
       </div>
     </nav>
   </header>
 
-  <main class="home-page">
-    <section class="hero hero-centered">
-      <h1 class="hero-name">Corbin Moseman</h1>
+  <main class="site-main home">
+    <section class="home__hero">
+      <h1 class="home__title">Corbin Moseman</h1>
 
-      <p class="hero-subtitle hero-subtitle-strong">
+      <p class="home__lead">
         Computer Science student building
-        <span class="accent">real-world software systems.</span>
+        <span class="text-accent">real-world software systems.</span>
       </p>
 
-      <p class="hero-subtitle hero-subtitle-small">
+      <p class="home__supporting-text">
         Focused on backend development, APIs, and turning ideas into reliable tools.
       </p>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="home-section home-section--focus">
-      <h2>What I Do</h2>
-      <p class="section-subtitle">I build practical software tools with clean structure and real-world use cases.</p>
+    <section class="home__section home__section--focus">
+      <h2 class="home__section-title">What I Do</h2>
+      <p class="section-intro">I build practical software tools with clean structure and real-world use cases.</p>
 
-      <div class="home-section__grid">
-        <div class="card card--focus">
-          <h3>Backend & APIs</h3>
-          <p>FastAPI backends with clear endpoints, validation, and data persistence.</p>
-        </div>
-        <div class="card card--focus">
-          <h3>Automation & CLI Tools</h3>
-          <p>Small utilities that improve workflows with file I/O, reporting, and clean output.</p>
-        </div>
-        <div class="card card--focus">
-          <h3>Data & Visualizations</h3>
-          <p>Lightweight analysis scripts with charts and summaries to reveal trends.</p>
-        </div>
+      <div class="home__grid home__grid--focus">
+        <article class="content-card home__focus-card">
+          <h3 class="home__focus-title">Backend & APIs</h3>
+          <p class="home__focus-copy">FastAPI backends with clear endpoints, validation, and data persistence.</p>
+        </article>
+        <article class="content-card home__focus-card">
+          <h3 class="home__focus-title">Automation & CLI Tools</h3>
+          <p class="home__focus-copy">Small utilities that improve workflows with file I/O, reporting, and clean output.</p>
+        </article>
+        <article class="content-card home__focus-card">
+          <h3 class="home__focus-title">Data & Visualizations</h3>
+          <p class="home__focus-copy">Lightweight analysis scripts with charts and summaries to reveal trends.</p>
+        </article>
       </div>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section id="featured" class="home-section home-section--featured" aria-label="Featured projects">
-      <header class="section-head section-head-row">
-        <div class="section-head-content">
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-note">Most polished, resume-ready builds.</p>
+    <section id="featured" class="home__section home__section--featured" aria-label="Featured projects">
+      <header class="section-header section-header--home-featured">
+        <div class="section-header__content">
+          <h2 class="section-header__title">Featured Projects</h2>
+          <p class="section-header__note">Most polished, resume-ready builds.</p>
         </div>
 
-        <a class="btn btn-primary section-head-cta" href="projects/">All projects</a>
+        <a class="button button--primary section-header__action" href="projects/">All projects</a>
       </header>
 
-      <div id="homeFeaturedGrid" class="home-section__grid home-section__grid--featured">
+      <div id="homeFeaturedGrid" class="home__grid home__grid--featured">
         <!-- injected by JS -->
       </div>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="home-section home-section--skills">
-      <h2>Skills</h2>
-      <p class="section-subtitle">Derived automatically from my projects.</p>
+    <section class="home__section home__section--skills">
+      <h2 class="home__section-title">Skills</h2>
+      <p class="section-intro">Derived automatically from my projects.</p>
 
-      <div class="skills-grid" id="skillsGrid">
+      <div class="skill-list skill-list--centered" id="skillsGrid">
         <!-- injected -->
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-copy">
-        © <span id="year"></span> Corbin Moseman
-      </p>
-      <div class="footer-links">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>

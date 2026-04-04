@@ -4,70 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1"/>
-  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=2"/>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
+  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=1"/>
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/experience.js"></script>
   <title>Corbin - Experience</title>
 </head>
-
 <body>
-  <header>
-    <nav class="site-nav">
-      <div class="nav-group nav-left">
-        <a href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__group site-nav__group--left">
+        <a class="site-nav__link site-nav__link--external" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="site-nav__link site-nav__link--external" href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
+        <a class="site-nav__link site-nav__link--external" href="https://www.linkedin.com/in/corbinmoseman/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <a class="nav-logo" href="../index.html" aria-label="Home">
-        <img src="../assets/img/logo.png" alt="CM" />
+      <a class="site-nav__logo" href="../index.html" aria-label="Home">
+        <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="CM" />
       </a>
 
-      <div class="nav-group nav-right">
-        <a href="../about/">About</a>
-        <a href="../projects/">Projects</a>
-        <a href="../experience/" class="active">Experience</a>
+      <div class="site-nav__group site-nav__group--right">
+        <a class="site-nav__link" href="../about/">About</a>
+        <a class="site-nav__link" href="../projects/">Projects</a>
+        <a class="site-nav__link is-active" href="../experience/">Experience</a>
       </div>
     </nav>
   </header>
 
-  <main class="experience-page">
-    <section class="exp-hero">
-      <h1 class="exp-title">Experience</h1>
-      <p class="exp-subtitle">
-        Professional work and education background.
-      </p>
+  <main class="site-main experience">
+    <section class="experience__hero">
+      <h1 class="experience__title">Experience</h1>
+      <p class="experience__subtitle">Professional work and education background.</p>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="exp-section" aria-label="Work experience">
-      <header class="section-head section-head-center">
-        <h2 class="section-title">Work</h2>
-        <p class="section-note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
+    <section class="experience__section" aria-label="Work experience">
+      <header class="section-header section-header--centered">
+        <h2 class="section-header__title">Work</h2>
+        <p class="section-header__note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
       </header>
 
-      <div id="workGrid" class="exp-grid"></div>
+      <div id="workGrid" class="experience__grid"></div>
     </section>
 
-    <div class="section-divider" role="separator" aria-hidden="true"></div>
+    <div class="page-divider" role="separator" aria-hidden="true"></div>
 
-    <section class="exp-section" aria-label="Education">
-      <header class="section-head section-head-center">
-        <h2 class="section-title">Education</h2>
-        <p class="section-note">Academic background and relevant coursework.</p>
+    <section class="experience__section" aria-label="Education">
+      <header class="section-header section-header--centered">
+        <h2 class="section-header__title">Education</h2>
+        <p class="section-header__note">Academic background and relevant coursework.</p>
       </header>
 
-      <div id="eduGrid" class="exp-grid"></div>
+      <div id="eduGrid" class="experience__grid"></div>
     </section>
   </main>
 
-
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-copy">© <span id="year"></span> Corbin Moseman</p>
-      <div class="footer-links">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>
