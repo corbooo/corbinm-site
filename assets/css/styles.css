@@ -231,6 +231,11 @@ img {
   font-size: 1.4rem;
 }
 
+.section__title-accent {
+  margin: 0;
+  font-size: 2rem;
+}
+
 .section__note,
 .section__subtitle,
 .card__description {
@@ -261,6 +266,10 @@ img {
 }
 
 .section__divider-accent {
+  width: 150%;
+  margin: 10rem 0 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(
     to right,
     transparent,
@@ -268,7 +277,6 @@ img {
     transparent
   );
 }
-
 
 .content-grid {
   display: grid;
@@ -355,6 +363,12 @@ img {
   font-size: 0.88rem;
   line-height: 1;
   white-space: nowrap;
+}
+
+.tag {
+  max-height: 25px;
+  padding: 0 10px;
+  font-size: .6rem;
 }
 
 .text-link {
