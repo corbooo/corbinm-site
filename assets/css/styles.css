@@ -51,6 +51,10 @@ img {
 
 .site-header {
   padding: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: var(--color-bg);
 }
 
 .site-nav {
@@ -92,7 +96,6 @@ img {
   display: block;
   width: auto;
   height: 56px;
-  transition: transform 0.18s ease;
 }
 
 .site-nav__logo:hover .site-nav__logo-image {
@@ -267,7 +270,7 @@ img {
 
 .section__divider-accent {
   width: 150%;
-  margin: 10rem 0 0;
+  margin: 15rem 0 0;
   margin-left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(

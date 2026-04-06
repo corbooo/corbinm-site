@@ -11,7 +11,9 @@
   <title>Corbin - Home</title>
 </head>
 
-<body>
+<body class="home">
+  <img if="floatingLogo" class="home__logo-float" id="floatingLogo" src="assets/img/logo.png" alt="CM Logo"/>
+
   <header class="site-header">
     <nav class="site-nav">
       <div class="site-nav__group site-nav__group--left">
@@ -21,7 +23,7 @@
       </div>
 
       <a class="site-nav__logo" href="index.html" aria-label="Home">
-        <img class="site-nav__logo-image" src="assets/img/logo.png" alt="CM Logo"/>
+        <img id="navLogo" class="site-nav__logo-image" src="assets/img/logo.png" alt="CM Logo"/>
       </a>
 
       <div class="site-nav__group site-nav__group--right">
@@ -34,6 +36,8 @@
 
   <main class="site-main home">
     <section class="home__hero">
+      <img id="heroLogo" class="home__hero-logo" src="assets/img/logo.png" alt="CM Logo"/>
+
       <h1 class="home__name">Corbin Moseman</h1>
 
       <p class="home__intro home__intro--primary">

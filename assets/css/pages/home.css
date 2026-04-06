@@ -2,11 +2,54 @@
   padding: 0 0 3.5rem;
 }
 
+.home__logo-float {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(120px, 18vw, 260px);
+  height: auto;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.home__logo-float--visible {
+  opacity: 1;
+}
+
 .home__hero {
   max-width: 900px;
   margin: 0 auto;
   padding: 90px 18px 0;
   text-align: center;
+}
+
+.home__hero-logo {
+  display: block;
+  width: clamp(160px, 24vw, 360px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.home__hero-logo--hidden {
+  opacity: 0;
+}
+
+.home__hero-logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px var(--color-accent-shadow));
+}
+
+.home .site-nav__logo-image {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.9);
+}
+
+.home .site-nav__logo-image.site-nav__logo-image--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .home__name {
