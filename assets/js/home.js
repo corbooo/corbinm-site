@@ -8,6 +8,7 @@ const PRIORITY_SKILLS = ["Python", "FastAPI", "SQL", "SQLite", "APIs", "Java", "
 const heroLogo = document.getElementById("heroLogo");
 const navLogo = document.getElementById("navLogo");
 const floatingLogo = document.getElementById("floatingLogo");
+const navLogoLink = document.getElementById("navLogoLink");
 
 const SCROLL_START = 100;
 const SCROLL_RANGE = 200;
@@ -33,6 +34,7 @@ function updateFloatingLogoVisibility() {
     heroLogo.classList.remove("home__hero-logo--hidden");
     floatingLogo.classList.remove("home__logo-float--visible");
     navLogo.classList.remove("site-nav__logo-image--visible");
+    navLogoLink.classList.remove("site-nav__logo--active");
   }
 }
 
@@ -65,9 +67,11 @@ function animateFloatingLogoOnScroll() {
 
   if (scrollProgress >= 0.98) {
     navLogo.classList.add("site-nav__logo-image--visible");
+    navLogoLink.classList.add("site-nav__logo--active");
     floatingLogo.classList.remove("home__logo-float--visible");
   } else {
     navLogo.classList.remove("site-nav__logo-image--visible");
+    navLogoLink.classList.remove("site-nav__logo--active");
 
     if (window.scrollY > SCROLL_START) {
       floatingLogo.classList.add("home__logo-float--visible");

@@ -42,6 +42,14 @@
   filter: drop-shadow(0 0 10px var(--color-accent-shadow));
 }
 
+.home .site-nav__logo {
+  pointer-events: none;
+}
+
+.home .site-nav__logo.site-nav__logo--active {
+  pointer-events: auto;
+}
+
 .home .site-nav__logo-image {
   opacity: 0;
   transform: translateY(-6px) scale(0.9);
