@@ -1,12 +1,66 @@
 [
   {
+    "id": "macrocoach-gui",
+    "title": "MacroCoachGUI",
+    "tier": "featured",
+    "date": "2026-04-10",
+    "desc": "Java Swing desktop application that connects to MacroCoachAPI to display dashboard summaries, add macro and weight entries, review history, and visualize fitness trends through a clean user interface.",
+    "tags": [
+      "Java",
+      "Java Swing",
+      "OOP",
+      "REST APIs",
+      "JSON"
+    ],
+    "github": "https://github.com/corbooo/MacroCoachGUI",
+    "live": null
+  },
+  {
     "id": "macrocoachapi",
     "title": "MacroCoachAPI",
     "tier": "featured",
     "date": "2026-01-20",
-    "desc": "FastAPI backend for tracking weight/macros, storing history, and generating insights.",
-    "tags": ["Python", "FastAPI", "SQL", "SQLite", "APIs"],
+    "desc": "FastAPI backend for tracking bodyweight, macros, calorie targets, and weekly fitness trends. Built with relational models, validation schemas, dashboard endpoints, and analytics logic for the MacroCoach desktop client.",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "SQLite",
+      "REST APIs",
+      "Pydantic"
+    ],
     "github": "https://github.com/corbooo/MacroCoachAPI",
+    "live": null
+  },
+  {
+    "id": "statside",
+    "title": "StatSide",
+    "tier": "featured",
+    "date": "2026-05-29",
+    "desc": "React sports analytics web app for comparing teams and players with API-driven data, reusable components, asynchronous requests, and dynamic stat cards.",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Vite",
+      "CSS",
+      "REST APIs"
+    ],
+    "github": "https://github.com/corbooo/StatSide",
+    "live": null
+  },
+  {
+    "id": "corbrawl",
+    "title": "CorBrawl",
+    "tier": "featured",
+    "date": "2026-02-10",
+    "desc": "Java Swing game featuring an infinite world, spike hazards, enemy spawns, and projectile combat. Built to practice game loops, collision detection, and object-oriented design.",
+    "tags": [
+      "Java",
+      "Java Swing",
+      "OOP",
+      "Game Development"
+    ],
+    "github": "https://github.com/corbooo/CorBrawl",
     "live": null
   },
   {
@@ -15,29 +69,14 @@
     "tier": "featured",
     "date": "2026-01-22",
     "desc": "Responsive portfolio website with modular page styles, clean navigation, and a projects system driven by JSON data.",
-    "tags": ["Web", "HTML", "CSS", "JavaScript"],
+    "tags": [
+      "Web",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
     "github": "https://github.com/corbooo/corbinm-site",
     "live": null
-  },
-  {
-  "id": "corbrawl",
-  "title": "CorBrawl (Java Swing)",
-  "tier": "featured",
-  "date": "2026-02-10",
-  "desc": "A Java Swing game featuring an infinite world, spike hazards, timed enemy spawns with a ramping cap, and projectile combat. Built to practice game loops, collision detection, and OOP design.",
-  "tags": ["Java", "Swing", "OOP"],
-  "github": "https://github.com/corbooo/CorBrawl",
-  "live": null
-  },
-  {
-  "id": "macrocoach-gui",
-  "title": "MacroCoachGUI",
-  "desc": "Desktop GUI application for tracking macros, visualizing trends, and interacting with the MacroCoach backend in a user-friendly interface.",
-  "tier": "mini",
-  "date": "2025-01",
-  "tags": ["Python", "Tkinter", "GUI", "APIs"],
-  "github": "https://github.com/corbooo/MacroCoachGUI",
-  "live": null
   },
   {
     "id": "list-manager",
@@ -45,7 +84,12 @@
     "tier": "mini",
     "date": "2026-01-18",
     "desc": "Tkinter list manager with multi-list tabs, autosave to JSON, and add/edit/delete/reorder item workflows.",
-    "tags": ["Python", "Tkinter", "JSON", "UI"],
+    "tags": [
+      "Python",
+      "Tkinter",
+      "JSON",
+      "UI"
+    ],
     "github": null,
     "live": null
   },
@@ -55,7 +99,11 @@
     "tier": "mini",
     "date": "2026-01-10",
     "desc": "CLI expense tracker with JSON persistence, add/update/delete flows, and clean tabular viewing output.",
-    "tags": ["Python", "CLI", "JSON"],
+    "tags": [
+      "Python",
+      "CLI",
+      "JSON"
+    ],
     "github": null,
     "live": null
   },
@@ -65,7 +113,12 @@
     "tier": "mini",
     "date": "2026-01-08",
     "desc": "Tkinter trivia + hangman game that pulls questions from an external API and updates UI state per answer.",
-    "tags": ["Python", "Tkinter", "APIs", "UI"],
+    "tags": [
+      "Python",
+      "Tkinter",
+      "APIs",
+      "UI"
+    ],
     "github": null,
     "live": null
   },
@@ -74,8 +127,13 @@
     "title": "Fitness Tracker",
     "tier": "mini",
     "date": "2026-01-12",
-    "desc": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations (calories, macros, weight, exercise).",
-    "tags": ["Python", "CLI", "Data", "Matplotlib"],
+    "desc": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations for calories, macros, weight, and exercise.",
+    "tags": [
+      "Python",
+      "CLI",
+      "Data",
+      "Matplotlib"
+    ],
     "github": null,
     "live": null
   },
@@ -84,8 +142,13 @@
     "title": "Mediocre Banker",
     "tier": "mini",
     "date": "2026-01-05",
-    "desc": "CLI bank account simulator with deposits/withdrawals/transfers, account folders, and JSON log files by date.",
-    "tags": ["Python", "CLI", "JSON", "File I/O"],
+    "desc": "CLI bank account simulator with deposits, withdrawals, transfers, account folders, and JSON log files by date.",
+    "tags": [
+      "Python",
+      "CLI",
+      "JSON",
+      "File I/O"
+    ],
     "github": null,
     "live": null
   },
@@ -95,7 +158,12 @@
     "tier": "mini",
     "date": "2026-01-14",
     "desc": "F1 stats explorer using an API to chart standings and driver/team performance using Matplotlib.",
-    "tags": ["Python", "APIs", "Matplotlib", "Data"],
+    "tags": [
+      "Python",
+      "APIs",
+      "Matplotlib",
+      "Data"
+    ],
     "github": null,
     "live": null
   },
@@ -105,7 +173,11 @@
     "tier": "mini",
     "date": "2026-01-03",
     "desc": "CLI travel planner that validates date ranges, builds a packing checklist using rules, and saves itineraries to files.",
-    "tags": ["Python", "CLI", "File I/O"],
+    "tags": [
+      "Python",
+      "CLI",
+      "File I/O"
+    ],
     "github": null,
     "live": null
   }
