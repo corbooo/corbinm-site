@@ -79,33 +79,27 @@ function animateFloatingLogoOnScroll() {
   }
 }
 
-async function renderFeaturedProjects() {
-  if (!featuredGrid) return;
+async function renderHomeContent() {
+  // Load project data once for both the featured cards and skill pills.
   const projects = await loadProjects(".");
-  const featured = (projects || []).filter((project) => project.tier === "featured");
+  const featured = projects.filter((project) => project.tier === "featured");
   featuredGrid.innerHTML = featured
     .map((project) => projectCardHTML(project, { featuredBadge: true }))
     .join("");
-}
 
-async function renderSkills() {
-  if (!skillsGrid) return;
-  const projects = await loadProjects(".");
-  const skills = uniqueSorted((projects || []).flatMap((project) => project.tags || []));
+  const skills = uniqueSorted(projects.flatMap((project) => project.tags || []));
   const ordered = sortByPriority(skills, PRIORITY_SKILLS).slice(0, 14);
   skillsGrid.innerHTML = skillPillsHTML(ordered);
 }
 
-renderFeaturedProjects().catch(() => {
-  if (featuredGrid) featuredGrid.innerHTML = "<p>Could not load featured projects.</p>";
-});
-
 window.addEventListener("load", positionFloatingLogoOverHero);
 window.addEventListener("resize", positionFloatingLogoOverHero);
-
 window.addEventListener("scroll", updateFloatingLogoVisibility);
 window.addEventListener("load", updateFloatingLogoVisibility);
-
 window.addEventListener("resize", animateFloatingLogoOnScroll);
 
-renderSkills().catch(console.error);
+renderHomeContent().catch((error) => {
+  console.error(error);
+  featuredGrid.innerHTML = "<p>Could not load featured projects.</p>";
+  skillsGrid.innerHTML = "<p>Could not load skills.</p>";
+});

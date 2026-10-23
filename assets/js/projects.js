@@ -22,103 +22,67 @@ const state = {
   projects: []
 };
 
-const normalize = (value) => String(value || "").toLowerCase().trim();
-const dateMs = (project) => {
-  const parsed = Date.parse(project.date || "");
-  return Number.isFinite(parsed) ? parsed : 0;
-};
-
-function computeSkills(projects) {
-  const tags = projects.flatMap((project) => project.tags || []);
-  return uniqueSorted(tags);
-}
-
-function renderSkillDropdown(skills) {
-  if (!els.panel) return;
-  els.panel.innerHTML = "";
-
-  skills.forEach((skill) => {
-    const row = document.createElement("label");
-    row.className = "projects__skill-item";
-    row.innerHTML = `
-      <input type="checkbox" value="${safeHTML(skill)}">
-      <span>${safeHTML(skill)}</span>
-    `;
-    
-    row.querySelector("input").addEventListener("change", (event) => {
-      if (event.target.checked) state.selectedSkills.add(skill);
-      else state.selectedSkills.delete(skill);
-      renderAll();
-    });
-
-    els.panel.appendChild(row);
-  });
-}
+const normalize = (value) => String(value ?? "").trim().toLowerCase();
+const projectDate = (project) => Date.parse(project.date || "") || 0;
 
 function matchesProject(project) {
   const query = normalize(state.query);
-  const title = normalize(project.title);
-  const desc = normalize(project.desc);
-  const tags = normalize((project.tags || []).join(" "));
+  const searchable = [project.title, project.desc, (project.tags || []).join(" ")]
+    .map(normalize);
 
-  const matchesSearch = !query || title.includes(query) || desc.includes(query) || tags.includes(query);
-  if (!matchesSearch) return false;
-  if (state.selectedSkills.size === 0) return true;
+  if (query && !searchable.some((value) => value.includes(query))) return false;
+  if (!state.selectedSkills.size) return true;
 
-  const projectSkills = (project.tags || []).map(normalize);
-
-  return [...state.selectedSkills].some((skill) => projectSkills.includes(normalize(skill))
-);
+  const tags = (project.tags || []).map(normalize);
+  return [...state.selectedSkills].some((skill) => tags.includes(normalize(skill)));
 }
 
 function sortProjects(projects) {
-  if (state.sort === "newest") return [...projects].sort((a, b) => dateMs(b) - dateMs(a));
-  if (state.sort === "oldest") return [...projects].sort((a, b) => dateMs(a) - dateMs(b));
-  return projects;
+  if (state.sort === "featured") return projects;
+  const direction = state.sort === "newest" ? -1 : 1;
+  return [...projects].sort((a, b) => direction * (projectDate(a) - projectDate(b)));
 }
 
 function renderAll() {
   const filtered = state.projects.filter(matchesProject);
-  const featured = filtered.filter((project) => project.tier === "featured");
-  const mini = filtered.filter((project) => project.tier !== "featured");
+  const featured = sortProjects(filtered.filter((project) => project.tier === "featured"));
+  const mini = sortProjects(filtered.filter((project) => project.tier !== "featured"));
 
-  const visibleFeatured = state.sort === "featured" ? featured : sortProjects(featured);
-  const visibleMini = state.sort === "featured" ? mini : sortProjects(mini);
+  els.featuredGrid.innerHTML = featured
+    .map((project) => projectCardHTML(project, { featuredBadge: true }))
+    .join("");
 
-  if (els.featuredGrid) {
-    els.featuredGrid.innerHTML = visibleFeatured
-      .map((project) => projectCardHTML(project, { featuredBadge: true }))
-      .join("");
-  }
+  els.miniSlider.innerHTML = mini
+    .map((project) => projectCardHTML(project, { mini: true }))
+    .join("");
 
-  if (els.miniSlider) {
-    els.miniSlider.innerHTML = visibleMini
-      .map((project) => projectCardHTML(project, { mini: true }))
-      .join("");
-    els.miniSlider.scrollLeft = 0;
-  }
+  els.miniSlider.scrollLeft = 0;
+  els.emptyState.hidden = filtered.length > 0;
+}
 
-  if (els.emptyState) {
-    els.emptyState.hidden = (visibleFeatured.length + visibleMini.length) !== 0;
-  }
+function renderSkillDropdown(projects) {
+  const skills = uniqueSorted(projects.flatMap((project) => project.tags || []));
+  els.panel.innerHTML = skills.map((skill) => `
+    <label class="projects__skill-item">
+      <input type="checkbox" value="${safeHTML(skill)}">
+      <span>${safeHTML(skill)}</span>
+    </label>
+  `).join("");
 }
 
 function resetFilters() {
   state.query = "";
   state.selectedSkills.clear();
   state.sort = "featured";
-
-  if (els.search) els.search.value = "";
-  if (els.sort) els.sort.value = "featured";
-  document.querySelectorAll("#skillPanel input[type='checkbox']").forEach((checkbox) => {
-    checkbox.checked = false;
+  els.search.value = "";
+  els.sort.value = "featured";
+  els.panel.querySelectorAll("input:checked").forEach((input) => {
+    input.checked = false;
   });
-
   renderAll();
 }
 
 function scrollMiniProjects(direction) {
-  if (!els.miniSlider) return;
   const firstCard = els.miniSlider.querySelector(".projects__card--mini");
   const amount = firstCard ? firstCard.getBoundingClientRect().width + 16 : 360;
   els.miniSlider.scrollBy({ left: direction * amount, behavior: "smooth" });
@@ -126,45 +90,41 @@ function scrollMiniProjects(direction) {
 
 function wireUI() {
   document.addEventListener("click", (event) => {
-    if (els.dropdown && !els.dropdown.contains(event.target)) {
-      els.dropdown.removeAttribute("open");
-    }
+    if (!els.dropdown.contains(event.target)) els.dropdown.open = false;
   });
 
-  els.search?.addEventListener("input", (event) => {
-    state.query = event.target.value || "";
+  // Event delegation: one listener handles every skill checkbox.
+  els.panel.addEventListener("change", (event) => {
+    if (!event.target.matches('input[type="checkbox"]')) return;
+    const skill = event.target.value;
+    if (event.target.checked) state.selectedSkills.add(skill);
+    else state.selectedSkills.delete(skill);
     renderAll();
   });
 
-  els.sort?.addEventListener("change", (event) => {
+  els.search.addEventListener("input", (event) => {
+    state.query = event.target.value;
+    renderAll();
+  });
+
+  els.sort.addEventListener("change", (event) => {
     state.sort = event.target.value;
     renderAll();
   });
 
-  els.clear?.addEventListener("click", resetFilters);
-  els.prev?.addEventListener("click", () => scrollMiniProjects(-1));
-  els.next?.addEventListener("click", () => scrollMiniProjects(1));
+  els.clear.addEventListener("click", resetFilters);
+  els.prev.addEventListener("click", () => scrollMiniProjects(-1));
+  els.next.addEventListener("click", () => scrollMiniProjects(1));
 }
 
 async function init() {
   wireUI();
-  const rawProjects = await loadProjects("..");
-  state.projects = (rawProjects || []).map((project) => ({
-    id: project.id || "",
-    title: project.title || "",
-    desc: project.desc || "",
-    tier: project.tier === "featured" ? "featured" : "mini",
-    date: project.date || "",
-    tags: Array.isArray(project.tags) ? project.tags : [],
-    github: project.github || null,
-    live: project.live || null
-  }));
-
-  renderSkillDropdown(computeSkills(state.projects));
+  state.projects = await loadProjects("..");
+  renderSkillDropdown(state.projects);
   renderAll();
 }
 
 init().catch((error) => {
   console.error(error);
-  if (els.featuredGrid) els.featuredGrid.innerHTML = "<p>Could not load projects data.</p>";
+  els.featuredGrid.innerHTML = "<p>Could not load projects data.</p>";
 });
