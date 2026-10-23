@@ -2,7 +2,7 @@ import { loadWork, loadEducation } from "./lib/data.js";
 import { workCardHTML, educationCardHTML } from "./lib/components.js";
 
 const workGrid = document.getElementById("workGrid");
-const educationGrid = document.getElementById("eduGrid");
+const educationGrid = document.getElementById("educationGrid");
 
 async function renderWork() {
   if (!workGrid) return;

@@ -4,5 +4,3 @@ function initYear() {
 }
 
 initYear();
-
-export { initYear };

@@ -59,6 +59,10 @@
   margin-top: 10px;
 }
 
+#educationGrid .experience__card {
+  align-content: start;
+}
+
 @media (min-width: 800px) {
   .experience__card {
     grid-column: span 6;

@@ -1,5 +1,5 @@
 import { loadProjects } from "./lib/data.js";
-import { projectCardHTML } from "./lib/components.js";
+import { projectCardHTML, skillPillsHTML } from "./lib/components.js";
 import { uniqueSorted, sortByPriority } from "./lib/utils.js";
 
 const featuredGrid = document.getElementById("homeFeaturedGrid");
@@ -93,7 +93,7 @@ async function renderSkills() {
   const projects = await loadProjects(".");
   const skills = uniqueSorted((projects || []).flatMap((project) => project.tags || []));
   const ordered = sortByPriority(skills, PRIORITY_SKILLS).slice(0, 14);
-  skillsGrid.innerHTML = ordered.map((skill) => `<span class="skills-cluster__item">${skill}</span>`).join("");
+  skillsGrid.innerHTML = skillPillsHTML(ordered);
 }
 
 renderFeaturedProjects().catch(() => {
@@ -102,10 +102,10 @@ renderFeaturedProjects().catch(() => {
 
 window.addEventListener("load", positionFloatingLogoOverHero);
 window.addEventListener("resize", positionFloatingLogoOverHero);
+
 window.addEventListener("scroll", updateFloatingLogoVisibility);
 window.addEventListener("load", updateFloatingLogoVisibility);
-window.addEventListener("scroll", animateFloatingLogoOnScroll);
-window.addEventListener("load", animateFloatingLogoOnScroll);
+
 window.addEventListener("resize", animateFloatingLogoOnScroll);
 
 renderSkills().catch(console.error);

@@ -1,4 +1,5 @@
 import { loadProjects } from "./lib/data.js";
+import { skillPillsHTML } from "./lib/components.js";
 
 async function loadMostUsedSkills(limit = 12) {
   const grid = document.getElementById("aboutSkillsGrid");
@@ -20,7 +21,7 @@ async function loadMostUsedSkills(limit = 12) {
     .slice(0, limit)
     .map(([tag]) => tag);
 
-  grid.innerHTML = ranked.map((tag) => `<span class="skills-cluster__item">${tag}</span>`).join("");
+  grid.innerHTML = skillPillsHTML(ranked);
 }
 
 loadMostUsedSkills(12).catch(console.error);

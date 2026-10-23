@@ -1,5 +1,6 @@
-import { loadProjects } from "./lib/data.js";
 import { projectCardHTML } from "./lib/components.js";
+import { loadProjects } from "./lib/data.js";
+import { safeHTML, uniqueSorted } from "./lib/utils.js";
 
 const els = {
   dropdown: document.getElementById("skillDropdown"),
@@ -28,8 +29,8 @@ const dateMs = (project) => {
 };
 
 function computeSkills(projects) {
-  return [...new Set(projects.flatMap((project) => project.tags || []))]
-    .sort((a, b) => a.localeCompare(b));
+  const tags = projects.flatMap((project) => project.tags || []);
+  return uniqueSorted(tags);
 }
 
 function renderSkillDropdown(skills) {
@@ -40,10 +41,10 @@ function renderSkillDropdown(skills) {
     const row = document.createElement("label");
     row.className = "projects__skill-item";
     row.innerHTML = `
-      <input type="checkbox" value="${skill}">
-      <span>${skill}</span>
+      <input type="checkbox" value="${safeHTML(skill)}">
+      <span>${safeHTML(skill)}</span>
     `;
-
+    
     row.querySelector("input").addEventListener("change", (event) => {
       if (event.target.checked) state.selectedSkills.add(skill);
       else state.selectedSkills.delete(skill);
@@ -64,7 +65,10 @@ function matchesProject(project) {
   if (!matchesSearch) return false;
   if (state.selectedSkills.size === 0) return true;
 
-  return [...state.selectedSkills].some((skill) => tags.includes(normalize(skill)));
+  const projectSkills = (project.tags || []).map(normalize);
+
+  return [...state.selectedSkills].some((skill) => projectSkills.includes(normalize(skill))
+);
 }
 
 function sortProjects(projects) {

@@ -74,3 +74,13 @@ export function educationCardHTML(education) {
     </article>
   `;
 }
+
+export function skillPillsHTML(skills = []) {
+  return skills
+    .map((skill) => `
+      <span class="skills-cluster__item">
+        ${safeHTML(skill)}
+      </span>
+    `)
+    .join("");
+}
