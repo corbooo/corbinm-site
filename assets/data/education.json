@@ -4,15 +4,20 @@
     "school": "University of Houston–Clear Lake",
     "degree": "B.S. in Computer Science",
     "start": "2025-08",
-    "end": "2028-05",
+    "end": "2027-12",
     "status": "expected",
     "coursework": [
       "Computer Science 1 (Python)",
       "Discrete Mathematics",
       "Physics 2",
-      "Statistics (in progress)",
-      "Linear Algebra (in progress)",
-      "Computer Science 2 (Java) (in progress)"
+      "Statistics",
+      "Linear Algebra",
+      "Computer Science 2 (Java)",
+      "Advanced Data Structures (in progress)",
+      "Computer Networks (in progress)",
+      "Software Engineering (in progress)",
+      "Assembly Language (in progress)",
+      "Web Application Development (in progress)"
     ]
   },
   {
@@ -23,9 +28,9 @@
     "end": "2025-05",
     "status": null,
     "coursework": [
-        "Physics 1",
-        "Calculus I & II",
-        "Intro to Engineering"
+      "Physics 1",
+      "Calculus I & II",
+      "Intro to Engineering"
     ]
   }
 ]
