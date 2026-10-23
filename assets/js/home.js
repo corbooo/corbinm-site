@@ -1,28 +1,25 @@
-import { loadProjects } from "./lib/data.js";
-import { projectCardHTML, skillPillsHTML } from "./lib/components.js";
-import { uniqueSorted, sortByPriority } from "./lib/utils.js";
+const revealElements = document.querySelectorAll(".home__reveal");
 
-const featuredGrid = document.getElementById("homeFeaturedGrid");
-const skillsGrid = document.getElementById("skillsGrid");
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-const PRIORITY_SKILLS = [ "Python", "FastAPI", "SQL", "SQLite", "APIs", "Java", "HTML", "CSS", "JavaScript"];
+if ("IntersectionObserver" in window && !reducedMotion) {
+  document.documentElement.classList.add("has-scroll-reveal");
 
-async function renderHomeContent() {
-  const projects = await loadProjects(".");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-  const featured = projects.filter((project) => project.tier === "featured");
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -48px 0px"
+  });
 
-  featuredGrid.innerHTML = featured.map((project) => projectCardHTML(project, { featuredBadge: true })).join("");
-
-  const skills = uniqueSorted(projects.flatMap((project) => project.tags || []));
-
-  const ordered = sortByPriority(skills, PRIORITY_SKILLS).slice(0, 14);
-
-  skillsGrid.innerHTML = skillPillsHTML(ordered);
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
 }
-
-renderHomeContent().catch((error) => {
-  console.error(error);
-  featuredGrid.innerHTML = "<p>Could not load featured projects.</p>";
-  skillsGrid.innerHTML = "<p>Could not load skills.</p>";
-});

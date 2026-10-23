@@ -31,70 +31,117 @@
   </header>
 
   <main class="site-main home__main">
+
+    <!-- Home -->
     <section class="home__hero">
-      <img id="heroLogo" class="home__hero-logo" src="assets/img/logo.png" alt="CM Logo"/>
+      <div class="home__hero-copy">
+        <p class="home__eyebrow">Computer Science / UHCL</p>
 
-      <h1 class="home__name">Corbin Moseman</h1>
+        <h1 class="home__name">
+          Corbin<br>
+          Moseman<span class="accent">.</span>
+        </h1>
 
-      <p class="home__intro home__intro--primary">
-        Computer Science student building
-        <span class="accent">practical software projects.</span>
-      </p>
+        <p class="home__intro">I enjoy turning ideas into working software—whether that's a desktop application, an API, or something built for the web.</p>
 
-      <p class="home__intro home__intro--secondary section__subtitle">
-        Focused on Java applications, Python APIs, data tools, and clean user interfaces.
-      </p>
-    </section>
+        <div class="home__hero-actions">
+          <a class="home__hero-link" href="projects/">
+            Explore my work <span aria-hidden="true">↗</span>
+          </a>
 
-    <div class="section__divider section__divider--accent" role="separator" aria-hidden="true"></div>
-
-    <section class="home__section" aria-label="What I Do">
-      <h2 class="section__title section__title--large">What I Do</h2>
-      <p class="section__subtitle">I build practical software tools with clean structure and real-world use cases.</p>
-
-      <div class="home__section-grid">
-        <div class="card home__focus-card">
-          <h3>Java Applications</h3>
-          <p>Desktop apps and interactive tools built with Java, Swing, OOP, and organized project structure.</p>
+          <a class="home__hero-link" href="about/">
+            More about me <span aria-hidden="true">↗</span>
+          </a>
         </div>
-        <div class="card home__focus-card">
-          <h3>Backend &amp; APIs</h3>
-          <p>FastAPI backends with clear endpoints, validation, data persistence, and REST API workflows.</p>
-        </div>
-        <div class="card home__focus-card">
-          <h3>Data &amp; Web Tools</h3>
-          <p>API-connected web apps, dashboards, and visualizations that turn data into useful interfaces.</p>
-        </div>
+      </div>
+
+      <div class="home__hero-visual">
+        <img id="heroLogo" class="home__hero-logo" src="assets/img/logo.png" alt="CM monogram"/>
+      </div>
+
+      <div class="home__hero-bottom">
+        <span>Houston, Texas</span>
+        <span>Scroll for more ↓</span>
       </div>
     </section>
 
-    <div class="section__divider section__divider--accent" role="separator" aria-hidden="true"></div>
+    <!-- Introduction -->
+    <section class="home__about home__reveal home__reveal--up"
+            aria-labelledby="homeAboutTitle">
 
-    <section id="featured" class="home__section" aria-label="Featured projects">
-      <header class="section__header section__header--row">
-        <div class="section__header-content">
-          <h2 class="section__title section__title--large">Featured Projects</h2>
-          <p class="section__note">Most polished, resume-ready builds.</p>
-        </div>
+      <p class="home__section-label">02 / About Me</p>
 
-        <a class="button button--primary section__header-action" href="projects/">All projects</a>
-      </header>
+      <div class="home__about-content">
+        <h2 id="homeAboutTitle">A little about me.</h2>
 
-      <div id="homeFeaturedGrid" class="home__section-grid home__section-grid--featured">
-        <!-- injected by JS -->
+        <p>
+          I'm a Computer Science student at the University
+          of Houston-Clear Lake who enjoys transforming ideas
+          into practical, well-designed software.
+        </p>
+
+        <p>
+          I'm passionate about problem-solving, continuously
+          learning new technologies, and creating digital
+          experiences that people genuinely enjoy using.
+        </p>
       </div>
     </section>
 
-    <div class="section__divider section__divider--accent" role="separator" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <section class="home__explore"
+            aria-labelledby="homeExploreTitle">
 
-    <section class="home__section" aria-label="Skills">
-      <h2 class="section__title section__title--large">Skills</h2>
-      <p class="section__subtitle">Derived automatically from my projects.</p>
-
-      <div class="skills-cluster home__skills" id="skillsGrid">
-        <!-- injected -->
+      <div class="home__explore-heading home__reveal home__reveal--up">
+        <p class="home__section-label">03 / Explore</p>
+        <h2 id="homeExploreTitle">Where to next?</h2>
       </div>
+
+      <nav class="home__explore-links"
+          aria-label="Explore my website">
+
+        <a href="about/"
+          class="home__page-link home__reveal home__reveal--left">
+
+          <span class="home__page-number">01</span>
+
+          <span class="home__page-content">
+            <span class="home__page-title">About Me</span>
+            <span class="home__page-description">Get to know the person behind the code.</span>
+          </span>
+
+          <span class="home__page-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="projects/"
+          class="home__page-link home__reveal home__reveal--right">
+
+          <span class="home__page-number">02</span>
+
+          <span class="home__page-content">
+            <span class="home__page-title">Selected Work</span>
+            <span class="home__page-description">Projects, experiments, and software I've built.</span>
+          </span>
+
+          <span class="home__page-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="experience/"
+          class="home__page-link home__reveal home__reveal--left">
+
+          <span class="home__page-number">03</span>
+
+          <span class="home__page-content">
+            <span class="home__page-title">My Journey</span>
+            <span class="home__page-description">Education, experience, and what comes next.</span>
+          </span>
+
+          <span class="home__page-arrow" aria-hidden="true">↗</span>
+        </a>
+
+      </nav>
     </section>
+
   </main>
 
   <footer class="site-footer">
