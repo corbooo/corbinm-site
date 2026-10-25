@@ -23,3 +23,18 @@ if ("IntersectionObserver" in window && !reducedMotion) {
     observer.observe(element);
   });
 }
+
+const header = document.querySelector(".site-header");
+
+function updateNavbar() {
+  header.classList.toggle(
+    "site-header--visible",
+    window.scrollY > 250
+  );
+}
+
+window.addEventListener("scroll", updateNavbar, {
+  passive: true
+});
+
+updateNavbar();

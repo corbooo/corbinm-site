@@ -2,6 +2,35 @@
   padding: 0 0 3.5rem;
 }
 
+/* Homepage navbar */
+
+.home .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
+}
+
+.home .site-header.site-header--visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home .site-header {
+    transition: none;
+  }
+}
+
 /* Hero */
 
 .home__hero {
@@ -12,7 +41,7 @@
 
   width: 100%;
   max-width: none;
-  min-height: calc(100svh - 80px);
+  min-height: 100svh;
   margin: 0;
   padding: 4rem 0 2rem;
 }
@@ -124,9 +153,8 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 3rem;
-  margin-top: 8rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+  margin-top: 4rem;
+  padding-top: 0;
 }
 
 .home__about-content {
@@ -245,13 +273,62 @@
   transform: none;
 }
 
+.home__mobile-logo {
+  display: none;
+}
+
 /* Responsive layout */
 
 @media (max-width: 760px) {
+  .home__hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 2.5rem;
+    padding: 8rem 0 2rem;
+  }
+
+  .home__name {
+    font-size: clamp(3.5rem, 12vw, 5rem);
+  }
+  
+  .home__hero-visual {
+    min-height: 220px;
+  }
+  
+  .home__hero-logo {
+    width: min(70vw, 280px);
+  }
+  
+  .home__hero-bottom {
+    flex-wrap: wrap;
+  }
+
+  .home__name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .home__name {
+    font-size: clamp(2.5rem, 12vw, 3.25rem);
+  }
+
+  .home__mobile-logo {
+    display: block;
+    width: clamp(56px, 19vw, 85px);
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .home__hero-visual {
+    display: none;
+  }
+
   .home__about {
     grid-template-columns: 1fr;
     gap: 1.75rem;
-    margin-top: 5rem;
+    margin-top: 15rem;
   }
 
   .home__explore {
@@ -284,30 +361,5 @@
 
   .home__page-arrow {
     transition: none;
-  }
-}
-
-@media (max-width: 760px) {
-  .home__hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    gap: 2.5rem;
-    padding: 4rem 0 2rem;
-  }
-
-  .home__name {
-    font-size: clamp(3.5rem, 12vw, 5rem);
-  }
-
-  .home__hero-visual {
-    min-height: 220px;
-  }
-
-  .home__hero-logo {
-    width: min(70vw, 280px);
-  }
-
-  .home__hero-bottom {
-    flex-wrap: wrap;
   }
 }
