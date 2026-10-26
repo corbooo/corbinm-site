@@ -1,22 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/about.css?v=3"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/pages/about.css" />
+
   <script type="module" src="../assets/js/shared.js"></script>
-  <script type="module" src="../assets/js/about.js"></script>
+
   <title>Corbin - About</title>
 </head>
 
 <body>
-
+  <!-- Navigation -->
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
-
-      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - About">
+      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Home">
         <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="" />
       </a>
 
@@ -24,106 +26,26 @@
         <a class="site-nav__link" href="../about/" aria-current="page">About</a>
         <a class="site-nav__link" href="../projects/">Projects</a>
         <a class="site-nav__link" href="../experience/">Experience</a>
-
-        <a class="site-nav__resume"href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="site-nav__resume" href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
-
     </nav>
   </header>
 
+  <!-- About page -->
   <main class="site-main about">
-    <section class="about__hero">
-      <div class="about__hero-grid">
-        <div class="about__content">
-          <h1 class="about__title">About</h1>
-          <p class="about__lede">
-            I’m Corbin Moseman — a Computer Science student who enjoys building practical software projects with Java, Python, APIs, and clean user interfaces.
-          </p>
-          <p class="about__lede">
-            My recent work includes MacroCoachGUI, a Java Swing desktop app, and MacroCoachAPI, the FastAPI backend it connects to for fitness and nutrition data. I also built StatSide, a React sports analytics web app that compares teams and players using API-driven data.
-          </p>
-          <p class="about__lede">
-            I’m focused on strengthening my software engineering fundamentals through object-oriented programming, backend API design, data structures, databases, and projects that are organized enough to keep improving over time.
-          </p>
-
-          <div class="about__links">
-            <a class="text-link" href="../projects/">View Projects</a>
-            <a class="text-link" href="../assets/Resume.pdf" target="_blank" rel="noopener">Resume</a>
-          </div>
-        </div>
-
-        <div class="about__media">
-          <div class="about__photo-frame">
-            <img class="about__photo" src="../assets/img/headshot.jpg" alt="Headshot of Corbin" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section__divider" role="separator" aria-hidden="true"></div>
-
-    <section class="section" aria-label="What I'm focused on">
-      <header class="section__header">
-        <h2 class="section__title">What I'm focused on</h2>
-        <p class="section__note">What I build and what I'm actively improving.</p>
-      </header>
-
-      <div class="content-grid">
-        <article class="card">
-          <h3 class="card__title">Java Applications</h3>
-          <p class="card__description">
-            Building desktop apps and interactive tools with Java, Swing, object-oriented design, and clear class responsibilities.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3 class="card__title">Backend &amp; APIs</h3>
-          <p class="card__description">
-            Designing endpoints, validation, database models, and service logic that connect applications to useful data.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3 class="card__title">Data + Interfaces</h3>
-          <p class="card__description">
-            Turning logs, API responses, and user input into dashboards, charts, summaries, and clean user-facing tools.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Highlights">
-      <header class="section__header">
-        <h2 class="section__title">Highlights</h2>
-        <p class="section__note">A few things I'm proud of.</p>
-      </header>
-
-      <div class="card">
-        <ul class="about__bullets">
-          <li><span class="about__bullet-strong">MacroCoachGUI:</span> Java Swing desktop app for dashboard summaries, macro and weight entry, history review, and trend visualization.</li>
-          <li><span class="about__bullet-strong">MacroCoachAPI:</span> FastAPI backend for macros, weight, target goals, dashboard summaries, and weekly analytics.</li>
-          <li><span class="about__bullet-strong">StatSide:</span> React sports analytics app with reusable components, API service logic, and dynamic stat cards.</li>
-          <li><span class="about__bullet-strong">CorBrawl:</span> Java Swing game built to practice game loops, collision detection, projectile logic, and OOP structure.</li>
-          <li><span class="about__bullet-strong">Portfolio system:</span> Projects page is driven by a JSON data file, making updates easy to maintain.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Tech">
-      <header class="section__header">
-        <h2 class="section__title">Tech</h2>
-        <p class="section__note">Most-used tools across my projects.</p>
-      </header>
-
-      <div class="skills-cluster about__skills" id="aboutSkillsGrid">
-        <!-- injected -->
-      </div>
-    </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
+    <svg class="site-footer__signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000"/>
+    </svg>
+
     <div class="site-footer__inner">
-      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <p class="site-footer__copy">
+        © <span id="year"></span> Corbin Moseman
+      </p>
+
       <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
