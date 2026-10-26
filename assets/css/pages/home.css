@@ -25,12 +25,6 @@
   pointer-events: auto;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home .site-header {
-    transition: none;
-  }
-}
-
 /* Hero */
 
 .home__hero {
@@ -103,8 +97,7 @@
   place-items: center;
   min-width: 0;
   min-height: 360px;
-  background: radial-gradient(circle, var(--color-accent-soft), transparent 70%
-  );
+  background: radial-gradient(circle, var(--color-accent-soft), transparent 70%);
 }
 
 .home__hero-logo {
@@ -122,19 +115,84 @@
 /* Bottom details */
 
 .home__hero-bottom {
+  position: relative;
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   margin-top: 2rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-border);
+  padding-top: 2rem;
   color: var(--color-text-muted);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
+/* Hero entrance animation */
+
+@keyframes home-enter {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home__eyebrow,
+.home__name,
+.home__intro,
+.home__hero-actions,
+.home__hero-visual,
+.home__mobile-logo,
+.home__hero-bottom {
+  animation: home-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered entrance */
+
+.home__eyebrow { animation-delay: 0.1s; }
+.home__name { animation-delay: 0.25s; }
+.home__hero-visual,
+.home__mobile-logo {
+  animation-delay: 0.35s;
+}
+.home__intro { animation-delay: 0.5s; }
+.home__hero-actions { animation-delay: 0.65s;}
+.home__hero-bottom { animation-delay: 0.8s; }
+
+/* Signature SVG line */
+
+.home__signature-line {
+  position: absolute;
+  top: -10px;
+  left: 5%;
+  width: 90%;
+  height: 24px;
+  pointer-events: none;
+}
+
+.home__signature-line path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+  stroke-opacity: 0.65;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  animation: draw-line 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 
 /* Shared editorial headings */
 
@@ -357,6 +415,25 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .home .site-header {
+    transition: none;
+  }
+
+  .home__eyebrow,
+  .home__name,
+  .home__intro,
+  .home__hero-actions,
+  .home__hero-visual,
+  .home__mobile-logo,
+  .home__hero-bottom {
+    animation: none;
+  }
+
+  .home__signature-line path {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 
   .home__page-arrow {

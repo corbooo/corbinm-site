@@ -14,7 +14,6 @@
 <body class="home">
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
-
       <a class="site-nav__logo" href="index.html" aria-label="Corbin Moseman - Home">
         <img class="site-nav__logo-image" src="assets/img/logo.png" alt="" />
       </a>
@@ -26,7 +25,6 @@
 
         <a class="site-nav__resume"href="assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
-
     </nav>
   </header>
 
@@ -37,30 +35,28 @@
       <div class="home__hero-copy">
         <p class="home__eyebrow">Computer Science / UHCL</p>
 
+        <div class="home__name-row">
+          <h1 class="home__name">
+            Corbin<br>
+            Moseman<span class="accent">.</span>
+          </h1>
 
-    <div class="home__name-row">
-      <h1 class="home__name">
-        Corbin<br>
-        Moseman<span class="accent">.</span>
-      </h1>
-
-      <img
-        class="home__mobile-logo"
-        src="assets/img/logo.png"
-        alt=""
-        aria-hidden="true"
-      />
-    </div>
+          <img class="home__mobile-logo" src="assets/img/logo.png" alt="" aria-hidden="true"/>
+        </div>
 
         <p class="home__intro">I enjoy turning ideas into working software—whether that's a desktop application, an API, or something built for the web.</p>
 
         <div class="home__hero-actions">
+          <a class="home__hero-link" href="about/">
+            More about me <span aria-hidden="true">↗</span>
+          </a>
+
           <a class="home__hero-link" href="projects/">
             Explore my work <span aria-hidden="true">↗</span>
           </a>
 
-          <a class="home__hero-link" href="about/">
-            More about me <span aria-hidden="true">↗</span>
+          <a class="home__hero-link" href="experience/">
+            My Experience <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -70,6 +66,10 @@
       </div>
 
       <div class="home__hero-bottom">
+        <svg class="home__signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 29 H150 L175 8 H220 L245 29 H1000"/>
+        </svg>
+
         <span>Houston, Texas</span>
         <span>Scroll for more ↓</span>
       </div>
@@ -99,19 +99,14 @@
     </section>
 
     <!-- Navigation -->
-    <section class="home__explore"
-            aria-labelledby="homeExploreTitle">
-
+    <section class="home__explore" aria-labelledby="homeExploreTitle">
       <div class="home__explore-heading home__reveal home__reveal--up">
         <p class="home__section-label">03 / Explore</p>
         <h2 id="homeExploreTitle">Where to next?</h2>
       </div>
 
-      <nav class="home__explore-links"
-          aria-label="Explore my website">
-
-        <a href="about/"
-          class="home__page-link home__reveal home__reveal--left">
+      <nav class="home__explore-links" aria-label="Explore my website">
+        <a href="about/" class="home__page-link home__reveal home__reveal--left">
 
           <span class="home__page-number">01</span>
 
@@ -123,8 +118,7 @@
           <span class="home__page-arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a href="projects/"
-          class="home__page-link home__reveal home__reveal--right">
+        <a href="projects/" class="home__page-link home__reveal home__reveal--right">
 
           <span class="home__page-number">02</span>
 
@@ -136,8 +130,7 @@
           <span class="home__page-arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a href="experience/"
-          class="home__page-link home__reveal home__reveal--left">
+        <a href="experience/" class="home__page-link home__reveal home__reveal--left">
 
           <span class="home__page-number">03</span>
 
