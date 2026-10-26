@@ -1,3 +1,6 @@
+
+/* Homepage layout */
+
 .home__main {
   padding: 0 0 3.5rem;
 }
@@ -32,15 +35,11 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
   column-gap: clamp(2rem, 5vw, 5rem);
-
-  width: 100%;
-  max-width: none;
   min-height: 100svh;
-  margin: 0;
   padding: 4rem 0 2rem;
 }
 
-/* Introduction */
+/* Hero introduction */
 
 .home__eyebrow {
   margin: 0 0 1.5rem;
@@ -62,12 +61,12 @@
 .home__intro {
   max-width: 46ch;
   margin: 1.75rem 0 0;
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.7;
 }
 
-/* Navigation links */
+/* Hero links */
 
 .home__hero-actions {
   display: flex;
@@ -79,7 +78,7 @@
 .home__hero-link {
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-text);
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -90,29 +89,38 @@
   border-color: var(--color-accent);
 }
 
-/* Large CM logo */
+/* Hero logo */
 
 .home__hero-visual {
   display: grid;
   place-items: center;
   min-width: 0;
   min-height: 360px;
-  background: radial-gradient(circle, var(--color-accent-soft), transparent 70%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 8%, transparent),
+    transparent 70%
+  );
 }
 
 .home__hero-logo {
   display: block;
   width: min(100%, 440px);
   height: auto;
-  transition: transform 0.35s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 12px rgba(3, 208, 208, 0));
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .home__hero-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 12px var(--color-accent-shadow));
+  filter: drop-shadow(0 0 12px rgba(3, 208, 208, 0.8));
 }
 
-/* Bottom details */
+.home__mobile-logo {
+  display: none;
+}
+
+/* Hero bottom details */
 
 .home__hero-bottom {
   position: relative;
@@ -122,10 +130,39 @@
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+/* Hero signature line */
+
+.home__signature-line {
+  position: absolute;
+  top: -10px;
+  left: 5%;
+  width: 90%;
+  height: 24px;
+  pointer-events: none;
+}
+
+.home__signature-line path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+  stroke-opacity: 0.65;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  animation: draw-line 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Hero entrance animation */
@@ -157,44 +194,12 @@
 .home__eyebrow { animation-delay: 0.1s; }
 .home__name { animation-delay: 0.25s; }
 .home__hero-visual,
-.home__mobile-logo {
-  animation-delay: 0.35s;
-}
+.home__mobile-logo { animation-delay: 0.35s; }
 .home__intro { animation-delay: 0.5s; }
-.home__hero-actions { animation-delay: 0.65s;}
+.home__hero-actions { animation-delay: 0.65s; }
 .home__hero-bottom { animation-delay: 0.8s; }
 
-/* Signature SVG line */
-
-.home__signature-line {
-  position: absolute;
-  top: -10px;
-  left: 5%;
-  width: 90%;
-  height: 24px;
-  pointer-events: none;
-}
-
-.home__signature-line path {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 2.5;
-  stroke-opacity: 0.65;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-
-  stroke-dasharray: 1100;
-  stroke-dashoffset: 1100;
-  animation: draw-line 1.5s ease-out 0.8s forwards;
-}
-
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* Shared editorial headings */
+/* Editorial section headings */
 
 .home__section-label {
   margin: 0;
@@ -203,20 +208,6 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-/* About */
-
-.home__about {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  margin-top: 4rem;
-  padding-top: 0;
-}
-
-.home__about-content {
-  max-width: 650px;
 }
 
 .home__about h2,
@@ -228,8 +219,21 @@
   line-height: 1.15;
 }
 
+/* About section */
+
+.home__about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.home__about-content {
+  max-width: 650px;
+}
+
 .home__about-content p {
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -252,7 +256,7 @@
   margin-top: 1rem;
 }
 
-/* Large navigation links */
+/* Explore navigation links */
 
 .home__page-link {
   display: grid;
@@ -261,7 +265,7 @@
   gap: 2rem;
   padding: 2.5rem 0;
   border-top: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -290,7 +294,7 @@
 }
 
 .home__page-description {
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   font-size: 0.9rem;
 }
 
@@ -308,7 +312,7 @@
   transform: translate(5px, -5px);
 }
 
-/* Scroll entrance animations */
+/* Scroll reveal animations */
 
 .has-scroll-reveal .home__reveal {
   opacity: 0;
@@ -331,34 +335,16 @@
   transform: none;
 }
 
-.home__mobile-logo {
-  display: none;
-}
-
-/* Responsive layout */
+/* Responsive */
 
 @media (max-width: 760px) {
+  /* Hero */
+
   .home__hero {
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 2.5rem;
     padding: 8rem 0 2rem;
-  }
-
-  .home__name {
-    font-size: clamp(3.5rem, 12vw, 5rem);
-  }
-  
-  .home__hero-visual {
-    min-height: 220px;
-  }
-  
-  .home__hero-logo {
-    width: min(70vw, 280px);
-  }
-  
-  .home__hero-bottom {
-    flex-wrap: wrap;
   }
 
   .home__name-row {
@@ -372,6 +358,10 @@
     font-size: clamp(2.5rem, 12vw, 3.25rem);
   }
 
+  .home__hero-visual {
+    display: none;
+  }
+
   .home__mobile-logo {
     display: block;
     width: clamp(56px, 19vw, 85px);
@@ -379,15 +369,19 @@
     flex-shrink: 0;
   }
 
-  .home__hero-visual {
-    display: none;
+  .home__hero-bottom {
+    flex-wrap: wrap;
   }
+
+  /* About */
 
   .home__about {
     grid-template-columns: 1fr;
     gap: 1.75rem;
     margin-top: 15rem;
   }
+
+  /* Explore */
 
   .home__explore {
     margin-top: 6rem;
