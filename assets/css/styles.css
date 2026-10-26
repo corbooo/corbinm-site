@@ -433,10 +433,29 @@ html {
   border-bottom-color: var(--color-accent);
 }
 
+
 .site-footer {
   margin-top: 120px;
-  padding: 32px 18px;
-  border-top: 1px solid var(--color-border);
+  padding: 0 18px 32px;
+}
+
+/* Footer signature line */
+
+.site-footer__signature-line {
+  display: block;
+  width: 70%;
+  height: 30px;
+  margin: 0 auto 32px;
+  pointer-events: none;
+}
+
+.site-footer__signature-line path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+  stroke-opacity: 0.65;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
 
 .site-footer__inner {
