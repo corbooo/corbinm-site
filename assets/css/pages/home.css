@@ -67,20 +67,6 @@
   margin-top: 2.5rem;
 }
 
-.home__hero-link {
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.home__hero-link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
 /* Hero logo */
 
 .home__hero-visual {
