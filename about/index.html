@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../assets/css/pages/about.css" />
 
   <script type="module" src="../assets/js/shared.js"></script>
+  <script type="module" src="../assets/js/about.js"></script>
 
   <title>Corbin - About</title>
 </head>
@@ -67,23 +68,55 @@
 
       <div class="about__chapters">
         <article class="about__chapter">
-          <span class="about__chapter-number">01</span>
-          <h3 class="about__chapter-title">The Beginning</h3>
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter1Content">
+            <span class="about__chapter-number">01</span>
+            <span class="about__chapter-title">The Beginning</span>
+          </button>
+
+          <div class="about__chapter-content" id="chapter1Content">
+            <div class="about__chapter-content-inner">
+              <p>A little about where my story began.</p>
+            </div>
+          </div>
         </article>
 
         <article class="about__chapter">
-          <span class="about__chapter-number">02</span>
-          <h3 class="about__chapter-title">What I Create</h3>
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter2Content">
+            <span class="about__chapter-number">02</span>
+            <span class="about__chapter-title">What I Create</span>
+          </button>
+
+          <div class="about__chapter-content" id="chapter2Content">
+            <div class="about__chapter-content-inner">
+              <p>The projects, ideas, and things I enjoy building.</p>
+            </div>
+          </div>
         </article>
 
         <article class="about__chapter">
-          <span class="about__chapter-number">03</span>
-          <h3 class="about__chapter-title">Beyond the Code</h3>
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter3Content">
+            <span class="about__chapter-number">03</span>
+            <span class="about__chapter-title">Beyond the Code</span>
+          </button>
+
+          <div class="about__chapter-content" id="chapter3Content">
+            <div class="about__chapter-content-inner">
+              <p>My interests, hobbies, and life outside programming</p>
+            </div>
+          </div>
         </article>
 
         <article class="about__chapter">
-          <span class="about__chapter-number">04</span>
-          <h3 class="about__chapter-title">What's Next</h3>
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter4Content">
+            <span class="about__chapter-number">04</span>
+            <span class="about__chapter-title">What's Next</span>
+          </button>
+
+          <div class="about__chapter-content" id="chapter4Content">
+            <div class="about__chapter-content-inner">
+              <p>What I'm learning and where I hope to go next.</p>
+            </div>
+          </div>
         </article>
       </div>
     </section>
