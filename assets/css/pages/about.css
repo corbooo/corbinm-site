@@ -176,7 +176,7 @@
   top: 0;
   left: 2.5rem;
   transform: translateY(0);
-  transition-delay: 0.15s, 0.15s, 0.15s, 0s;
+  transition-delay: 0.1s, 0.1s, 0.1s, 0s;
 }
 
 .about__chapter:hover .about__chapter-title,
