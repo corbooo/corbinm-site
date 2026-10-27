@@ -225,7 +225,7 @@
 
 .about__closing-title {
   margin: 0;
-  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
   font-weight: 650;
   line-height: 1.1;
   letter-spacing: -0.04em;
@@ -235,9 +235,16 @@
 
 .about__closing-line {
   display: block;
-  width: min(100%, 800px);
+  width: min(100%, 900px);
   height: auto;
   margin: 2.5rem 0 3rem;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.about__closing-line path {
+  stroke-width: 2.75;
+  stroke-linecap: round;
 }
 
 /* Closing navigation */
