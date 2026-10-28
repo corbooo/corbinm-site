@@ -30,6 +30,21 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 18px;
+
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+  outline-offset: 7px;
+  box-shadow: 0 0 28px transparent;
+
+  transition:
+    transform 0.4s ease,
+    outline-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.about__photo:hover {
+  transform: scale(1.035);
+  outline-color: color-mix(in srgb, var(--color-accent) 85%, transparent);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 
 /* Hero introduction */
@@ -51,13 +66,21 @@
   letter-spacing: -0.065em;
 }
 
-/* Hero scroll cue */
+/* Hero actions */
+
+.about__hero-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
 
 .about__scroll-cue {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 3rem;
   color: var(--color-muted);
   font-size: 0.75rem;
   font-weight: 600;
@@ -97,6 +120,64 @@
   margin: 0 auto;
 }
 
+.about__signature-line path {
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+  animation: about-draw-line 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes about-draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hero entrance animations */
+
+@keyframes about-rise {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes about-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Main introduction */
+
+.about__hero .about__eyebrow,
+.about__title,
+.about__hero .hero-description,
+.about__hero-actions,
+.about__signature-line {
+  animation: about-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered entrance */
+
+.about__hero .about__eyebrow { animation-delay: 0.1s;}
+.about__title { animation-delay: 0.25s; }
+.about__hero .hero-description { animation-delay: 0.45s; }
+.about__hero-actions { animation-delay: 0.6s; }
+.about__signature-line { animation-delay: 0.75s; }
+
+.about__hero-image { animation: about-slide-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+
 /* Chapters */
 
 .about__chapters-section {
@@ -127,24 +208,27 @@
 
 .about__chapters {
   display: flex;
+  height: 400px;
   border: 1px solid var(--color-border);
   border-radius: 18px;
   overflow: hidden;
 }
 
 .about__chapter {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 0fr);
+  position: relative;
   flex: 1;
   min-width: 0;
-  min-height: 330px;
+  height: 100%;
+  min-height: 0;
   padding: 2rem;
   background: color-mix(in srgb, white 2%, transparent);
   transition:
     flex-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    grid-template-rows 0.5s ease,
-    min-height 0.5s ease,
     background 0.3s ease;
+}
+
+.about__chapter.is-open {
+  flex-grow: 3.1;
 }
 
 .about__chapter + .about__chapter {
@@ -168,6 +252,7 @@
   display: block;
   width: 100%;
   min-height: 0;
+  height: 100%;
   padding: 0;
   border: 0;
   background: none;
@@ -236,8 +321,10 @@
 /* Chapter content */
 
 .about__chapter-content {
+  position: absolute;
+  inset: 5.5rem 2.25rem 2.25rem;
   min-height: 0;
-  overflow: hidden;
+  overflow: auto;
   opacity: 0;
   visibility: hidden;
   transition:
@@ -367,16 +454,15 @@
 
   .about__chapters {
     flex-direction: column;
+    height: auto;
   }
 
-  .about__chapter {
-    flex: none;
-    min-height: 160px;
-  }
-
+  .about__chapter,
   .about__chapter.is-open {
     flex: none;
-    min-height: 240px;
+    height: auto;
+    min-height: 160px;
+    padding: 2rem;
   }
 
   .about__chapter + .about__chapter {
@@ -384,8 +470,40 @@
     border-top: 1px solid var(--color-border);
   }
 
-  .about__chapters-section {
-    scroll-margin-top: 150px;
+  .about__chapter-toggle {
+    position: absolute;
+    inset: 2rem;
+    width: auto;
+    height: auto;
+  }
+
+  .about__chapter-content {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+    overflow: hidden;
+    transition:
+      grid-template-rows 0.5s ease,
+      margin-top 0.5s ease,
+      opacity 0.25s ease,
+      visibility 0.5s;
+  }
+
+  .about__chapter.is-open .about__chapter-content {
+    grid-template-rows: 1fr;
+    margin-top: 3.5rem;
+    transition-delay: 0s, 0s, 0.15s, 0s;
+  }
+
+  .about__chapter.is-open .about__chapter-toggle {
+    pointer-events: none;
+  }
+
+  .about__chapter.is-open .about__chapter-number,
+  .about__chapter.is-open .about__chapter-title {
+    pointer-events: auto;
   }
 }
 
@@ -395,8 +513,27 @@
   .about__chapter,
   .about__chapter-number,
   .about__chapter-title,
+  .about__photo,
   .about__chapter-content {
     transition: none;
+  }
+  
+  .about__hero .about__eyebrow,
+  .about__title,
+  .about__hero .hero-description,
+  .about__hero-actions,
+  .about__signature-line,
+  .about__hero-image {
+    animation: none;
+  }
+  
+  .about__signature-line path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .about__photo:hover {
+    transform: none;
   }
 }
 

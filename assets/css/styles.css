@@ -256,7 +256,6 @@ html {
   stroke-width: 2.5;
   stroke-opacity: 0.65;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
 }
 
 /* Accessibility */
@@ -268,7 +267,7 @@ html {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }

@@ -131,7 +131,6 @@
   stroke-width: 2.5;
   stroke-opacity: 0.65;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
   stroke-dasharray: 1100;
   stroke-dashoffset: 1100;
   animation: draw-line 1.5s ease-out 0.8s forwards;
