@@ -2,8 +2,6 @@
 const chapters = document.querySelectorAll(".about__chapter");
 
 chapters.forEach((chapter) => {
-  const button = chapter.querySelector(".about__chapter-toggle");
-
   chapter.addEventListener("click", () => {
     const shouldOpen = !chapter.classList.contains("is-open");
 

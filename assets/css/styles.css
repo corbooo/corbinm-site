@@ -305,7 +305,7 @@ html {
 
 /* Responsive  */
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
   .site-nav {
     flex-wrap: wrap;
     gap: 12px;

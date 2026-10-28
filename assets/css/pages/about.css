@@ -224,11 +224,6 @@
   border-left: 1px solid var(--color-border);
 }
 
-.about__chapter:hover,
-.about__chapter.is-open {
-  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
-}
-
 .about__chapter.is-open {
   flex-grow: 3.1;
   grid-template-rows: minmax(0, 0.3fr) minmax(0, 0.7fr);
