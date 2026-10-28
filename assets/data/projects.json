@@ -2,9 +2,11 @@
   {
     "id": "macrocoach-gui",
     "title": "MacroCoachGUI",
-    "tier": "featured",
+    "category": "Desktop Application",
+    "featured": true,
     "date": "2026-04-10",
-    "desc": "Java Swing desktop application that connects to MacroCoachAPI to display dashboard summaries, add macro and weight entries, review history, and visualize fitness trends through a clean user interface.",
+    "summary": "A desktop dashboard for tracking nutrition, weight, and fitness trends.",
+    "description": "Java Swing desktop application that connects to MacroCoachAPI to display dashboard summaries, add macro and weight entries, review history, and visualize fitness trends through a clean user interface.",
     "tags": [
       "Java",
       "Java Swing",
@@ -12,15 +14,20 @@
       "REST APIs",
       "JSON"
     ],
-    "github": "https://github.com/corbooo/MacroCoachGUI",
-    "live": null
+    "links": {
+      "github": "https://github.com/corbooo/MacroCoachGUI",
+      "demo": null
+    },
+    "images": []
   },
   {
-    "id": "macrocoachapi",
+    "id": "macrocoach-api",
     "title": "MacroCoachAPI",
-    "tier": "featured",
+    "category": "Backend API",
+    "featured": true,
     "date": "2026-01-20",
-    "desc": "FastAPI backend for tracking bodyweight, macros, calorie targets, and weekly fitness trends. Built with relational models, validation schemas, dashboard endpoints, and analytics logic for the MacroCoach desktop client.",
+    "summary": "A Python API for nutrition logging and weekly fitness insights.",
+    "description": "FastAPI backend for tracking bodyweight, macros, calorie targets, and weekly fitness trends. Built with relational models, validation schemas, dashboard endpoints, and analytics logic for the MacroCoach desktop client.",
     "tags": [
       "Python",
       "FastAPI",
@@ -29,15 +36,20 @@
       "REST APIs",
       "Pydantic"
     ],
-    "github": "https://github.com/corbooo/MacroCoachAPI",
-    "live": null
+    "links": {
+      "github": "https://github.com/corbooo/MacroCoachAPI",
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "statside",
     "title": "StatSide",
-    "tier": "featured",
+    "category": "Web Application",
+    "featured": true,
     "date": "2026-05-29",
-    "desc": "React sports analytics web app for comparing teams and players with API-driven data, reusable components, asynchronous requests, and dynamic stat cards.",
+    "summary": "A sports analytics app for exploring and comparing stats.",
+    "description": "React sports analytics web app for comparing teams and players with API-driven data, reusable components, asynchronous requests, and dynamic stat cards.",
     "tags": [
       "React",
       "JavaScript",
@@ -45,140 +57,188 @@
       "CSS",
       "REST APIs"
     ],
-    "github": "https://github.com/corbooo/StatSide",
-    "live": null
+    "links": {
+      "github": "https://github.com/corbooo/StatSide",
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "corbrawl",
     "title": "CorBrawl",
-    "tier": "featured",
+    "category": "Game",
+    "featured": true,
     "date": "2026-02-10",
-    "desc": "Java Swing game featuring an infinite world, spike hazards, enemy spawns, and projectile combat. Built to practice game loops, collision detection, and object-oriented design.",
+    "summary": "A Java action game with combat, hazards, and an infinite world.",
+    "description": "Java Swing game featuring an infinite world, spike hazards, enemy spawns, and projectile combat. Built to practice game loops, collision detection, and object-oriented design.",
     "tags": [
       "Java",
       "Java Swing",
       "OOP",
       "Game Development"
     ],
-    "github": "https://github.com/corbooo/CorBrawl",
-    "live": null
+    "links": {
+      "github": "https://github.com/corbooo/CorBrawl",
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "personal-website",
     "title": "Personal Website",
-    "tier": "featured",
+    "category": "Website",
+    "featured": true,
     "date": "2026-01-22",
-    "desc": "Responsive portfolio website with modular page styles, clean navigation, and a projects system driven by JSON data.",
+    "summary": "My personal portfolio, built with HTML, CSS, and JavaScript.",
+    "description": "Responsive portfolio website with modular page styles, clean navigation, and a projects system driven by JSON data.",
     "tags": [
       "Web",
       "HTML",
       "CSS",
       "JavaScript"
     ],
-    "github": "https://github.com/corbooo/corbinm-site",
-    "live": null
+    "links": {
+      "github": "https://github.com/corbooo/corbinm-site",
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "list-manager",
     "title": "List Manager",
-    "tier": "mini",
+    "category": "Desktop Application",
+    "featured": false,
     "date": "2026-01-18",
-    "desc": "Tkinter list manager with multi-list tabs, autosave to JSON, and add/edit/delete/reorder item workflows.",
+    "summary": "A tabbed desktop app for organizing lists.",
+    "description": "Tkinter list manager with multi-list tabs, autosave to JSON, and add/edit/delete/reorder item workflows.",
     "tags": [
       "Python",
       "Tkinter",
       "JSON",
       "UI"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "expense-tracker",
     "title": "Expense Tracker",
-    "tier": "mini",
+    "category": "CLI Tool",
+    "featured": false,
     "date": "2026-01-10",
-    "desc": "CLI expense tracker with JSON persistence, add/update/delete flows, and clean tabular viewing output.",
+    "summary": "A command-line tool for recording and reviewing expenses.",
+    "description": "CLI expense tracker with JSON persistence, add/update/delete flows, and clean tabular viewing output.",
     "tags": [
       "Python",
       "CLI",
       "JSON"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "hangman-trivia",
     "title": "Hangman Trivia",
-    "tier": "mini",
+    "category": "Game",
+    "featured": false,
     "date": "2026-01-08",
-    "desc": "Tkinter trivia + hangman game that pulls questions from an external API and updates UI state per answer.",
+    "summary": "A trivia and hangman game with API-sourced questions.",
+    "description": "Tkinter trivia + hangman game that pulls questions from an external API and updates UI state per answer.",
     "tags": [
       "Python",
       "Tkinter",
       "APIs",
       "UI"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "fitness-tracker",
     "title": "Fitness Tracker",
-    "tier": "mini",
+    "category": "Data Tool",
+    "featured": false,
     "date": "2026-01-12",
-    "desc": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations for calories, macros, weight, and exercise.",
+    "summary": "An analyzer for MyFitnessPal exports and nutrition trends.",
+    "description": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations for calories, macros, weight, and exercise.",
     "tags": [
       "Python",
       "CLI",
       "Data",
       "Matplotlib"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "banker",
     "title": "Mediocre Banker",
-    "tier": "mini",
+    "category": "CLI Tool",
+    "featured": false,
     "date": "2026-01-05",
-    "desc": "CLI bank account simulator with deposits, withdrawals, transfers, account folders, and JSON log files by date.",
+    "summary": "A simple banking simulator with transaction logs.",
+    "description": "CLI bank account simulator with deposits, withdrawals, transfers, account folders, and JSON log files by date.",
     "tags": [
       "Python",
       "CLI",
       "JSON",
       "File I/O"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "f1-stats",
     "title": "F1 Stats Visualizer",
-    "tier": "mini",
+    "category": "Data Visualization",
+    "featured": false,
     "date": "2026-01-14",
-    "desc": "F1 stats explorer using an API to chart standings and driver/team performance using Matplotlib.",
+    "summary": "An F1 statistics explorer with charts and standings.",
+    "description": "F1 stats explorer using an API to chart standings and driver/team performance using Matplotlib.",
     "tags": [
       "Python",
       "APIs",
       "Matplotlib",
       "Data"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   },
   {
     "id": "travel-planner",
     "title": "Travel Planner",
-    "tier": "mini",
+    "category": "CLI Tool",
+    "featured": false,
     "date": "2026-01-03",
-    "desc": "CLI travel planner that validates date ranges, builds a packing checklist using rules, and saves itineraries to files.",
+    "summary": "A command-line itinerary and packing checklist tool.",
+    "description": "CLI travel planner that validates date ranges, builds a packing checklist using rules, and saves itineraries to files.",
     "tags": [
       "Python",
       "CLI",
       "File I/O"
     ],
-    "github": null,
-    "live": null
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
   }
 ]

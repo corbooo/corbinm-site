@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/projects.css?v=3"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/pages/projects.css" />
+
   <script type="module" src="../assets/js/shared.js"></script>
-  <script type="module" src="../assets/js/projects.js"></script>
+
   <title>Corbin - Projects</title>
 </head>
 
 <body>
-
+  <!-- Navigation -->
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
-
-      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Projects">
+      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Home">
         <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="" />
       </a>
 
@@ -25,89 +26,55 @@
         <a class="site-nav__link" href="../projects/" aria-current="page">Projects</a>
         <a class="site-nav__link" href="../experience/">Experience</a>
 
-        <a class="site-nav__resume"href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="site-nav__resume" href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
-
     </nav>
   </header>
 
+  <!-- Projects page-->
   <main class="site-main projects">
-    <section class="projects__hero">
-      <h1 class="projects__title">Projects</h1>
-      <p class="projects__subtitle">
-        A curated set of software builds focused on practical problem-solving: APIs, automation, data modeling, and polished UI.
+    <!-- Hero -->
+    <header class="projects__hero">
+      <p class="section-eyebrow">01 / Projects</p>
+      <h1 class="projects__title">Things I've built<span class="accent">.</span></h1>
+      <p class="hero-description">
+        A collection of software, experiments, and ideas brought to life.
       </p>
+    </header>
 
-      <div class="projects__filters" aria-label="Project filters">
-        <div class="projects__filters-main">
-          <div class="projects__search">
-            <span class="projects__search-icon" aria-hidden="true">⌕</span>
-            <label class="sr-only" for="projectSearch">Search projects</label>
-            <input id="projectSearch" class="projects__search-input" type="search" placeholder="Search projects..." autocomplete="off" />
-          </div>
+    <!-- Featured work -->
+    <section class="projects__section" aria-labelledby="featuredTitle">
+      <p class="section-eyebrow">02 / Selected Work</p>
+      <h2 class="projects__section-title" id="featuredTitle">Featured projects</h2>
 
-          <label class="sr-only" for="projectSort">Sort projects</label>
-          <select id="projectSort" class="projects__select">
-            <option value="featured">Featured first</option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
-
-          <details class="projects__skills" id="skillDropdown">
-            <summary class="projects__skills-summary">
-              Skills <span class="projects__caret">▵</span>
-            </summary>
-            <div class="projects__skills-panel" id="skillPanel">
-              <!-- injected checkboxes -->
-            </div>
-          </details>
-        </div>
-
-        <div class="projects__filters-actions">
-          <button id="clearFilters" class="button button--quiet button--small" type="button">Clear</button>
-        </div>
+      <div class="projects__featured" id="featuredProjects">
+        
       </div>
     </section>
 
-    <section class="section" aria-label="Featured projects">
-      <header class="section__header section__header--center">
-        <h2 class="section__title">Featured</h2>
-        <p class="section__note">Most polished, resume-ready builds.</p>
-      </header>
+    <!-- Remaining projects -->
+    <section class="projects__section" aria-labelledby="moreProjectsTitle">
+      <p class="section-eyebrow">03 / The Collection</p>
+      <h2 class="projects__section-title" id="moreProjectsTitle">More projects</h2>
 
-      <div id="featuredGrid" class="projects__grid"></div>
-    </section>
+      <div class="projects__collection" id="moreProjects">
 
-    <div class="section__divider" role="separator" aria-hidden="true"></div>
-
-    <section class="section" aria-label="Mini projects">
-      <header class="section__header section__header--row">
-        <div>
-          <h2 class="section__title">Other Projects</h2>
-          <p class="section__note">Smaller builds and experiments.</p>
-        </div>
-
-        <div class="projects__slider-controls">
-          <button id="miniPrev" class="button button--icon" type="button" aria-label="Scroll mini projects left">‹</button>
-          <button id="miniNext" class="button button--icon" type="button" aria-label="Scroll mini projects right">›</button>
-        </div>
-      </header>
-
-      <div id="miniSlider" class="projects__slider" tabindex="0" aria-label="Mini projects slider"></div>
-
-      <div id="emptyState" class="projects__empty-state" hidden>
-        No projects match your filters. Try clearing or changing tags.
       </div>
     </section>
   </main>
 
+  <!-- Footer  -->
   <footer class="site-footer">
+    <svg class="site-footer__signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000"/>
+    </svg>
+
     <div class="site-footer__inner">
       <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
       <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
-        <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/corbooo" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/corbinmoseman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
