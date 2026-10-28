@@ -106,6 +106,33 @@
 .projects__mark-brace { animation: projects-mark-draw 0.95s ease-in-out 1.15s forwards; }
 .projects__mark-code { animation: projects-mark-draw 0.75s ease-in-out 1.7s forwards; }
 
+/* Coding symbol hover interaction */
+
+@media (hover: hover) and (pointer: fine) {
+  .projects__mark-brace,
+  .projects__mark-inner {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.45s ease;
+  }
+
+  /* Curly braces open outward */
+
+  .projects__hero-mark:hover .projects__mark-brace--left { transform: translate(-12px, -2px) rotate(-10deg); }
+  .projects__hero-mark:hover .projects__mark-brace--right { transform: translate(12px, -2px) rotate(10deg); }
+
+  /* Inner code grows and glows */
+
+  .projects__hero-mark:hover .projects__mark-inner {
+    transform: translateY(-5px) scale(1.12);
+    filter: drop-shadow(
+      0 0 10px color-mix(in srgb, var(--color-accent) 55%, transparent)
+    );
+  }
+}
+
 /* Hero signature line */
 
 .projects__signature-line {
@@ -446,12 +473,19 @@ html:has(.projects__dialog[open]) {
   .projects__card,
   .projects__card-arrow
   .projects__dialog,
-  .projects__dialog::backdrop {
+  .projects__dialog::backdrop,
+  .projects__mark-code,
+  .projects__mark-brace,
+  .projects__mark-inner {
     transition: none;
   }
 
   .projects__card:hover,
-  .projects__dialog {
+  .projects__dialog,
+  .projects__hero-mark:hover .projects__mark-code,
+  .projects__hero-mark:hover .projects__mark-brace,
+  .projects__hero-mark:hover .projects__mark-inner {
     transform: none;
+    filter: none;
   }
 }
