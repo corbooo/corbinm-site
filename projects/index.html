@@ -36,13 +36,41 @@
   <main class="site-main projects">
     <!-- Hero -->
     <section class="projects__hero">
-      <p class="section-eyebrow">01 / Projects</p>
+      <div class="projects__hero-main">
 
-      <h1 class="projects__title">Things I've built<span class="accent">.</span></h1>
+        <!-- Hero text -->
+        <div class="projects__hero-copy">
+          <p class="section-eyebrow">01 / Projects</p>
 
-      <p class="hero-description">
-        A collection of software, experiments, and ideas brought to life.
-      </p>
+          <h1 class="projects__title">
+            Things I've built<span class="accent">.</span>
+          </h1>
+
+          <p class="hero-description">A collection of software, experiments, and ideas brought to life.</p>
+        </div>
+
+        <!-- Hero coding symbol -->
+        <div class="projects__hero-visual">
+          <svg
+            class="projects__hero-mark"
+            viewBox="0 0 500 240"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <!-- Curly braces -->
+            <path class="projects__mark-brace" pathLength="100" d="M120 24 C87 24 83 42 83 70 V86 C83 107 72 118 52 120 C72 122 83 133 83 154 V170 C83 198 87 216 120 216" />
+            <path class="projects__mark-brace" pathLength="100" d="M380 24 C413 24 417 42 417 70 V86 C417 107 428 118 448 120 C428 122 417 133 417 154 V170 C417 198 413 216 380 216" />
+            <!-- Code symbol -->
+            <path class="projects__mark-code" pathLength="100" d="M205 72 L157 120 L205 168" />
+            <path class="projects__mark-code" pathLength="100" d="M276 62 L235 178" />
+            <path class="projects__mark-code" pathLength="100" d="M295 72 L343 120 L295 168" />
+          </svg>
+        </div>
+      </div>
 
       <!-- Signature line -->
       <svg class="projects__signature-line signature-line signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">

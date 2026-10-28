@@ -7,6 +7,34 @@
   padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
 }
 
+/* Hero layout */
+
+.projects__hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 5rem);
+}
+
+/* Hero coding symbol */
+
+.projects__hero-visual {
+  display: grid;
+  place-items: center;
+  justify-items: end;
+  min-width: 0;
+  position: relative;
+  top: -1rem;
+  left: 0.75rem;
+}
+
+.projects__hero-mark {
+  display: block;
+  width: min(75%, 300px);
+  height: auto;
+  color: var(--color-accent);
+}
+
 .projects__title {
   margin: 0;
   font-size: clamp(3rem, 6vw, 5.5rem);
@@ -26,6 +54,57 @@
   line-height: 1.1;
   letter-spacing: -0.04em;
 }
+
+/* Hero entrance animation */
+
+@keyframes projects-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects__hero-copy .section-eyebrow,
+.projects__title,
+.projects__hero-copy .hero-description,
+.projects__hero-visual {
+  animation: projects-hero-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.projects__section[aria-labelledby="featuredTitle"] > .section-eyebrow,
+#featuredTitle,
+#featuredProjects {
+  animation: projects-hero-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered entrance */
+
+.projects__hero-copy .section-eyebrow { animation-delay: 0.1s; }
+.projects__title { animation-delay: 0.25s; }
+.projects__hero-copy .hero-description { animation-delay: 0.45s; }
+.projects__hero-visual { animation-delay: 0.75s; }
+
+.projects__section[aria-labelledby="featuredTitle"] > .section-eyebrow { animation-delay: 0.65s; }
+#featuredTitle { animation-delay: 0.8s; }
+#featuredProjects { animation-delay: 0.95s; }
+
+/* Coding symbol draw animation */
+
+@keyframes projects-mark-draw {
+  from { stroke-dashoffset: 110; }
+  to { stroke-dashoffset: 0; }
+}
+.projects__hero-mark path {
+  stroke-dasharray: 100 200;
+  stroke-dashoffset: 110;
+}
+
+.projects__mark-brace { animation: projects-mark-draw 0.95s ease-in-out 1.15s forwards; }
+.projects__mark-code { animation: projects-mark-draw 0.75s ease-in-out 1.7s forwards; }
 
 /* Hero signature line */
 
@@ -148,11 +227,51 @@ html:has(.projects__dialog[open]) {
   border-radius: 18px;
   background: var(--color-bg);
   color: var(--color-text);
+
+  /* Closed state */
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    display 0.28s allow-discrete,
+    overlay 0.28s allow-discrete;
+}
+
+/* Open state */
+.projects__dialog[open] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Starting state when opening */
+@starting-style {
+  .projects__dialog[open] {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
 }
 
 .projects__dialog::backdrop {
   background: color-mix(in srgb, var(--color-bg) 70%, transparent);
   backdrop-filter: blur(8px);
+  opacity: 0;
+
+  transition:
+    opacity 0.28s ease,
+    display 0.28s allow-discrete,
+    overlay 0.28s allow-discrete;
+}
+
+.projects__dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .projects__dialog[open]::backdrop {
+    opacity: 0;
+  }
 }
 
 .projects__dialog-top {
@@ -250,7 +369,24 @@ html:has(.projects__dialog[open]) {
 }
 
 @media (max-width: 760px) {
+  /* Hero */
 
+  .projects__hero-main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .projects__hero-visual {
+    justify-items: center;
+    top: 0;
+    left: 0;
+  }
+
+  .projects__hero-mark {
+    width: min(55%, 180px);
+  }
+
+  /* Project cards */
   .projects__card {
     flex-basis: 100%;
     min-height: auto;
@@ -283,12 +419,39 @@ html:has(.projects__dialog[open]) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
+  .projects__hero-copy .section-eyebrow,
+  .projects__title,
+  .projects__hero-copy .hero-description,
+  .projects__hero-visual,
+  .projects__hero-mark path 
+  .projects__hero-copy .section-eyebrow,
+  .projects__title,
+  .projects__hero-copy .hero-description,
+  .projects__section[aria-labelledby="featuredTitle"] > .section-eyebrow,
+  #featuredTitle,
+  #featuredProjects,
+  .projects__hero-mark path {
+    animation: none;
+  }
+
+  .projects__hero-mark path {
+    stroke-dashoffset: 0;
+  }
+
+  .projects__hero-mark path {
+    stroke-dashoffset: 0;
+  }
+
   .projects__card,
-  .projects__card-arrow {
+  .projects__card-arrow
+  .projects__dialog,
+  .projects__dialog::backdrop {
     transition: none;
   }
 
-  .projects__card:hover {
+  .projects__card:hover,
+  .projects__dialog {
     transform: none;
   }
 }
