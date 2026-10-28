@@ -216,6 +216,7 @@
 
 .about__chapter {
   position: relative;
+  cursor: pointer;
   flex: 1;
   min-width: 0;
   height: 100%;
