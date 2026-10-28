@@ -419,6 +419,8 @@
 /* Responsive layout */
 
 @media (max-width: 760px) {
+  /* Hero */
+
   .about__hero {
     grid-template-columns: 1fr;
     min-height: auto;
