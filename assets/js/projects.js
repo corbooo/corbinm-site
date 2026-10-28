@@ -87,6 +87,10 @@ async function loadProjects() {
     if (project.links?.github) { githubLink.href = project.links.github; }
     if (project.links?.demo) { demoLink.href = project.links.demo; }
 
+    // Hide the links section when no links are available
+    const linksSection = document.getElementById("projectDialogLinksSection");
+    linksSection.hidden = !project.links?.github && !project.links?.demo;
+
     dialog.showModal();
   }
   
