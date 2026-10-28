@@ -51,6 +51,43 @@
   letter-spacing: -0.065em;
 }
 
+/* Hero scroll cue */
+
+.about__scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about__scroll-cue span:last-child {
+  color: var(--color-accent);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.about__scroll-cue:hover {
+  color: var(--color-text);
+}
+
+.about__scroll-cue:hover span:last-child {
+  transform: translateY(4px);
+}
+
+.about__scroll-cue:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+}
+
+
 /* Signature line */
 
 .about__signature-line {
@@ -64,15 +101,27 @@
 
 .about__chapters-section {
   margin-top: 5rem;
+  scroll-margin-top: 110px;
 }
 
 .about__chapters-title {
-  margin: 0 0 3rem;
+  margin: 0 0 .75rem;
   font-size: clamp(2.25rem, 4.5vw, 4rem);
   font-weight: 650;
   line-height: 1.1;
   letter-spacing: -0.04em;
 }
+
+.about__chapters-hint {
+  margin: 0 0 2.5rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.about__chapters-hint span {
+  color: var(--color-accent);
+}
+
 
 /* Chapter panels */
 
@@ -235,16 +284,25 @@
 
 .about__closing-line {
   display: block;
-  width: min(100%, 900px);
+  width: min(100%, 980px);
   height: auto;
   margin: 2.5rem 0 3rem;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
 }
 
 .about__closing-line path {
   stroke-width: 2.75;
   stroke-linecap: round;
+}
+
+/* Scroll-drawn signature */
+
+.about__closing-line.is-animating .about__closing-stroke {
+  stroke-dasharray: 100 200;
+  stroke-dashoffset: 100;
+}
+
+.about__closing-line.is-animating .about__closing-dot {
+  opacity: 0;
 }
 
 /* Closing navigation */
@@ -272,6 +330,19 @@
   margin-top: 2.5rem;
   color: var(--color-muted);
   border-bottom-color: transparent;
+}
+
+/* Larger chapter section on desktop */
+
+@media (min-width: 761px) {
+  .about__chapters-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .about__chapter {
+    min-height: 400px;
+    padding: 2.25rem;
+  }
 }
 
 /* Responsive layout */
@@ -312,6 +383,10 @@
     border-left: 0;
     border-top: 1px solid var(--color-border);
   }
+
+  .about__chapters-section {
+    scroll-margin-top: 150px;
+  }
 }
 
 /* Accessibility */
@@ -322,5 +397,13 @@
   .about__chapter-title,
   .about__chapter-content {
     transition: none;
+  }
+}
+
+/* Smooth chapter navigation */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
