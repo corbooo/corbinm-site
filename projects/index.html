@@ -86,6 +86,30 @@
     </section>
   </main>
 
+  <!-- Expanded project view -->
+  <dialog class="projects__dialog" id="projectDialog" aria-labelledby="projectDialogTitle">
+    <div class="projects__dialog-top">
+      <span class="projects__dialog-category" id="projectDialogCategory"></span>
+
+      <form method="dialog">
+        <button class="projects__dialog-close" type="submit" aria-label="Close project details">
+          &times;
+        </button>
+      </form>
+    </div>
+
+    <h2 class="projects__dialog-title" id="projectDialogTitle"></h2>
+
+    <p class="projects__dialog-description" id="projectDialogDescription"></p>
+    
+    <div class="projects__dialog-tags" id="projectDialogTags"></div>
+
+    <div class="projects__dialog-links">
+      <a class="editorial-link" id="projectDialogGitHub" target="_blank" rel="noopener noreferrer" hidden>GitHub ↗</a>
+      <a class="editorial-link" id="projectDialogDemo" target="_blank" rel="noopener noreferrer" hidden>Live Demo ↗</a>
+    </div>
+  </dialog>
+
   <!-- Footer  -->
   <footer class="site-footer">
     <svg class="site-footer__signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">

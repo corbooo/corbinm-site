@@ -133,6 +133,93 @@
   }
 }
 
+/* Expanded project view */
+
+/* Prevent background scrolling while the dialog is open */
+html:has(.projects__dialog[open]) {
+  overflow: hidden;
+}
+
+.projects__dialog {
+  width: min(640px, calc(100% - 2rem));
+  max-height: 85vh;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.projects__dialog::backdrop {
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.projects__dialog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.projects__dialog-category {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.projects__dialog-close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.projects__dialog-close:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.projects__dialog-title {
+  margin: 2rem 0 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.05em;
+}
+
+.projects__dialog-description {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.projects__dialog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+}
+
+.projects__dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.projects__card:focus-visible,
+.projects__dialog-close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
 /* Responsive */
 
 @media (max-width: 950px) {
@@ -145,12 +232,6 @@
 
   .projects__card {
     flex-basis: 100%;
-    min-height: auto;
-    padding: 1.25rem;
-    gap: 1.25rem;
-  }
-
-  .projects__card {
     min-height: auto;
     padding: 1.25rem;
     gap: 1.25rem;
