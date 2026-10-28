@@ -125,23 +125,6 @@
   pointer-events: none;
 }
 
-.home__signature-line path {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 2.5;
-  stroke-opacity: 0.65;
-  stroke-linejoin: round;
-  stroke-dasharray: 1100;
-  stroke-dashoffset: 1100;
-  animation: draw-line 1.5s ease-out 0.8s forwards;
-}
-
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Hero entrance animation */
 
 @keyframes home-enter {
@@ -400,11 +383,6 @@
   .home__mobile-logo,
   .home__hero-bottom {
     animation: none;
-  }
-
-  .home__signature-line path {
-    animation: none;
-    stroke-dashoffset: 0;
   }
 
   .home__page-arrow {

@@ -84,6 +84,17 @@ html {
   line-height: 1.7;
 }
 
+/* Section eyebrows */
+
+.section-eyebrow {
+  margin: 0 0 1.5rem;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 /* Editorial links */
 
 .editorial-link {
@@ -257,6 +268,26 @@ html {
   stroke-opacity: 0.65;
   stroke-linejoin: round;
 }
+
+.signature-line--draw path {
+  stroke-dasharray: 1100 2200;
+  stroke-dashoffset: 1100;
+  animation: signature-draw 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes signature-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signature-line--draw path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 
 /* Accessibility */
 

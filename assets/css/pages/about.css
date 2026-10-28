@@ -120,18 +120,6 @@
   margin: 0 auto;
 }
 
-.about__signature-line path {
-  stroke-dasharray: 1100;
-  stroke-dashoffset: 1100;
-  animation: about-draw-line 1.5s ease-out 0.8s forwards;
-}
-
-@keyframes about-draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Hero entrance animations */
 
 @keyframes about-rise {
@@ -526,11 +514,6 @@
   .about__signature-line,
   .about__hero-image {
     animation: none;
-  }
-  
-  .about__signature-line path {
-    animation: none;
-    stroke-dashoffset: 0;
   }
 
   .about__photo:hover {
