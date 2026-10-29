@@ -80,13 +80,13 @@
   display: block;
   width: min(100%, 440px);
   height: auto;
-  filter: drop-shadow(0 0 12px rgba(3, 208, 208, 0));
+  filter: drop-shadow(0 0 12px transparent);;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .home__hero-logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 12px rgba(3, 208, 208, 0.8));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-accent) 80%, transparent));
 }
 
 .home__mobile-logo {
@@ -155,6 +155,11 @@
 .home__hero-bottom { animation-delay: 0.8s; }
 
 /* Editorial section headings */
+
+.home__about > .section-eyebrow,
+.home__explore-heading > .section-eyebrow {
+  margin: 0;
+}
 
 .home__about h2,
 .home__explore h2 {
@@ -374,33 +379,5 @@
 
   .home__page-arrow {
     font-size: 1.5rem;
-  }
-}
-
-/* Accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-  .has-scroll-reveal .home__reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .home .site-header {
-    transition: none;
-  }
-
-  .home__eyebrow,
-  .home__name,
-  .home__intro,
-  .home__hero-actions,
-  .home__hero-visual,
-  .home__mobile-logo,
-  .home__hero-bottom {
-    animation: none;
-  }
-
-  .home__page-arrow {
-    transition: none;
   }
 }

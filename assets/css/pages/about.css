@@ -137,8 +137,6 @@
   }
 }
 
-/* Main introduction */
-
 .about__hero .about__eyebrow,
 .about__title,
 .about__hero .hero-description,
@@ -202,9 +200,7 @@
   min-height: 0;
   padding: 2rem;
   background: color-mix(in srgb, white 2%, transparent);
-  transition:
-    flex-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease;
+  transition: flex-grow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about__chapter.is-open {
@@ -434,13 +430,11 @@
     height: 160px;
     min-height: 0;
     padding: 2rem;
-    transition:
-      height 0.5s ease-in-out,
-      background 0.3s ease;
+    transition: height 0.5s ease-in-out;
   }
 
   .about__chapter.is-open {
-    height: var(--chapter-expanded-height, 360px);
+    height: 360px;
   }
 
   .about__chapter + .about__chapter {
@@ -470,38 +464,5 @@
   .about__chapter.is-open .about__chapter-number,
   .about__chapter.is-open .about__chapter-title {
     pointer-events: auto;
-  }
-}
-
-/* Accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-  .about__chapter,
-  .about__chapter-number,
-  .about__chapter-title,
-  .about__photo,
-  .about__chapter-content {
-    transition: none;
-  }
-  
-  .about__hero .about__eyebrow,
-  .about__title,
-  .about__hero .hero-description,
-  .about__hero-actions,
-  .about__signature-line,
-  .about__hero-image {
-    animation: none;
-  }
-
-  .about__photo:hover {
-    transform: none;
-  }
-}
-
-/* Smooth chapter navigation */
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
   }
 }
