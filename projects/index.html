@@ -102,7 +102,6 @@
           <div class="projects__card-tags"></div>
         </article>
       </template>
-
     </section>
 
     <!-- Remaining projects -->
@@ -110,9 +109,35 @@
       <p class="section-eyebrow">03 / The Collection</p>
       <h2 class="projects__section-title" id="moreProjectsTitle">More projects</h2>
 
-      <div class="projects__collection" id="moreProjects">
+      <!-- Search and filter controls -->
+      <div class="projects__filters">
+        <label class="sr-only" for="projectSearch">Search projects</label>
+        <input class="projects__search" id="projectSearch" type="search" placeholder="Search projects or technologies..." autocomplete="off" />
 
+        <label class="sr-only" for="projectCategory">Filter by category</label>
+        <select class="projects__category-filter" id="projectCategory">
+          <option value="all">All categories</option>
+        </select>
       </div>
+
+      <p class="projects__results" id="projectResults" role="status"></p>
+
+      <!-- Remaining projects -->
+      <div class="projects__collection" id="moreProjects" role="region" aria-labelledby="moreProjectsTitle" tabindex="0"></div>
+
+      <!-- Collection row template -->
+      <template id="projectRowTemplate">
+        <button class="projects__collection-item" type="button">
+          <span class="projects__collection-category"></span>
+
+          <span class="projects__collection-body">
+            <span class="projects__collection-title"></span>
+            <span class="projects__collection-summary"></span>
+          </span>
+
+          <span class="projects__collection-arrow" aria-hidden="true">↗</span>
+        </button>
+      </template>
     </section>
   </main>
 

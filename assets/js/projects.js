@@ -12,6 +12,11 @@ async function loadProjects() {
   const featured = projects
     .filter((project) => project.featured)
     .slice(0, 3);
+  const featuredIds = new Set(featured.map((project) => project.id));
+
+  const remaining = projects
+    .filter((project) => !featuredIds.has(project.id))
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   const container = document.getElementById("featuredProjects");
   const template = document.getElementById("featuredCardTemplate");
@@ -24,7 +29,6 @@ async function loadProjects() {
     empty.className = "projects__card projects__card--empty";
     empty.textContent = "No featured projects right now.";
     container.append(empty);
-    return;
   }
 
   // Create one card for each featured project
@@ -57,7 +61,7 @@ async function loadProjects() {
   const dialog = document.getElementById("projectDialog");
 
   function openProject(card) {
-    const project = featured.find(
+    const project = projects.find(
       (item) => item.id === card.dataset.projectId
     );
 
@@ -93,6 +97,81 @@ async function loadProjects() {
 
     dialog.showModal();
   }
+
+  // Remaining projects collection
+  const collection = document.getElementById("moreProjects");
+  const rowTemplate = document.getElementById("projectRowTemplate");
+  const searchInput = document.getElementById("projectSearch");
+  const categoryFilter = document.getElementById("projectCategory");
+  const results = document.getElementById("projectResults");
+
+  // Generate category options from the project data
+  const categories = [...new Set(remaining.map((project) => project.category))].sort();
+
+  for (const category of categories) {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.append(option);
+  }
+
+  // Render the collection using the active filters
+  function renderCollection() {
+    const query = searchInput.value.trim().toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    const filtered = remaining.filter((project) => {
+      const matchesCategory =
+        selectedCategory === "all" || project.category === selectedCategory;
+
+      const searchableText = [
+        project.title,
+        project.category,
+        project.summary,
+        ...project.tags
+      ].join(" ").toLowerCase();
+
+      const matchesSearch = searchableText.includes(query);
+
+      return matchesCategory && matchesSearch;
+    });
+
+    collection.replaceChildren();
+    collection.scrollTop = 0;
+
+    results.textContent = `Showing ${filtered.length} of ${remaining.length} projects`;
+
+    // Display a message when nothing matches
+    if (filtered.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "projects__collection-empty";
+      empty.textContent = "No matching projects. Try a different search or category.";
+      collection.append(empty);
+      return;
+    }
+
+    // Create a row for each matching project
+    for (const project of filtered) {
+      const row = rowTemplate.content.firstElementChild.cloneNode(true);
+
+      row.dataset.projectId = project.id;
+
+      row.querySelector(".projects__collection-category").textContent = project.category;
+      row.querySelector(".projects__collection-title").textContent = project.title;
+      row.querySelector(".projects__collection-summary").textContent = project.summary;
+
+      row.addEventListener("click", () => openProject(row));
+
+      collection.append(row);
+    }
+  }
+
+  // Update immediately when searching or changing category
+  searchInput.addEventListener("input", renderCollection);
+  categoryFilter.addEventListener("change", renderCollection);
+
+  // Initial display
+  renderCollection();
   
   // Close the dialog when clicking outside it
   dialog.addEventListener("click", (event) => {
