@@ -1,4 +1,3 @@
-
 /* Hero */
 
 .about__hero {
@@ -11,14 +10,12 @@
   padding: 2rem 0 3rem;
 }
 
-/* Hero image */
-
-.about__hero-image {
+.about__hero-visual {
   display: flex;
   justify-content: center;
 }
 
-.about__photo {
+.about__hero-photo {
   display: block;
   width: min(82%, 360px);
   aspect-ratio: 3 / 4;
@@ -35,17 +32,15 @@
     box-shadow 0.4s ease;
 }
 
-.about__photo:hover {
+.about__hero-photo:hover {
   transform: scale(1.035);
   outline-color: color-mix(in srgb, var(--color-accent) 85%, transparent);
   box-shadow: 0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 
 .about__hero-actions {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -63,7 +58,7 @@
   transition: color 0.2s ease;
 }
 
-.about__scroll-cue span:last-child {
+.about__scroll-cue > span:last-child {
   color: var(--color-accent);
   font-size: 1.3rem;
   line-height: 1;
@@ -74,7 +69,7 @@
   color: var(--color-text);
 }
 
-.about__scroll-cue:hover span:last-child {
+.about__scroll-cue:hover > span:last-child {
   transform: translateY(4px);
 }
 
@@ -83,28 +78,9 @@
   outline-offset: 6px;
 }
 
-
-/* Signature line */
-
 .about__signature-line {
   grid-column: 1 / -1;
-  width: 90%;
-  height: 24px;
   margin: 0 auto;
-}
-
-/* Hero entrance animations */
-
-@keyframes about-rise {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @keyframes about-slide-in {
@@ -119,23 +95,17 @@
   }
 }
 
-.about__hero .about__eyebrow,
-.about__title,
-.about__hero .hero-description,
-.about__hero-actions,
-.about__signature-line {
-  animation: about-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+@media (prefers-reduced-motion: no-preference) {
+  .about__signature-line {
+    animation: hero-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
+  }
+
+  .about__hero-actions { animation-delay: 0.6s; }
+  .about__hero-visual {
+    animation-name: about-slide-in;
+    animation-delay: 0.5s;
+  }
 }
-
-/* Staggered entrance */
-
-.about__hero .about__eyebrow { animation-delay: 0.1s;}
-.about__title { animation-delay: 0.25s; }
-.about__hero .hero-description { animation-delay: 0.45s; }
-.about__hero-actions { animation-delay: 0.6s; }
-.about__signature-line { animation-delay: 0.75s; }
-
-.about__hero-image { animation: about-slide-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
 
 /* Chapters */
 
@@ -145,11 +115,8 @@
 }
 
 .about__chapters-title {
-  margin: 0 0 .75rem;
+  margin: 0 0 0.75rem;
   font-size: clamp(2.25rem, 4.5vw, 4rem);
-  font-weight: 650;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
 }
 
 .about__chapters-hint {
@@ -161,9 +128,6 @@
 .about__chapters-hint span {
   color: var(--color-accent);
 }
-
-
-/* Chapter panels */
 
 .about__chapters {
   display: flex;
@@ -193,8 +157,6 @@
   border-left: 1px solid var(--color-border);
 }
 
-/* Chapter buttons */
-
 .about__chapter-toggle {
   position: relative;
   display: block;
@@ -214,8 +176,6 @@
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
-
-/* Chapter typography */
 
 .about__chapter-number {
   position: absolute;
@@ -266,8 +226,6 @@
   color: var(--color-accent);
 }
 
-/* Chapter content */
-
 .about__chapter-content {
   position: absolute;
   inset: 5.5rem 2.25rem 2.25rem;
@@ -286,7 +244,7 @@
   transition-delay: 0.15s, 0s;
 }
 
-.about__chapter-content p {
+.about__chapter-content > p {
   margin: 1.5rem 0 0;
   color: var(--color-muted);
   line-height: 1.7;
@@ -305,37 +263,28 @@
 .about__closing-title {
   margin: 0;
   font-size: clamp(2rem, 3.6vw, 3.25rem);
-  font-weight: 650;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
 }
 
-/* Closing signature */
-
-.about__closing-line {
+.about__closing-signature {
   display: block;
   width: min(100%, 980px);
   height: auto;
   margin: 2.5rem 0 3rem;
 }
 
-.about__closing-line path {
+.about__closing-signature path {
   stroke-width: 2.75;
   stroke-linecap: round;
 }
 
-/* Scroll-drawn signature */
-
-.about__closing-line.is-animating .about__closing-stroke {
+.about__closing-signature.is-animating .about__closing-stroke {
   stroke-dasharray: 100 200;
   stroke-dashoffset: 100;
 }
 
-.about__closing-line.is-animating .about__closing-dot {
+.about__closing-signature.is-animating .about__closing-dot {
   opacity: 0;
 }
-
-/* Closing navigation */
 
 .about__closing-nav {
   display: flex;
@@ -362,8 +311,6 @@
   border-bottom-color: transparent;
 }
 
-/* Larger chapter section on desktop */
-
 @media (min-width: 761px) {
   .about__chapters-title {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -387,11 +334,11 @@
     padding: 3rem 0 2rem;
   }
 
-  .about__photo {
+  .about__hero-photo {
     width: min(62%, 220px);
   }
 
-  .about__title {
+  .about .hero__title {
     font-size: clamp(3rem, 12vw, 5rem);
   }
 
@@ -425,7 +372,7 @@
     width: auto;
     height: auto;
   }
-  
+
   .about__chapter-content {
     inset: 5.5rem 2rem 2rem;
     overflow: hidden;
@@ -446,21 +393,12 @@
   .about__chapter,
   .about__chapter-number,
   .about__chapter-title,
-  .about__photo,
+  .about__hero-photo,
   .about__chapter-content {
     transition: none;
   }
 
-  .about__hero .about__eyebrow,
-  .about__title,
-  .about__hero .hero-description,
-  .about__hero-actions,
-  .about__signature-line,
-  .about__hero-image {
-    animation: none;
-  }
-
-  .about__photo:hover {
+  .about__hero-photo:hover {
     transform: none;
   }
 }

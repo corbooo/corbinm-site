@@ -1,129 +1,81 @@
+function renderTags(container, tags) {
+  container.replaceChildren(...tags.map((tag) => {
+    const span = document.createElement("span");
+    span.textContent = tag;
+    return span;
+  }));
+}
 
 async function loadProjects() {
   const response = await fetch("../assets/data/projects.json");
-
-  if (!response.ok) {
-    throw new Error("Could not load projects.");
-  }
+  if (!response.ok) throw new Error("Could not load projects.");
 
   const projects = await response.json();
-
-  // Separate featured and remaining projects
-  const featured = projects
-    .filter((project) => project.featured)
-    .slice(0, 3);
-
+  const featured = projects.filter((project) => project.featured).slice(0, 3);
   const remaining = projects
     .filter((project) => !featured.includes(project))
     .sort((a, b) => b.date.localeCompare(a.date));
 
-  // Featured projects
-  const container = document.getElementById("featuredProjects");
-  const template = document.getElementById("featuredCardTemplate");
+  const featuredList = document.getElementById("projects-featured");
+  const cardTemplate = document.getElementById("projects-card-template");
+  const collection = document.getElementById("projects-collection");
+  const rowTemplate = document.getElementById("projects-row-template");
+  const searchInput = document.getElementById("projects-search");
+  const categoryFilter = document.getElementById("projects-category");
+  const results = document.getElementById("projects-results");
+  const dialog = document.getElementById("projects-dialog");
 
   if (featured.length === 0) {
     const empty = document.createElement("div");
     empty.className = "projects__card projects__card--empty";
     empty.textContent = "No featured projects right now.";
-    container.append(empty);
+    featuredList.append(empty);
   }
 
   for (const project of featured) {
-    const card = template.content.firstElementChild.cloneNode(true);
-
+    const card = cardTemplate.content.firstElementChild.cloneNode(true);
     card.dataset.projectId = project.id;
-    card.tabIndex = 0;
-    card.setAttribute("role", "button");
-    card.setAttribute("aria-haspopup", "dialog");
     card.setAttribute("aria-label", `View details for ${project.title}`);
-
     card.querySelector(".projects__card-category").textContent = project.category;
     card.querySelector(".projects__card-title").textContent = project.title;
-    card.querySelector(".projects__card-description").textContent = project.summary;
-
-    const tagsContainer = card.querySelector(".projects__card-tags");
-
-    for (const tag of project.tags.slice(0, 3)) {
-      const span = document.createElement("span");
-      span.textContent = tag;
-      tagsContainer.append(span);
-    }
-
-    container.append(card);
+    card.querySelector(".projects__card-summary").textContent = project.summary;
+    renderTags(card.querySelector(".projects__card-tags"), project.tags.slice(0, 3));
+    featuredList.append(card);
   }
 
-  // Expanded project dialog
-  const dialog = document.getElementById("projectDialog");
-
   function openProject(element) {
-    const project = projects.find(
-      (item) => item.id === element.dataset.projectId
-    );
-
+    const project = projects.find((item) => item.id === element.dataset.projectId);
     if (!project) return;
 
-    document.getElementById("projectDialogCategory").textContent = project.category;
-    document.getElementById("projectDialogTitle").textContent = project.title;
-    document.getElementById("projectDialogDescription").textContent = project.description;
+    document.getElementById("projects-dialog-category").textContent = project.category;
+    document.getElementById("projects-dialog-title").textContent = project.title;
+    document.getElementById("projects-dialog-description").textContent = project.description;
+    renderTags(document.getElementById("projects-dialog-tags"), project.tags);
 
-    const tagsContainer = document.getElementById("projectDialogTags");
-    tagsContainer.replaceChildren();
-
-    for (const tag of project.tags) {
-      const span = document.createElement("span");
-      span.textContent = tag;
-      tagsContainer.append(span);
+    for (const name of ["github", "demo"]) {
+      const link = document.getElementById(`projects-dialog-${name}`);
+      const url = project.links?.[name];
+      link.hidden = !url;
+      if (url) link.href = url;
     }
 
-    // Project links
-    const githubLink = document.getElementById("projectDialogGitHub");
-    const demoLink = document.getElementById("projectDialogDemo");
-
-    githubLink.hidden = !project.links?.github;
-    demoLink.hidden = !project.links?.demo;
-
-    if (project.links?.github) {
-      githubLink.href = project.links.github;
-    }
-
-    if (project.links?.demo) {
-      demoLink.href = project.links.demo;
-    }
-
-    const linksSection = document.getElementById("projectDialogLinksSection");
-    linksSection.hidden = !project.links?.github && !project.links?.demo;
+    document.getElementById("projects-dialog-links-section").hidden =
+      !project.links?.github && !project.links?.demo;
 
     dialog.showModal();
   }
 
-  // Remaining projects
-  const collection = document.getElementById("moreProjects");
-  const rowTemplate = document.getElementById("projectRowTemplate");
-  const searchInput = document.getElementById("projectSearch");
-  const categoryFilter = document.getElementById("projectCategory");
-  const results = document.getElementById("projectResults");
-
-  // Populate category filter
-  const categories = [
-    ...new Set(remaining.map((project) => project.category))
-  ].sort();
-
+  const categories = [...new Set(remaining.map((project) => project.category))].sort();
   for (const category of categories) {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    categoryFilter.append(option);
+    categoryFilter.add(new Option(category, category));
   }
 
-  // Render projects based on search and category
   function renderCollection() {
     const query = searchInput.value.trim().toLowerCase();
     const selectedCategory = categoryFilter.value;
-
     const filtered = remaining.filter((project) => {
       const matchesCategory =
         selectedCategory === "all" || project.category === selectedCategory;
-
       const searchableText = [
         project.title,
         project.category,
@@ -136,7 +88,6 @@ async function loadProjects() {
 
     collection.replaceChildren();
     collection.scrollTop = 0;
-
     results.textContent = `Showing ${filtered.length} of ${remaining.length} projects`;
 
     if (filtered.length === 0) {
@@ -149,67 +100,51 @@ async function loadProjects() {
 
     for (const project of filtered) {
       const row = rowTemplate.content.firstElementChild.cloneNode(true);
-
       row.dataset.projectId = project.id;
-
-      row.querySelector(".projects__collection-category").textContent = project.category;
-      row.querySelector(".projects__collection-title").textContent = project.title;
-      row.querySelector(".projects__collection-summary").textContent = project.summary;
-
+      row.querySelector(".projects__row-category").textContent = project.category;
+      row.querySelector(".projects__row-title").textContent = project.title;
+      row.querySelector(".projects__row-summary").textContent = project.summary;
       collection.append(row);
     }
   }
 
-  // Collection interactions
   searchInput.addEventListener("input", renderCollection);
   categoryFilter.addEventListener("change", renderCollection);
 
-  collection.addEventListener("click", (event) => {
-    const row = event.target.closest(".projects__collection-item");
+  for (const list of [featuredList, collection]) {
+    list.addEventListener("click", (event) => {
+      const item = event.target.closest("[data-project-id]");
+      if (item) openProject(item);
+    });
+  }
 
-    if (row) openProject(row);
-  });
-
-  renderCollection();
-
-  // Featured card interactions
-  container.addEventListener("click", (event) => {
-    const card = event.target.closest(".projects__card");
-
-    if (card) openProject(card);
-  });
-
-  container.addEventListener("keydown", (event) => {
+  // Collection rows are native buttons; only the featured cards need key handling.
+  featuredList.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
-
-    const card = event.target.closest(".projects__card");
-
+    const card = event.target.closest("[data-project-id]");
     if (card && event.target === card) {
       event.preventDefault();
       openProject(card);
     }
   });
 
-  // Close dialog when clicking outside
+  // Compare bounds so clicks inside the dialog's padding do not close it.
   dialog.addEventListener("click", (event) => {
     const rect = dialog.getBoundingClientRect();
-
-    const clickedOutside =
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom;
-
-    if (clickedOutside) {
+    if (
+      event.clientX < rect.left || event.clientX > rect.right ||
+      event.clientY < rect.top || event.clientY > rect.bottom
+    ) {
       dialog.close();
     }
   });
+
+  renderCollection();
 }
 
 loadProjects().catch((error) => {
   console.error(error);
-  document.getElementById("featuredProjects").textContent =
-    "Projects could not be loaded.";
-  document.getElementById("moreProjects").textContent =
-    "Projects could not be loaded.";
+  for (const id of ["projects-featured", "projects-collection"]) {
+    document.getElementById(id).textContent = "Projects could not be loaded.";
+  }
 });

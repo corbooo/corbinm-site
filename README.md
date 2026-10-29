@@ -1,14 +1,24 @@
-# Refactored Personal Site
+# Corbin Moseman — Portfolio
 
-This refactor keeps the same HTML structure, class names, and page layout while moving repeated JavaScript logic into shared modules:
+A static portfolio built with HTML, CSS, JavaScript, and JSON.
 
-- `assets/js/lib/data.js` — shared JSON loading with caching
-- `assets/js/lib/components.js` — shared card renderers
-- `assets/js/lib/utils.js` — escaping, sorting, and date helpers
+Run a local server from this folder (for example, VS Code Live Server or `python3 -m http.server 8000`). The Projects page fetches JSON, so open the site through the server rather than double-clicking an HTML file.
 
-The page entry files remain:
-- `assets/js/home.js`
-- `assets/js/about.js`
-- `assets/js/projects.js`
-- `assets/js/experience.js`
-- `assets/js/shared.js`
+## Structure
+
+- `index.html`, `about/`, `projects/`, `experience/` — page markup
+- `assets/css/styles.css` — shared layout, typography, navigation, footer, and hero components
+- `assets/css/pages/` — page-specific layout and interactions
+- `assets/js/shared.js` — footer year
+- `assets/js/` — each page's behavior
+- `assets/data/` — project, work, and education data
+- `assets/img/` and `assets/Resume.pdf` — existing assets
+
+## Naming
+
+- CSS uses `block__element--modifier`, with simple standalone classes such as `section-title` and `editorial-link`.
+- Shared hero elements use `hero__…`; page-specific elements use `home__…`, `about__…`, or `projects__…`.
+- IDs use kebab-case and a page prefix, except the existing `#chapters` anchor and shared `#year` hook.
+- JavaScript variables and functions use camelCase; state classes use `is-…` or `has-…`.
+
+Experience is still in progress. Its markup, stylesheet, script, and data were excluded from this refinement.

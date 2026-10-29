@@ -14,8 +14,7 @@
   <title>Corbin - Projects</title>
 </head>
 
-<body>
-  <!-- Navigation -->
+<body class="projects">
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
       <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Home">
@@ -32,39 +31,24 @@
     </nav>
   </header>
 
-  <!-- Projects page -->
-  <main class="site-main projects">
-    <!-- Hero -->
-    <section class="projects__hero">
+  <main class="site-main">
+    <section class="hero projects__hero">
       <div class="projects__hero-main">
 
-        <!-- Hero text -->
-        <div class="projects__hero-copy">
-          <p class="section-eyebrow">01 / Projects</p>
+        <div>
+          <p class="section-eyebrow hero__eyebrow">01 / Projects</p>
 
-          <h1 class="projects__title">
+          <h1 class="hero__title">
             Things I've built<span class="accent">.</span>
           </h1>
 
-          <p class="hero-description">A collection of software, experiments, and ideas brought to life.</p>
+          <p class="hero__description">A collection of software, experiments, and ideas brought to life.</p>
         </div>
 
-        <!-- Hero coding symbol -->
-        <div class="projects__hero-visual">
-          <svg
-            class="projects__hero-mark"
-            viewBox="0 0 500 240"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="18"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <!-- Curly braces -->
+        <div class="hero__visual projects__hero-visual">
+          <svg class="projects__hero-mark" viewBox="0 0 500 240" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path class="projects__mark-brace projects__mark-brace--left" pathLength="100" d="M120 24 C87 24 83 42 83 70 V86 C83 107 72 118 52 120 C72 122 83 133 83 154 V170 C83 198 87 216 120 216" />
             <path class="projects__mark-brace projects__mark-brace--right" pathLength="100" d="M380 24 C413 24 417 42 417 70 V86 C417 107 428 118 448 120 C428 122 417 133 417 154 V170 C417 198 413 216 380 216" />
-            <!-- Inner code symbol -->
             <g class="projects__mark-inner">
               <path class="projects__mark-code" pathLength="100" d="M205 72 L157 120 L205 168" />
               <path class="projects__mark-code" pathLength="100" d="M276 62 L235 178" />
@@ -74,29 +58,27 @@
         </div>
       </div>
 
-      <!-- Signature line -->
-      <svg class="projects__signature-line signature-line signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="projects__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0 29 H555 L580 8 H625 L650 29 H1000" vector-effect="non-scaling-stroke" />
       </svg>
     </section>
 
-    <!-- Featured work -->
-    <section class="projects__section" aria-labelledby="featuredTitle">
+    <section class="projects__section projects__section--featured" aria-labelledby="projects-featured-title">
       <p class="section-eyebrow">02 / Selected Work</p>
-      <h2 class="projects__section-title" id="featuredTitle">Featured projects</h2>
+      <h2 class="section-title" id="projects-featured-title">Featured projects</h2>
 
-      <div class="projects__featured" id="featuredProjects"></div>
+      <div class="projects__featured" id="projects-featured"></div>
 
-      <template id="featuredCardTemplate">
-        <article class="projects__card">
-          <div class="projects__card-top">
+      <template id="projects-card-template">
+        <article class="projects__card" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="projects__card-header">
             <span class="projects__card-category"></span>
             <span class="projects__card-arrow" aria-hidden="true">↗</span>
           </div>
 
           <div>
             <h3 class="projects__card-title"></h3>
-            <p class="projects__card-description"></p>
+            <p class="projects__card-summary"></p>
           </div>
 
           <div class="projects__card-tags"></div>
@@ -104,46 +86,42 @@
       </template>
     </section>
 
-    <!-- Remaining projects -->
-    <section class="projects__section" aria-labelledby="moreProjectsTitle">
+    <section class="projects__section" aria-labelledby="projects-collection-title">
       <p class="section-eyebrow">03 / The Collection</p>
-      <h2 class="projects__section-title" id="moreProjectsTitle">More projects</h2>
+      <h2 class="section-title" id="projects-collection-title">More projects</h2>
 
-      <!-- Search and filter controls -->
       <div class="projects__filters">
-        <label class="sr-only" for="projectSearch">Search projects</label>
-        <input class="projects__search" id="projectSearch" type="search" placeholder="Search projects or technologies..." autocomplete="off" />
+        <label class="sr-only" for="projects-search">Search projects</label>
+        <input class="projects__search" id="projects-search" type="search" placeholder="Search projects or technologies..." autocomplete="off" />
 
-        <label class="sr-only" for="projectCategory">Filter by category</label>
-        <select class="projects__category-filter" id="projectCategory">
+        <label class="sr-only" for="projects-category">Filter by category</label>
+        <select class="projects__category" id="projects-category">
           <option value="all">All categories</option>
         </select>
       </div>
 
-      <p class="projects__results" id="projectResults" role="status"></p>
+      <p class="projects__results" id="projects-results" role="status"></p>
 
-      <div class="projects__collection" id="moreProjects" role="region" aria-labelledby="moreProjectsTitle" tabindex="0"></div>
+      <div class="projects__collection" id="projects-collection" role="region" aria-labelledby="projects-collection-title" tabindex="0"></div>
 
-      <!-- Collection row template -->
-      <template id="projectRowTemplate">
-        <button class="projects__collection-item" type="button">
-          <span class="projects__collection-category"></span>
+      <template id="projects-row-template">
+        <button class="projects__row" type="button">
+          <span class="projects__row-category"></span>
 
-          <span class="projects__collection-body">
-            <span class="projects__collection-title"></span>
-            <span class="projects__collection-summary"></span>
+          <span class="projects__row-content">
+            <span class="projects__row-title"></span>
+            <span class="projects__row-summary"></span>
           </span>
 
-          <span class="projects__collection-arrow" aria-hidden="true">↗</span>
+          <span class="projects__row-arrow" aria-hidden="true">↗</span>
         </button>
       </template>
     </section>
   </main>
 
-  <!-- Expanded project view -->
-  <dialog class="projects__dialog" id="projectDialog" aria-labelledby="projectDialogTitle">
-    <div class="projects__dialog-top">
-      <span class="projects__dialog-category" id="projectDialogCategory"></span>
+  <dialog class="projects__dialog" id="projects-dialog" aria-labelledby="projects-dialog-title">
+    <div class="projects__dialog-header">
+      <span class="projects__dialog-category" id="projects-dialog-category"></span>
 
       <form method="dialog">
         <button class="projects__dialog-close" type="submit" aria-label="Close project details">
@@ -152,32 +130,29 @@
       </form>
     </div>
 
-    <h2 class="projects__dialog-title" id="projectDialogTitle"></h2>
+    <h2 class="projects__dialog-title" id="projects-dialog-title"></h2>
 
-    <p class="projects__dialog-description" id="projectDialogDescription"></p>
-    
-    <!-- Technologies -->
+    <p class="projects__dialog-description" id="projects-dialog-description"></p>
+
     <section class="projects__dialog-section">
       <h3 class="projects__dialog-heading">Technologies</h3>
-      <div class="projects__dialog-tags" id="projectDialogTags"></div>
+      <div class="projects__dialog-tags" id="projects-dialog-tags"></div>
     </section>
 
-    <!-- Project links -->
-    <section class="projects__dialog-section" id="projectDialogLinksSection">
+    <section class="projects__dialog-section" id="projects-dialog-links-section">
       <h3 class="projects__dialog-heading">Project links</h3>
 
       <div class="projects__dialog-links">
-        <a class="editorial-link" id="projectDialogGitHub" target="_blank" rel="noopener noreferrer" hidden> GitHub ↗</a>
-        <a class="editorial-link" id="projectDialogDemo" target="_blank" rel="noopener noreferrer" hidden> Live Demo ↗</a>
+        <a class="editorial-link" id="projects-dialog-github" target="_blank" rel="noopener noreferrer" hidden> GitHub ↗</a>
+        <a class="editorial-link" id="projects-dialog-demo" target="_blank" rel="noopener noreferrer" hidden> Live Demo ↗</a>
       </div>
     </section>
 
   </dialog>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <svg class="signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000"/>
+      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000" />
     </svg>
 
     <div class="site-footer__inner">

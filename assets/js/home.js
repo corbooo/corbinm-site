@@ -2,9 +2,9 @@ const revealElements = document.querySelectorAll(".home__reveal");
 
 const reducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
-).matches;
+);
 
-if ("IntersectionObserver" in window && !reducedMotion) {
+if ("IntersectionObserver" in window && !reducedMotion.matches) {
   document.documentElement.classList.add("has-scroll-reveal");
 
   const observer = new IntersectionObserver((entries) => {
@@ -19,22 +19,18 @@ if ("IntersectionObserver" in window && !reducedMotion) {
     rootMargin: "0px 0px -48px 0px"
   });
 
-  revealElements.forEach((element) => {
-    observer.observe(element);
-  });
+  revealElements.forEach((element) => observer.observe(element));
 }
 
 const header = document.querySelector(".site-header");
 
-function updateNavbar() {
+function updateHeader() {
   header.classList.toggle(
-    "site-header--visible",
+    "is-visible",
     window.scrollY > 250
   );
 }
 
-window.addEventListener("scroll", updateNavbar, {
-  passive: true
-});
+window.addEventListener("scroll", updateHeader, { passive: true });
 
-updateNavbar();
+updateHeader();

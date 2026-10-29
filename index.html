@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/img/favicon.png">
-  <link rel="stylesheet" href="assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="assets/css/pages/home.css?v=7"/>
+  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/css/pages/home.css?v=7" />
   <script type="module" src="assets/js/shared.js"></script>
   <script type="module" src="assets/js/home.js"></script>
   <title>Corbin - Home</title>
@@ -28,29 +28,27 @@
     </nav>
   </header>
 
-  <!-- Home page -->
-  <main class="site-main home__main">
+  <main class="site-main">
 
-    <!-- Hero -->
-    <section class="home__hero">
+    <section class="hero home__hero">
       <div>
-        <p class="home__eyebrow section-eyebrow">
+        <p class="section-eyebrow hero__eyebrow">
           <span class="home__eyebrow-desktop">Computer Science Student / University of Houston - Clear Lake</span>
           <span class="home__eyebrow-mobile">CS Student / UHCL</span>
         </p>
 
-        <div class="home__name-row">
-          <h1 class="home__name hero-title">
+        <div class="home__title-row">
+          <h1 class="hero__title">
             Corbin<br>
             Moseman<span class="accent">.</span>
           </h1>
 
-          <img class="home__mobile-logo" src="assets/img/logo.png" alt=""/>
+          <img class="home__hero-mobile-logo" src="assets/img/logo.png" alt="" />
         </div>
 
-        <p class="home__intro hero-description">I enjoy turning ideas into working software—whether that's a desktop application, an API, or something built for the web.</p>
+        <p class="hero__description">I enjoy turning ideas into working software—whether that's a desktop application, an API, or something built for the web.</p>
 
-        <div class="home__hero-actions">
+        <div class="hero__actions home__hero-actions">
           <a class="editorial-link" href="about/">
             More about me <span aria-hidden="true">↗</span>
           </a>
@@ -65,13 +63,12 @@
         </div>
       </div>
 
-      <div class="home__hero-visual">
-        <img class="home__hero-logo" src="assets/img/logo.png" alt="CM monogram"/>
+      <div class="hero__visual home__hero-visual">
+        <img class="home__hero-logo" src="assets/img/logo.png" alt="CM monogram" />
       </div>
 
       <div class="home__hero-bottom">
-        <!-- Signature line -->
-        <svg class="home__signature-line signature-line signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="home__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 29 H150 L175 8 H220 L245 29 H1000" vector-effect="non-scaling-stroke" />
         </svg>
 
@@ -80,13 +77,12 @@
       </div>
     </section>
 
-    <!-- Introduction -->
-    <section class="home__about home__reveal">
+    <section class="home__about home__reveal" aria-labelledby="home-about-title">
 
       <p class="section-eyebrow">/ About Me</p>
 
       <div class="home__about-content">
-        <h2 id="homeAboutTitle">A little about me.</h2>
+        <h2 class="section-title" id="home-about-title">A little about me.</h2>
 
         <p>
           I'm a Computer Science student at the University
@@ -102,11 +98,10 @@
       </div>
     </section>
 
-    <!-- Expore Navigation -->
-    <section class="home__explore" aria-labelledby="homeExploreTitle">
+    <section class="home__explore" aria-labelledby="home-explore-title">
       <div class="home__explore-heading home__reveal">
         <p class="section-eyebrow">/ Explore</p>
-        <h2 id="homeExploreTitle">Where to next?</h2>
+        <h2 class="section-title" id="home-explore-title">Where to next?</h2>
       </div>
 
       <nav aria-label="Explore my website">
@@ -153,7 +148,7 @@
 
   <footer class="site-footer">
     <svg class="signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000"/>
+      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000" />
     </svg>
 
     <div class="site-footer__inner">

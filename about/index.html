@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +14,7 @@
   <title>Corbin - About</title>
 </head>
 
-<body>
-  <!-- Navigation -->
+<body class="about">
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
       <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Home">
@@ -32,27 +30,23 @@
     </nav>
   </header>
 
-  <!-- About page -->
-  <main class="site-main about">
-    <!-- Hero -->
-    <section class="about__hero">
-      <!-- Left: Headshot -->
-      <div class="about__hero-image">
-        <img class="about__photo" src="../assets/img/headshot.jpg" alt="Portrait of Corbin Moseman"/>
+  <main class="site-main">
+    <section class="hero about__hero">
+      <div class="hero__visual about__hero-visual">
+        <img class="about__hero-photo" src="../assets/img/headshot.jpg" alt="Portrait of Corbin Moseman" />
       </div>
 
-      <!-- Right: Introduction -->
       <div>
-        <p class="about__eyebrow section-eyebrow">01 / About Me</p>
+        <p class="section-eyebrow hero__eyebrow">01 / About Me</p>
 
-        <h1 class="about__title hero-title">
+        <h1 class="hero__title">
           Still in<br>
           development<span class="accent">.</span>
         </h1>
 
-        <p class="hero-description">Get to know the person behind the code.</p>
+        <p class="hero__description">Get to know the person behind the code.</p>
 
-        <div class="about__hero-actions">
+        <div class="hero__actions about__hero-actions">
           <a class="about__scroll-cue" href="#chapters">
             <span>Scroll to explore</span>
             <span aria-hidden="true">↓</span>
@@ -64,16 +58,14 @@
         </div>
       </div>
 
-      <!-- Signature line -->
-      <svg class="about__signature-line signature-line signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="about__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0 29 H350 L375 8 H420 L445 29 H1000" vector-effect="non-scaling-stroke" />
       </svg>
     </section>
-    
-    <!-- Chapters -->
-    <section class="about__chapters-section" id="chapters" aria-labelledby="chaptersTitle">
-      <p class="about__eyebrow section-eyebrow">02 / The Chapters</p>
-      <h2 class="about__chapters-title" id="chaptersTitle">Beyond the README</h2>
+
+    <section class="about__chapters-section" id="chapters" aria-labelledby="about-chapters-title">
+      <p class="section-eyebrow">02 / The Chapters</p>
+      <h2 class="section-title about__chapters-title" id="about-chapters-title">Beyond the README</h2>
       <p class="about__chapters-hint">
         Click a chapter to explore
         <span aria-hidden="true">↘</span>
@@ -81,60 +73,59 @@
 
       <div class="about__chapters">
         <article class="about__chapter">
-          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter1Content">
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="about-chapter-1-content">
             <span class="about__chapter-number">01</span>
             <span class="about__chapter-title">The Beginning</span>
           </button>
 
-          <div class="about__chapter-content" id="chapter1Content">
-              <p>I'm from League City, Texas, and I'm currently studying Computer Science at the University of Houston–Clear Lake. My college journey started at Texas A&M Galveston before I transferred to UHCL, where I've been continuing to explore my interest in technology, problem-solving, and building things of my own.</p>
+          <div class="about__chapter-content" id="about-chapter-1-content">
+            <p>I'm from League City, Texas, and I'm currently studying Computer Science at the University of Houston–Clear Lake. My college journey started at Texas A&M Galveston before I transferred to UHCL, where I've been continuing to explore my interest in technology, problem-solving, and building things of my own.</p>
           </div>
         </article>
 
         <article class="about__chapter">
-          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter2Content">
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="about-chapter-2-content">
             <span class="about__chapter-number">02</span>
             <span class="about__chapter-title">What I Create</span>
           </button>
 
-          <div class="about__chapter-content" id="chapter2Content">
-              <p>I enjoy turning ideas into something real, whether that's a useful application, a small game, or a new design. I've worked on projects ranging from fitness-related tools to interactive software, and lately I've been exploring graphic design and animation too. I like the challenge of making something that doesn't just work, but also looks and feels good to use.</p>
+          <div class="about__chapter-content" id="about-chapter-2-content">
+            <p>I enjoy turning ideas into something real, whether that's a useful application, a small game, or a new design. I've worked on projects ranging from fitness-related tools to interactive software, and lately I've been exploring graphic design and animation too. I like the challenge of making something that doesn't just work, but also looks and feels good to use.</p>
           </div>
         </article>
 
         <article class="about__chapter">
-          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter3Content">
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="about-chapter-3-content">
             <span class="about__chapter-number">03</span>
             <span class="about__chapter-title">Beyond the Code</span>
           </button>
 
-          <div class="about__chapter-content" id="chapter3Content">
-              <p>When I'm not coding, I'm usually finding something else to keep me busy. My other hobbies include staying active, typically by working out, following my favorite sporting teams, experimenting with new tech, and the occasional video game.</p>
+          <div class="about__chapter-content" id="about-chapter-3-content">
+            <p>When I'm not coding, I'm usually finding something else to keep me busy. My other hobbies include staying active, typically by working out, following my favorite sporting teams, experimenting with new tech, and the occasional video game.</p>
           </div>
         </article>
 
         <article class="about__chapter">
-          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter4Content">
+          <button class="about__chapter-toggle" type="button" aria-expanded="false" aria-controls="about-chapter-4-content">
             <span class="about__chapter-number">04</span>
             <span class="about__chapter-title">What's Next</span>
           </button>
 
-          <div class="about__chapter-content" id="chapter4Content">
-              <p>I'm working toward graduating with my Computer Science degree in 2027, and I'm excited to start applying what I've learned in the real world. I want to keep improving as a developer and creating things that people genuinely enjoy using all while exploring what the newest technology has to offer. There's still so much I must learn, and I'm looking forward to seeing where it takes me.</p>
+          <div class="about__chapter-content" id="about-chapter-4-content">
+            <p>I'm working toward graduating with my Computer Science degree in 2027, and I'm excited to start applying what I've learned in the real world. I want to keep improving as a developer and creating things that people genuinely enjoy using all while exploring what the newest technology has to offer. There's still so much I must learn, and I'm looking forward to seeing where it takes me.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Closing -->
-    <section class="about__closing" aria-labelledby="closingTitle">
-      <p class="about__eyebrow section-eyebrow">03 / Signing Off</p>
+    <section class="about__closing" aria-labelledby="about-closing-title">
+      <p class="section-eyebrow">03 / Signing Off</p>
 
-      <h2 class="about__closing-title" id="closingTitle">
+      <h2 class="section-title about__closing-title" id="about-closing-title">
         That's my story... So far<span class="accent">.</span>
       </h2>
 
-      <svg class="about__closing-line signature-line" viewBox="0 0 920 260" aria-hidden="true">
+      <svg class="about__closing-signature signature-line" viewBox="0 0 920 260" aria-hidden="true">
         <path
           class="about__closing-stroke"
           pathLength="100"
@@ -181,7 +172,6 @@
         />
       </svg>
 
-      <!-- Continue exploring -->
       <nav class="about__closing-nav" aria-label="Continue exploring">
         <p class="about__closing-prompt">There's still more to explore.</p>
 
@@ -202,10 +192,9 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <svg class="signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000"/>
+      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000" />
     </svg>
 
     <div class="site-footer__inner">
