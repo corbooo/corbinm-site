@@ -49,15 +49,6 @@
 
 /* Hero introduction */
 
-.about__eyebrow {
-  margin: 0 0 1.5rem;
-  color: var(--color-accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .about__title {
   margin: 0;
   font-size: clamp(3.5rem, 6.9vw, 6.6rem);
@@ -424,7 +415,7 @@
   .about__hero {
     grid-template-columns: 1fr;
     min-height: auto;
-    row-gap: 2.5rem;
+    row-gap: 2rem;
     padding: 3rem 0 2rem;
   }
 
@@ -443,12 +434,18 @@
     height: auto;
   }
 
-  .about__chapter,
-  .about__chapter.is-open {
+  .about__chapter {
     flex: none;
-    height: auto;
-    min-height: 160px;
+    height: 160px;
+    min-height: 0;
     padding: 2rem;
+    transition:
+      height 0.5s ease-in-out,
+      background 0.3s ease;
+  }
+
+  .about__chapter.is-open {
+    height: var(--chapter-expanded-height, 360px);
   }
 
   .about__chapter + .about__chapter {
@@ -464,23 +461,11 @@
   }
 
   .about__chapter-content {
-    position: relative;
-    inset: auto;
-    display: grid;
-    grid-template-rows: 0fr;
+    position: absolute;
+    inset: 5.5rem 2rem 2rem;
+    display: block;
     margin-top: 0;
     overflow: hidden;
-    transition:
-      grid-template-rows 0.5s ease,
-      margin-top 0.5s ease,
-      opacity 0.25s ease,
-      visibility 0.5s;
-  }
-
-  .about__chapter.is-open .about__chapter-content {
-    grid-template-rows: 1fr;
-    margin-top: 3.5rem;
-    transition-delay: 0s, 0s, 0.15s, 0s;
   }
 
   .about__chapter.is-open .about__chapter-toggle {

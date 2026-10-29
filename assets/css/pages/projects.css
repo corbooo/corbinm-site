@@ -398,6 +398,9 @@ html:has(.projects__dialog[open]) {
 @media (max-width: 760px) {
   /* Hero */
 
+  .projects__hero {
+    padding: 3rem 0 2rem;
+  }
   .projects__hero-main {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -446,15 +449,10 @@ html:has(.projects__dialog[open]) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .projects__hero-copy .section-eyebrow,
   .projects__title,
   .projects__hero-copy .hero-description,
   .projects__hero-visual,
-  .projects__hero-mark path 
-  .projects__hero-copy .section-eyebrow,
-  .projects__title,
-  .projects__hero-copy .hero-description,
   .projects__section[aria-labelledby="featuredTitle"] > .section-eyebrow,
   #featuredTitle,
   #featuredProjects,
@@ -466,26 +464,23 @@ html:has(.projects__dialog[open]) {
     stroke-dashoffset: 0;
   }
 
-  .projects__hero-mark path {
-    stroke-dashoffset: 0;
-  }
-
   .projects__card,
-  .projects__card-arrow
+  .projects__card-arrow,
   .projects__dialog,
   .projects__dialog::backdrop,
-  .projects__mark-code,
   .projects__mark-brace,
   .projects__mark-inner {
     transition: none;
   }
 
-  .projects__card:hover,
   .projects__dialog,
-  .projects__hero-mark:hover .projects__mark-code,
+  .projects__card:hover,
   .projects__hero-mark:hover .projects__mark-brace,
   .projects__hero-mark:hover .projects__mark-inner {
     transform: none;
+  }
+
+  .projects__hero-mark:hover .projects__mark-inner {
     filter: none;
   }
 }
