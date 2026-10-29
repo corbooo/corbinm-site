@@ -8,22 +8,19 @@ async function loadProjects() {
 
   const projects = await response.json();
 
-  // Select up to three featured projects
+  // Separate featured and remaining projects
   const featured = projects
     .filter((project) => project.featured)
     .slice(0, 3);
-  const featuredIds = new Set(featured.map((project) => project.id));
 
   const remaining = projects
-    .filter((project) => !featuredIds.has(project.id))
+    .filter((project) => !featured.includes(project))
     .sort((a, b) => b.date.localeCompare(a.date));
 
+  // Featured projects
   const container = document.getElementById("featuredProjects");
   const template = document.getElementById("featuredCardTemplate");
 
-  container.replaceChildren();
-
-  // Handle no featured projects
   if (featured.length === 0) {
     const empty = document.createElement("div");
     empty.className = "projects__card projects__card--empty";
@@ -31,10 +28,9 @@ async function loadProjects() {
     container.append(empty);
   }
 
-  // Create one card for each featured project
   for (const project of featured) {
     const card = template.content.firstElementChild.cloneNode(true);
-    
+
     card.dataset.projectId = project.id;
     card.tabIndex = 0;
     card.setAttribute("role", "button");
@@ -45,24 +41,23 @@ async function loadProjects() {
     card.querySelector(".projects__card-title").textContent = project.title;
     card.querySelector(".projects__card-description").textContent = project.summary;
 
-    // Add technology tags
     const tagsContainer = card.querySelector(".projects__card-tags");
 
-    project.tags.slice(0, 3).forEach((tag) => {
+    for (const tag of project.tags.slice(0, 3)) {
       const span = document.createElement("span");
       span.textContent = tag;
       tagsContainer.append(span);
-    });
+    }
 
     container.append(card);
   }
-  
+
   // Expanded project dialog
   const dialog = document.getElementById("projectDialog");
 
-  function openProject(card) {
+  function openProject(element) {
     const project = projects.find(
-      (item) => item.id === card.dataset.projectId
+      (item) => item.id === element.dataset.projectId
     );
 
     if (!project) return;
@@ -71,42 +66,47 @@ async function loadProjects() {
     document.getElementById("projectDialogTitle").textContent = project.title;
     document.getElementById("projectDialogDescription").textContent = project.description;
 
-    // Display all technologies
     const tagsContainer = document.getElementById("projectDialogTags");
     tagsContainer.replaceChildren();
 
-    project.tags.forEach((tag) => {
+    for (const tag of project.tags) {
       const span = document.createElement("span");
       span.textContent = tag;
       tagsContainer.append(span);
-    });
+    }
 
-    // Update project links
+    // Project links
     const githubLink = document.getElementById("projectDialogGitHub");
     const demoLink = document.getElementById("projectDialogDemo");
 
     githubLink.hidden = !project.links?.github;
     demoLink.hidden = !project.links?.demo;
 
-    if (project.links?.github) { githubLink.href = project.links.github; }
-    if (project.links?.demo) { demoLink.href = project.links.demo; }
+    if (project.links?.github) {
+      githubLink.href = project.links.github;
+    }
 
-    // Hide the links section when no links are available
+    if (project.links?.demo) {
+      demoLink.href = project.links.demo;
+    }
+
     const linksSection = document.getElementById("projectDialogLinksSection");
     linksSection.hidden = !project.links?.github && !project.links?.demo;
 
     dialog.showModal();
   }
 
-  // Remaining projects collection
+  // Remaining projects
   const collection = document.getElementById("moreProjects");
   const rowTemplate = document.getElementById("projectRowTemplate");
   const searchInput = document.getElementById("projectSearch");
   const categoryFilter = document.getElementById("projectCategory");
   const results = document.getElementById("projectResults");
 
-  // Generate category options from the project data
-  const categories = [...new Set(remaining.map((project) => project.category))].sort();
+  // Populate category filter
+  const categories = [
+    ...new Set(remaining.map((project) => project.category))
+  ].sort();
 
   for (const category of categories) {
     const option = document.createElement("option");
@@ -115,7 +115,7 @@ async function loadProjects() {
     categoryFilter.append(option);
   }
 
-  // Render the collection using the active filters
+  // Render projects based on search and category
   function renderCollection() {
     const query = searchInput.value.trim().toLowerCase();
     const selectedCategory = categoryFilter.value;
@@ -131,9 +131,7 @@ async function loadProjects() {
         ...project.tags
       ].join(" ").toLowerCase();
 
-      const matchesSearch = searchableText.includes(query);
-
-      return matchesCategory && matchesSearch;
+      return matchesCategory && searchableText.includes(query);
     });
 
     collection.replaceChildren();
@@ -141,7 +139,6 @@ async function loadProjects() {
 
     results.textContent = `Showing ${filtered.length} of ${remaining.length} projects`;
 
-    // Display a message when nothing matches
     if (filtered.length === 0) {
       const empty = document.createElement("p");
       empty.className = "projects__collection-empty";
@@ -150,7 +147,6 @@ async function loadProjects() {
       return;
     }
 
-    // Create a row for each matching project
     for (const project of filtered) {
       const row = rowTemplate.content.firstElementChild.cloneNode(true);
 
@@ -160,38 +156,29 @@ async function loadProjects() {
       row.querySelector(".projects__collection-title").textContent = project.title;
       row.querySelector(".projects__collection-summary").textContent = project.summary;
 
-      row.addEventListener("click", () => openProject(row));
-
       collection.append(row);
     }
   }
 
-  // Update immediately when searching or changing category
+  // Collection interactions
   searchInput.addEventListener("input", renderCollection);
   categoryFilter.addEventListener("change", renderCollection);
 
-  // Initial display
-  renderCollection();
-  
-  // Close the dialog when clicking outside it
-  dialog.addEventListener("click", (event) => {
-    const rect = dialog.getBoundingClientRect();
+  collection.addEventListener("click", (event) => {
+    const row = event.target.closest(".projects__collection-item");
 
-    const clickedOutside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-    
-    if (clickedOutside) {
-      dialog.close();
-    }
+    if (row) openProject(row);
   });
 
-  // Open a card when clicked
+  renderCollection();
+
+  // Featured card interactions
   container.addEventListener("click", (event) => {
     const card = event.target.closest(".projects__card");
 
     if (card) openProject(card);
   });
 
-  // Allow keyboard activation
   container.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
 
@@ -202,9 +189,27 @@ async function loadProjects() {
       openProject(card);
     }
   });
+
+  // Close dialog when clicking outside
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect();
+
+    const clickedOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (clickedOutside) {
+      dialog.close();
+    }
+  });
 }
 
 loadProjects().catch((error) => {
   console.error(error);
-  document.getElementById("featuredProjects").textContent = "Projects could not be loaded.";
+  document.getElementById("featuredProjects").textContent =
+    "Projects could not be loaded.";
+  document.getElementById("moreProjects").textContent =
+    "Projects could not be loaded.";
 });

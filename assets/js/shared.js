@@ -1,6 +1,5 @@
-function initYear() {
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-}
+const yearElement = document.getElementById("year");
 
-initYear();
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}

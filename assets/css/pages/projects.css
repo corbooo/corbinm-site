@@ -1,13 +1,9 @@
 
-.projects {
-  padding-bottom: 3.5rem;
-}
+/* Hero layout */
 
 .projects__hero {
   padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
 }
-
-/* Hero layout */
 
 .projects__hero-main {
   display: grid;
@@ -20,7 +16,7 @@
 
 .projects__hero-visual {
   display: grid;
-  place-items: center;
+  align-items: center;
   justify-items: end;
   min-width: 0;
   position: relative;
@@ -279,8 +275,6 @@
 /* Collection rows */
 
 .projects__collection {
-  display: flex;
-  flex-direction: column;
   max-height: min(520px, 60svh);
   overflow-y: auto;
 }
@@ -512,6 +506,20 @@ html:has(.projects__dialog[open]) {
   font-weight: 600;
 }
 
+/* Accessibility */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Responsive */
 
 @media (max-width: 950px) {
@@ -587,5 +595,46 @@ html:has(.projects__dialog[open]) {
 
   .projects__collection-category {
     grid-column: 1 / -1;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .projects__hero-copy .section-eyebrow,
+  .projects__title,
+  .projects__hero-copy .hero-description,
+  .projects__hero-visual,
+  .projects__section[aria-labelledby="featuredTitle"] > .section-eyebrow,
+  #featuredTitle,
+  #featuredProjects,
+  .projects__hero-mark path {
+    animation: none;
+  }
+
+  .projects__hero-mark path {
+    stroke-dashoffset: 0;
+  }
+
+  .projects__card,
+  .projects__card-arrow,
+  .projects__collection-item,
+  .projects__collection-arrow,
+  .projects__dialog,
+  .projects__dialog::backdrop,
+  .projects__mark-brace,
+  .projects__mark-inner {
+    transition: none;
+  }
+
+  .projects__card:hover,
+  .projects__dialog,
+  .projects__hero-mark:hover .projects__mark-brace,
+  .projects__hero-mark:hover .projects__mark-inner {
+    transform: none;
+  }
+
+  .projects__hero-mark:hover .projects__mark-inner {
+    filter: none;
   }
 }

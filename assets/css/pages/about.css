@@ -1,10 +1,4 @@
 
-/* About page */
-
-.about {
-  padding-bottom: 3.5rem;
-}
-
 /* Hero */
 
 .about__hero {
@@ -46,18 +40,6 @@
   outline-color: color-mix(in srgb, var(--color-accent) 85%, transparent);
   box-shadow: 0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
-
-/* Hero introduction */
-
-.about__title {
-  margin: 0;
-  font-size: clamp(3.5rem, 6.9vw, 6.6rem);
-  font-weight: 750;
-  line-height: 1.05;
-  letter-spacing: -0.065em;
-}
-
-/* Hero actions */
 
 .about__hero-actions {
   display: flex;
@@ -304,11 +286,6 @@
   transition-delay: 0.15s, 0s;
 }
 
-.about__chapter-content-inner {
-  min-height: 0;
-  overflow: hidden;
-}
-
 .about__chapter-content p {
   margin: 1.5rem 0 0;
   color: var(--color-muted);
@@ -448,15 +425,11 @@
     width: auto;
     height: auto;
   }
-
+  
   .about__chapter-content {
-    position: absolute;
     inset: 5.5rem 2rem 2rem;
-    display: block;
-    margin-top: 0;
     overflow: hidden;
   }
-
   .about__chapter.is-open .about__chapter-toggle {
     pointer-events: none;
   }
@@ -464,5 +437,36 @@
   .about__chapter.is-open .about__chapter-number,
   .about__chapter.is-open .about__chapter-title {
     pointer-events: auto;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .about__chapter,
+  .about__chapter-number,
+  .about__chapter-title,
+  .about__photo,
+  .about__chapter-content {
+    transition: none;
+  }
+
+  .about__hero .about__eyebrow,
+  .about__title,
+  .about__hero .hero-description,
+  .about__hero-actions,
+  .about__signature-line,
+  .about__hero-image {
+    animation: none;
+  }
+
+  .about__photo:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
