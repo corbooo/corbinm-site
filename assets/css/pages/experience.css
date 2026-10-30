@@ -7,3 +7,69 @@
   min-height: calc(100svh - 72px);
   padding: 4rem 0;
 }
+
+/* Timelines */
+
+.experience__section {
+  margin-top: clamp(5rem, 9vw, 8rem);
+  max-width: 620px;
+}
+
+.experience__timeline {
+  display: grid;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience__milestone {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.experience__milestone::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+.experience__milestone-title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.experience__milestone-detail {
+  margin: 0.25rem 0;
+}
+
+.experience__milestone-date {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+/* Skills section */
+
+.experience__section--skills {
+  max-width: none;
+}
+
+.experience__section-description {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .experience__section--work {
+    margin-left: auto;
+    text-align: right;
+  }
+}
