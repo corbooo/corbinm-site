@@ -1,42 +1,106 @@
 /* Hero */
 
 .experience__hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100svh - 72px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  column-gap: clamp(2rem, 5vw, 5rem);
+  min-height: min(72svh, 760px);
   padding: 4rem 0;
+}
+
+.experience__hero-content {
+  grid-column: 2;
+}
+
+.experience__signature-line {
+  display: block;
+  flex-shrink: 0;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  grid-column: 1 / -1;
 }
 
 /* Timelines */
 
+.experience__divider {
+  display: block;
+  width: 85%;
+  height: clamp(90px, 12vw, 160px);
+  margin: 2rem auto 0;
+}
+
+.experience__divider path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-opacity: 0.55;
+}
+
 .experience__section {
-  margin-top: clamp(5rem, 9vw, 8rem);
+  margin-top: clamp(4rem, 6vw, 6rem);
   max-width: 620px;
 }
 
+.experience__section > .section-title {
+  margin-bottom: 3rem;
+}
+
+.experience__timeline-wrap {
+  position: relative;
+}
+
 .experience__timeline {
+  --slope: clamp(6rem, 15vw, 14rem);
   display: grid;
-  gap: 2.5rem;
+  gap: 5rem;
   margin: 0;
-  padding: 0;
+  padding: 3rem 0;
   list-style: none;
 }
 
-.experience__milestone {
-  position: relative;
-  padding-left: 2rem;
+.experience__timeline-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
 }
 
-.experience__milestone::before {
-  content: "";
+.experience__timeline-line path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-opacity: 0.65;
+  stroke-linecap: round;
+}
+.experience__milestone {
+  --shift: calc((1 - var(--progress)) * var(--slope));
+  position: relative;
+  min-height: 110px;
+  width: calc(100% - var(--shift));
+  margin-left: var(--shift);
+  padding-left: 3.5rem;
+}
+
+.experience__marker {
   position: absolute;
-  top: 0.4rem;
+  top: 0.35rem;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border: 2px solid var(--color-accent);
   border-radius: 50%;
+  background: var(--color-bg);
+}
+
+.experience__marker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 1.75rem;
+  border-top: 1px solid var(--color-accent);
 }
 
 .experience__milestone-title {
@@ -67,9 +131,44 @@
   line-height: 1.7;
 }
 
-@media (max-width: 760px) {
+@media (min-width: 761px) {
   .experience__section--work {
     margin-left: auto;
     text-align: right;
+  }
+
+  .experience__section--work .experience__milestone {
+    --shift: calc(var(--progress) * var(--slope));
+    margin: 0 var(--shift) 0 0;
+    padding: 0 3.5rem 0 0;
+  }
+
+  .experience__section--work .experience__marker {
+    left: auto;
+    right: 0;
+  }
+
+  .experience__section--work .experience__marker::after {
+    left: auto;
+    right: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .experience__hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .experience__hero-content {
+    grid-column: 1;
+  }
+
+  .experience__divider {
+    display: none;
+  }
+  .experience__timeline {
+    --slope: 0px;
+    gap: 2rem;
   }
 }

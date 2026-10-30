@@ -1,0 +1,57 @@
+[
+  {
+    "category": "Languages",
+    "skills": [
+      "Python",
+      "Java",
+      "JavaScript",
+      "SQL"
+    ]
+  },
+  {
+    "category": "Web Development",
+    "skills": [
+      "HTML",
+      "CSS",
+      "React",
+      "Vite",
+      "FastAPI",
+      "REST APIs"
+    ]
+  },
+  {
+    "category": "Desktop & Data",
+    "skills": [
+      "Java Swing",
+      "Tkinter",
+      "Matplotlib",
+      "SQLAlchemy",
+      "Data Visualization"
+    ]
+  },
+  {
+    "category": "Databases",
+    "skills": [
+      "SQLite",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "category": "Development Tools",
+    "skills": [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Visual Studio"
+    ]
+  },
+  {
+    "category": "Professional",
+    "skills": [
+      "Problem Solving",
+      "Communication",
+      "Teamwork",
+      "Training"
+    ]
+  }
+]

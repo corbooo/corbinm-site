@@ -32,6 +32,8 @@
 
   <template id="experience-milestone-template">
     <li class="experience__milestone">
+      <span class="experience__marker" aria-hidden="true"></span>
+
       <h3 class="experience__milestone-title"></h3>
       <p class="experience__milestone-detail"></p>
       <p class="experience__milestone-date"></p>
@@ -40,30 +42,51 @@
 
   <main class="site-main">
     <section class="hero experience__hero">
-      <p class="section-eyebrow hero__eyebrow">01 / Experience</p>
+      <div class="experience__hero-content">
+        <p class="section-eyebrow hero__eyebrow">01 / Experience</p>
+  
+        <h1 class="hero__title">
+          My journey<span class="accent">.</span>
+        </h1>
+  
+        <p class="hero__description">
+          A look at the education and experiences that have shaped who I am.
+        </p>
+      </div>
 
-      <h1 class="hero__title">
-        My journey<span class="accent">.</span>
-      </h1>
-
-      <p class="hero__description">
-        A look at the education and experiences that have shaped who I am.
-      </p>
+      <svg class="experience__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <path id="hero-signature-path" d="M0 37 Q24 32 65 32 H665 C692 32 702 38 722 34 C755 28 755 4 800 4 C845 4 845 28 878 34 C898 38 908 32 935 32 Q976 32 1000 37" vector-effect="non-scaling-stroke" />
+        <use href="#hero-signature-path" class="signature-line__pulse" fill="none" vector-effect="non-scaling-stroke" />
+      </svg>
     </section>
-    <section class="experience__section" aria-labelledby="experience-education-title">
+    <section class="experience__section experience__section--education" aria-labelledby="experience-education-title">
       <p class="section-eyebrow">02 / Education</p>
 
       <h2 class="section-title" id="experience-education-title">Brain On.</h2>
 
-      <ol class="experience__timeline" id="experience-education"></ol>
+      <div class="experience__timeline-wrap">
+        <svg class="experience__timeline-line" aria-hidden="true">
+          <path />
+        </svg>
+        <ol class="experience__timeline" id="experience-education"></ol>
+      </div>
     </section>
+    
+    <svg class="experience__divider" viewBox="0 0 1000 180" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M80 160 C280 125 650 55 920 20" />
+    </svg>
 
-    <section class="experience__section" aria-labelledby="experience-work-title">
+    <section class="experience__section experience__section--work" aria-labelledby="experience-work-title">
       <p class="section-eyebrow">03 / Work Experience</p>
 
       <h2 class="section-title" id="experience-work-title">Hands On.</h2>
 
-      <ol class="experience__timeline" id="experience-work"></ol>
+      <div class="experience__timeline-wrap">
+        <svg class="experience__timeline-line" aria-hidden="true">
+          <path />
+        </svg>
+        <ol class="experience__timeline" id="experience-work"></ol>
+      </div>
     </section>
     <section class="experience__section experience__section--skills" aria-labelledby="experience-skills-title">
       <p class="section-eyebrow">04 / Skills & Technologies</p>
