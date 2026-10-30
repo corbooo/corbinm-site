@@ -6,7 +6,7 @@
     "featured": true,
     "date": "2026-04-10",
     "summary": "A desktop dashboard for tracking nutrition, weight, and fitness trends.",
-    "description": "I built MacroCoachGUI to turn my MacroCoachAPI backend into a more approachable desktop experience. Using Java Swing, the application allows users to log nutrition and bodyweight entries, review historical data, and view dashboard summaries of fitness trends. It brings together two areas I'm passionate about, fitness and software development, while giving me hands on experience connecting a desktop interface to a REST API.",
+    "description": "MacroCoachGUI is a Java Swing desktop application I built to make my MacroCoachAPI easier to use. It brings nutrition and bodyweight logging, historical entries, and charts into one interface, so users can follow changes in their fitness data without working directly with API endpoints. Building it helped me connect a desktop frontend to a REST API while practicing interface design, event handling, and organizing a larger Java project.",
     "tags": [
       "Java",
       "Java Swing",
@@ -27,7 +27,7 @@
     "featured": false,
     "date": "2026-01-20",
     "summary": "A Python API for nutrition logging and weekly fitness insights.",
-    "description": "FastAPI backend for tracking bodyweight, macros, calorie targets, and weekly fitness trends. Built with relational models, validation schemas, dashboard endpoints, and analytics logic for the MacroCoach desktop client.",
+    "description": "MacroCoachAPI is a Python backend I developed to store and analyze nutrition and bodyweight data. Built with FastAPI, SQLite, SQLAlchemy, and Pydantic, it provides endpoints for logging daily entries, retrieving historical records, and generating insights from recent trends. I also explored how past calorie intake and weight changes could inform future targets, making the project a practical introduction to database design, validation, and REST API development.",
     "tags": [
       "Python",
       "FastAPI",
@@ -49,7 +49,7 @@
     "featured": true,
     "date": "2026-05-29",
     "summary": "A sports analytics app for exploring and comparing stats.",
-    "description": "StatSide is a soccer analytics web application I'm developing to make player and team statistics easier to explore. Built around React and Vite, the project focuses on organizing sports data into reusable components and clear, approachable interfaces. My goal is to support searching and side by side comparisons using API-Football, while improving my understanding of API integration, frontend architecture, and data-driven web development.",
+    "description": "StatSide is an in-progress soccer analytics website focused on making player and team statistics easier to explore. I'm building the frontend with React and Vite, using reusable components and a clean layout to present sports data. The longer-term plan includes API-Football integration, search, side-by-side comparisons, and saved favorites. It's a way for me to combine my interest in soccer with practice in frontend architecture and data-driven web applications.",
     "tags": [
       "React",
       "JavaScript",
@@ -70,7 +70,7 @@
     "featured": true,
     "date": "2026-02-10",
     "summary": "A Java action game with combat, hazards, and an infinite world.",
-    "description": "CorBrawl is a top down action game prototype I created using Java Swing. It features player movement, mouse aiming, a camera based scrolling world, and environmental hazards, with gameplay built around an expandable action game concept. Building it gave me practical experience with game loops, rendering, player controls, and object-oriented design while exploring how different gameplay systems work together.",
+    "description": "CorBrawl is an early top-down action game prototype I created in Java Swing. The current version explores keyboard movement, mouse aiming, a camera that follows the player through a scrolling world, and basic environmental hazards. The project gave me hands-on experience with game loops, rendering, input handling, and object-oriented organization, while providing a foundation for expanding the gameplay over time.",
     "tags": [
       "Java",
       "Java Swing",
@@ -90,7 +90,7 @@
     "featured": false,
     "date": "2026-01-22",
     "summary": "My personal portfolio, built with HTML, CSS, and JavaScript.",
-    "description": "Responsive portfolio website with modular page styles, clean navigation, and a projects system driven by JSON data.",
+    "description": "This portfolio is a website I designed and built from scratch with HTML, CSS, and vanilla JavaScript. It features responsive layouts, custom SVG details, subtle scroll and hover animations, and a searchable, category-filtered project collection powered by JSON. I focused on keeping the design personal and professional while refining accessibility, performance, and a consistent code structure across pages. It's also an ongoing place to experiment with frontend design as I learn new techniques.",
     "tags": [
       "Web",
       "HTML",
@@ -110,7 +110,7 @@
     "featured": false,
     "date": "2026-01-18",
     "summary": "A tabbed desktop app for organizing lists.",
-    "description": "Tkinter list manager with multi-list tabs, autosave to JSON, and add/edit/delete/reorder item workflows.",
+    "description": "A Python Tkinter application for managing multiple lists in separate tabs. Users can add, edit, delete, and reorder items, with their lists automatically saved to JSON so they remain available between sessions.",
     "tags": [
       "Python",
       "Tkinter",
@@ -130,7 +130,7 @@
     "featured": false,
     "date": "2026-01-10",
     "summary": "A command-line tool for recording and reviewing expenses.",
-    "description": "CLI expense tracker with JSON persistence, add/update/delete flows, and clean tabular viewing output.",
+    "description": "A command-line expense tracker built in Python to make recording and reviewing spending straightforward. It supports adding, updating, and deleting entries, saves records in JSON, and displays expenses in an easy-to-read table.",
     "tags": [
       "Python",
       "CLI",
@@ -149,7 +149,7 @@
     "featured": false,
     "date": "2026-01-08",
     "summary": "A trivia and hangman game with API-sourced questions.",
-    "description": "Tkinter trivia + hangman game that pulls questions from an external API and updates UI state per answer.",
+    "description": "A Tkinter game that combines trivia questions with hangman-style gameplay. It fetches questions from an external API and updates the interface as players submit answers, giving me practice with API requests and interactive GUI state.",
     "tags": [
       "Python",
       "Tkinter",
@@ -169,7 +169,7 @@
     "featured": false,
     "date": "2026-01-12",
     "summary": "An analyzer for MyFitnessPal exports and nutrition trends.",
-    "description": "CLI analyzer for MyFitnessPal exports with summaries and Matplotlib visualizations for calories, macros, weight, and exercise.",
+    "description": "I built this Python command-line tool to explore my own fitness data exported from MyFitnessPal. It summarizes nutrition, weight, and exercise records and uses Matplotlib charts to make calorie intake, macronutrients, and trends easier to understand. The project helped me practice working with real-world data and turning raw records into useful visualizations.",
     "tags": [
       "Python",
       "CLI",
@@ -189,7 +189,7 @@
     "featured": false,
     "date": "2026-01-05",
     "summary": "A simple banking simulator with transaction logs.",
-    "description": "CLI bank account simulator with deposits, withdrawals, transfers, account folders, and JSON log files by date.",
+    "description": "A Python command-line banking simulator supporting deposits, withdrawals, and transfers between accounts. It organizes account data into folders and stores dated transaction logs as JSON files, providing practice with file handling and program state.",
     "tags": [
       "Python",
       "CLI",
@@ -209,7 +209,7 @@
     "featured": false,
     "date": "2026-01-14",
     "summary": "An F1 statistics explorer with charts and standings.",
-    "description": "F1 stats explorer using an API to chart standings and driver/team performance using Matplotlib.",
+    "description": "A Python data visualization project built around my interest in Formula 1. It retrieves racing statistics from an external API and uses Matplotlib to explore standings and driver or team performance through charts. I used it to practice consuming API data and presenting statistics in a more visual, understandable format.",
     "tags": [
       "Python",
       "APIs",
@@ -229,7 +229,7 @@
     "featured": false,
     "date": "2026-01-03",
     "summary": "A command-line itinerary and packing checklist tool.",
-    "description": "CLI travel planner that validates date ranges, builds a packing checklist using rules, and saves itineraries to files.",
+    "description": "A Python command-line planner for organizing trips, checking travel date ranges, and generating packing checklists using simple rules. It saves itineraries to files so trip details can be referenced later.",
     "tags": [
       "Python",
       "CLI",

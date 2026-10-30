@@ -59,11 +59,12 @@
       </div>
 
       <svg class="about__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 29 H350 L375 8 H420 L445 29 H1000" vector-effect="non-scaling-stroke" />
+        <path id="hero-signature-path" d="M0 37 Q24 32 80 32 H195 C222 32 232 38 252 34 C285 28 285 4 330 4 C375 4 375 28 408 34 C428 38 438 32 465 32 H935 Q976 32 1000 37" vector-effect="non-scaling-stroke" />
+        <use href="#hero-signature-path" class="signature-line__pulse" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
     </section>
 
-    <section class="about__chapters-section" id="chapters" aria-labelledby="about-chapters-title">
+    <section class="about__chapters-section scroll-reveal" id="chapters" aria-labelledby="about-chapters-title">
       <p class="section-eyebrow">02 / The Chapters</p>
       <h2 class="section-title about__chapters-title" id="about-chapters-title">Beyond the README</h2>
       <p class="about__chapters-hint">
@@ -118,7 +119,7 @@
       </div>
     </section>
 
-    <section class="about__closing" aria-labelledby="about-closing-title">
+    <section class="about__closing scroll-reveal" aria-labelledby="about-closing-title">
       <p class="section-eyebrow">03 / Signing Off</p>
 
       <h2 class="section-title about__closing-title" id="about-closing-title">
@@ -166,10 +167,7 @@
             C 654 223 409 213 253 198
           "
         />
-        <path
-          class="about__closing-dot"
-          d="M 418 116 Q 424 104 430 110"
-        />
+        <path class="about__closing-dot" d="M 418 116 Q 424 104 430 110" />
       </svg>
 
       <nav class="about__closing-nav" aria-label="Continue exploring">
@@ -193,8 +191,8 @@
   </main>
 
   <footer class="site-footer">
-    <svg class="signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000" />
+    <svg class="signature-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 5 C0 23 30 30 100 30 H355 C420 30 440 50 500 50 C560 50 580 30 645 30 H900 C970 30 1000 23 1000 5" />
     </svg>
 
     <div class="site-footer__inner">

@@ -5,7 +5,7 @@
 }
 
 .projects__hero {
-  padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
+  padding: clamp(6rem, 10vw, 9rem) 0 clamp(4rem, 7vw, 6rem);
 }
 
 .projects__hero-main {
@@ -39,7 +39,7 @@
 }
 
 .projects__section {
-  margin-top: clamp(4rem, 7vw, 6rem);
+  margin-top: clamp(5.5rem, 9vw, 8rem);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -219,10 +219,10 @@
   font-size: 0.75rem;
   text-align: right;
 }
-
 .projects__collection {
-  max-height: min(520px, 60svh);
+  height: min(520px, 60svh);
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .projects__collection:focus-visible {
@@ -302,10 +302,6 @@
 
 /* Expanded project view */
 
-html:has(.projects__dialog[open]) {
-  overflow: hidden;
-}
-
 .projects__dialog {
   width: min(640px, calc(100% - 2rem));
   max-height: 85vh;
@@ -314,6 +310,7 @@ html:has(.projects__dialog[open]) {
   border-radius: 18px;
   background: var(--color-bg);
   color: var(--color-text);
+  overscroll-behavior: contain;
 
   opacity: 0;
   transform: translateY(16px) scale(0.985);
@@ -339,8 +336,10 @@ html:has(.projects__dialog[open]) {
 
 .projects__dialog::backdrop {
   background: color-mix(in srgb, var(--color-bg) 70%, transparent);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
   opacity: 0;
+  overflow: hidden;
+  overscroll-behavior: contain;
 
   transition:
     opacity 0.28s ease,
@@ -449,8 +448,9 @@ html:has(.projects__dialog[open]) {
 
 @media (max-width: 760px) {
   .projects__hero {
-    padding: 3rem 0 2rem;
+    padding: 5rem 0 4rem;
   }
+  
   .projects__hero-main {
     grid-template-columns: 1fr;
     gap: 1rem;

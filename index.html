@@ -69,7 +69,8 @@
 
       <div class="home__hero-bottom">
         <svg class="home__signature-line signature-line signature-line--hero signature-line--draw" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 29 H150 L175 8 H220 L245 29 H1000" vector-effect="non-scaling-stroke" />
+          <path id="hero-signature-path" d="M0 37 Q24 32 65 32 C92 32 102 38 122 34 C155 28 155 4 200 4 C245 4 245 28 278 34 C298 38 308 32 335 32 H935 Q976 32 1000 37" vector-effect="non-scaling-stroke" />
+          <use href="#hero-signature-path" class="signature-line__pulse" fill="none" vector-effect="non-scaling-stroke" />
         </svg>
 
         <span>Houston, Texas</span>
@@ -77,7 +78,7 @@
       </div>
     </section>
 
-    <section class="home__about home__reveal" aria-labelledby="home-about-title">
+    <section class="home__about scroll-reveal" aria-labelledby="home-about-title">
 
       <p class="section-eyebrow">/ About Me</p>
 
@@ -99,14 +100,13 @@
     </section>
 
     <section class="home__explore" aria-labelledby="home-explore-title">
-      <div class="home__explore-heading home__reveal">
+      <div class="home__explore-heading scroll-reveal">
         <p class="section-eyebrow">/ Explore</p>
         <h2 class="section-title" id="home-explore-title">Where to next?</h2>
       </div>
 
       <nav aria-label="Explore my website">
-        <a href="about/" class="home__page-link home__reveal home__reveal--left">
-
+        <a href="about/" class="home__page-link scroll-reveal scroll-reveal--left">
           <span class="home__page-number">01</span>
 
           <span class="home__page-content">
@@ -117,8 +117,7 @@
           <span class="home__page-arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a href="projects/" class="home__page-link home__reveal home__reveal--right">
-
+        <a href="projects/" class="home__page-link scroll-reveal scroll-reveal--right">
           <span class="home__page-number">02</span>
 
           <span class="home__page-content">
@@ -129,8 +128,7 @@
           <span class="home__page-arrow" aria-hidden="true">↗</span>
         </a>
 
-        <a href="experience/" class="home__page-link home__reveal home__reveal--left">
-
+        <a href="experience/" class="home__page-link scroll-reveal scroll-reveal--left">
           <span class="home__page-number">03</span>
 
           <span class="home__page-content">
@@ -147,8 +145,8 @@
   </main>
 
   <footer class="site-footer">
-    <svg class="signature-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 29 H340 C420 29 425 8 500 8 C575 8 580 29 660 29 H1000" />
+    <svg class="signature-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 5 C0 23 30 30 100 30 H355 C420 30 440 50 500 50 C560 50 580 30 645 30 H900 C970 30 1000 23 1000 5" />
     </svg>
 
     <div class="site-footer__inner">
