@@ -1,3 +1,4 @@
+
 function renderTags(container, tags) {
   container.replaceChildren(...tags.map((tag) => {
     const span = document.createElement("span");

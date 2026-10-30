@@ -1,3 +1,4 @@
+
 const chapters = document.querySelectorAll(".about__chapter");
 
 chapters.forEach((chapter) => {

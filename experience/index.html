@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=4"/>
-  <link rel="stylesheet" href="../assets/css/pages/experience.css?v=3"/>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="../assets/css/pages/experience.css"/>
+
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/experience.js"></script>
+
   <title>Corbin - Experience</title>
 </head>
 
-<body>
-
+<body class="experience">
   <header class="site-header">
     <nav class="site-nav" aria-label="Main navigation">
-
-      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Experience">
+      <a class="site-nav__logo" href="../" aria-label="Corbin Moseman - Home">
         <img class="site-nav__logo-image" src="../assets/img/logo.png" alt="" />
       </a>
 
@@ -24,47 +25,34 @@
         <a class="site-nav__link" href="../about/">About</a>
         <a class="site-nav__link" href="../projects/">Projects</a>
         <a class="site-nav__link" href="../experience/" aria-current="page">Experience</a>
-
-        <a class="site-nav__resume"href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="site-nav__resume" href="../assets/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
-
     </nav>
   </header>
 
-  <main class="site-main experience">
-    <section class="experience__hero">
-      <h1 class="experience__title">Experience</h1>
-      <p class="experience__subtitle">
-        Professional work and education background.
+  <main class="site-main">
+    <section class="hero experience__hero">
+      <p class="section-eyebrow hero__eyebrow">01 / Experience</p>
+
+      <h1 class="hero__title">
+        My journey<span class="accent">.</span>
+      </h1>
+
+      <p class="hero__description">
+        A look at the education and experiences that have shaped who I am.
       </p>
-    </section>
-
-    <div class="section__divider section__divider--accent" role="separator" aria-hidden="true"></div>
-
-    <section class="section" aria-label="Work experience">
-      <header class="section__header section__header--center">
-        <h2 class="section__title">Work</h2>
-        <p class="section__note">Roles that reflect leadership, reliability, and high-ownership execution.</p>
-      </header>
-
-      <div id="workGrid" class="experience__grid"></div>
-    </section>
-
-    <div class="section__divider" role="separator" aria-hidden="true"></div>
-
-    <section class="section" aria-label="Education">
-      <header class="section__header section__header--center">
-        <h2 class="section__title">Education</h2>
-        <p class="section__note">Academic background and relevant coursework.</p>
-      </header>
-
-      <div id="educationGrid" class="experience__grid"></div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <svg class="signature-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 5 C0 23 30 30 100 30 H355 C420 30 440 50 500 50 C560 50 580 30 645 30 H900 C970 30 1000 23 1000 5" />
+    </svg>
+
     <div class="site-footer__inner">
-      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
+      <p class="site-footer__copy">
+        © <span id="year"></span> Corbin Moseman
+      </p>
       <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>

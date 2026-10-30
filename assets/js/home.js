@@ -1,5 +1,4 @@
 
-
 const header = document.querySelector(".site-header");
 
 function updateHeader() {
