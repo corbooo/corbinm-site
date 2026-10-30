@@ -24,7 +24,7 @@
 
   outline: 2px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
   outline-offset: 7px;
-  box-shadow: 0 0 28px transparent;
+  box-shadow: 0 0 28px rgb(from var(--color-accent) r g b / 0);
 
   transition:
     transform 0.4s ease,
@@ -35,7 +35,7 @@
 .about__hero-photo:hover {
   transform: scale(1.035);
   outline-color: color-mix(in srgb, var(--color-accent) 85%, transparent);
-  box-shadow: 0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
+  box-shadow: 0 0 28px rgb(from var(--color-accent) r g b / 0.25);
 }
 
 .about__hero-actions {
