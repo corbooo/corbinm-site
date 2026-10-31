@@ -6,7 +6,7 @@
   --color-border: rgba(255, 255, 255, 0.14);
   --color-surface: rgba(255, 255, 255, 0.05);
 
-  --content-width: 1240px;
+  --content-width: 77.5rem;
 }
 
 /* Base */
@@ -77,7 +77,8 @@ html {
 
 .signature-line--hero {
   width: 90%;
-  height: 40px;
+  height: 52px;
+  overflow: visible;
   stroke: var(--color-accent);
   stroke-width: 2.5;
   stroke-opacity: 0.65;
@@ -212,7 +213,7 @@ html {
   position: sticky;
   top: 0;
   z-index: 900;
-  padding: 14px 24px;
+  padding: 0.875rem 1.5rem;
   border-bottom: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg) 94%, transparent);
   backdrop-filter: blur(12px);
@@ -224,7 +225,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .site-nav__logo {
@@ -234,7 +235,7 @@ html {
 
 .site-nav__logo-image {
   display: block;
-  height: 48px;
+  height: 3rem;
   width: auto;
   filter: drop-shadow(0 0 8px rgb(from var(--color-accent) r g b / 0));
   transition: transform 0.4s ease, filter 0.4s ease;
@@ -254,7 +255,7 @@ html {
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
-  gap: clamp(12px, 2vw, 28px);
+  gap: clamp(0.75rem, 2vw, 1.75rem);
 }
 
 .site-nav__link {
@@ -276,7 +277,7 @@ html {
 }
 
 .site-nav__resume {
-  padding: 8px 14px;
+  padding: 0.5rem 0.875rem;
   border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
   border-radius: 8px;
   color: var(--color-text);
@@ -292,8 +293,8 @@ html {
 /* Footer */
 
 .site-footer {
-  margin-top: 120px;
-  padding: 0 18px 32px;
+  margin-top: 7.5rem;
+  padding: 0 1.125rem 2rem;
 }
 
 .site-footer__inner {
@@ -302,24 +303,24 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 1.125rem;
   flex-wrap: wrap;
 }
 
 .site-footer__copy {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-muted);
 }
 
 .site-footer__links {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .site-footer__links a {
   color: var(--color-muted);
-  font-size: 14px;
+  font-size: 0.875rem;
   text-decoration: none;
 }
 
@@ -392,7 +393,7 @@ html {
   }
 
   .signature-line--hero {
-    height: 32px;
+    height: 56px;
   }
   
   .signature-line__pulse {
