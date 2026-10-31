@@ -176,7 +176,7 @@
   .experience__divider {
     display: none;
   }
-  
+
   .experience__timeline {
     --slope: 0px;
     gap: 2rem;
@@ -188,5 +188,20 @@
 
   .experience__section--work {
     margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .experience__section--education,
+  .experience__divider {
+    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .experience__section--education {
+    animation-delay: 0.7s;
+  }
+
+  .experience__divider {
+    animation-delay: 1s;
   }
 }
