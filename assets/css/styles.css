@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+  
   --color-bg: #0a0e14;
   --color-text: #e9eef3;
   --color-muted: #a8b3be;

@@ -11,6 +11,7 @@
 
 .experience__hero-content {
   grid-column: 2;
+  grid-row: 1;
 }
 
 .experience__signature-line {
@@ -18,6 +19,45 @@
   flex-shrink: 0;
   margin: clamp(3rem, 6vw, 5rem) auto 0;
   grid-column: 1 / -1;
+}
+
+.experience__blocks {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: min(100%, 440px);
+  justify-self: center;
+}
+
+.experience__blocks rect {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+.experience__blocks .experience__block--shaded {
+  fill: color-mix(in srgb, var(--color-accent) 9%, transparent);
+}
+
+.experience__blocks .experience__block--future {
+  stroke-dasharray: 6 9;
+  opacity: 0.5;
+}
+
+@keyframes block-draw {
+  from {
+    stroke-dashoffset: 370;
+    fill-opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes block-appear {
+  from { opacity: 0; }
+  to { opacity: 0.5; }
 }
 
 /* Timelines */
@@ -172,6 +212,16 @@
   .experience__hero-content {
     grid-column: 1;
   }
+  
+  .experience__blocks {
+  grid-column: 1;
+  grid-row: 2;
+  width: min(75%, 260px);
+}
+
+.experience__signature-line {
+  grid-row: 3;
+}
 
   .experience__divider {
     display: none;
@@ -204,4 +254,26 @@
   .experience__divider {
     animation-delay: 1s;
   }
+  
+  .experience__blocks {
+    --hero-enter-distance: 24px;
+    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both;
+  }
+
+  .experience__blocks rect:not(.experience__block--future) {
+    stroke-dasharray: 370;
+    animation: block-draw 1s ease-out both;
+  }
+
+  .experience__blocks .experience__block--future {
+    animation: block-appear 0.6s ease both;
+  }
+
+  .experience__blocks rect:nth-child(2) { animation-delay: 0.3s; }
+  .experience__blocks rect:nth-child(3) { animation-delay: 0.6s; }
+  .experience__blocks rect:nth-child(4) { animation-delay: 0.9s; }
+  .experience__blocks rect:nth-child(5) { animation-delay: 1.2s; }
+  .experience__blocks rect:nth-child(6) { animation-delay: 1.5s; }
+  .experience__blocks rect:nth-child(7) { animation-delay: 1.9s; }
+  .experience__blocks rect:nth-child(8) { animation-delay: 2.2s; }
 }
