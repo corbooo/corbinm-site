@@ -1,4 +1,6 @@
 
+import { observeReveals } from "./shared.js";
+
 const template = document.getElementById("experience-milestone-template");
 
 function formatDate(value) {
@@ -68,6 +70,33 @@ async function loadTimeline(type) {
   list.replaceChildren(...items);
   drawTimeline(list);
 }
+
+async function loadSkills() {
+  const response = await fetch("../assets/data/skills.json");
+  if (!response.ok) throw new Error("Could not load skills.");
+
+  const entries = await response.json();
+  const template = document.getElementById("experience-skill-template");
+  const grid = document.getElementById("experience-skills");
+
+  const groups = entries.map((entry, index) => {
+    const group = template.content.firstElementChild.cloneNode(true);
+
+    group.classList.add(index % 2 === 0 ? "scroll-reveal--left" : "scroll-reveal--right");
+    group.querySelector(".experience__skill-title").textContent = entry.category;
+    group.querySelector(".experience__skill-list").textContent = entry.skills.join(" · ");
+
+    return group;
+  });
+
+  grid.replaceChildren(...groups);
+  observeReveals(groups);
+}
+
+loadSkills().catch((error) => {
+  console.error(error);
+  document.getElementById("experience-skills").textContent = "Could not load skills.";
+});
 
 for (const type of ["education", "work"]) {
   loadTimeline(type).catch((error) => {

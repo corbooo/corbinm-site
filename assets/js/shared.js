@@ -5,20 +5,23 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
-const revealElements = document.querySelectorAll(".scroll-reveal");
+const observer = "IntersectionObserver" in window &&
+  !matchMedia("(prefers-reduced-motion: reduce)").matches
+  ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-if (revealElements.length && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -48px 0px" })
+  : null;
+
+export function observeReveals(elements) {
+  if (!observer || !elements.length) return;
 
   document.documentElement.classList.add("has-scroll-reveal");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -48px 0px" });
-
-  revealElements.forEach((element) => observer.observe(element));
+  elements.forEach((element) => observer.observe(element));
 }
+
+observeReveals(document.querySelectorAll(".scroll-reveal"));

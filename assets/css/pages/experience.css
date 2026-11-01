@@ -170,6 +170,7 @@
 /* Skills section */
 
 .experience__section--skills {
+  max-width: none;
   margin-top: clamp(6rem, 10vw, 10rem);
 }
 
@@ -178,6 +179,31 @@
   margin: 0;
   color: var(--color-muted);
   line-height: 1.7;
+}
+
+.experience__skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem clamp(2rem, 6vw, 6rem);
+  margin-top: 4rem;
+}
+
+.experience__skill {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.experience__skill-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  transition: color 0.35s ease 0.5s;
+}
+
+.experience__skill-list {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+  transition: color 0.35s ease 0.5s;
 }
 
 @media (min-width: 761px) {
@@ -214,14 +240,14 @@
   }
   
   .experience__blocks {
-  grid-column: 1;
-  grid-row: 2;
-  width: min(75%, 260px);
-}
+    grid-column: 1;
+    grid-row: 2;
+    width: min(75%, 260px);
+  }
 
-.experience__signature-line {
-  grid-row: 3;
-}
+  .experience__signature-line {
+    grid-row: 3;
+  }
 
   .experience__divider {
     display: none;
@@ -238,6 +264,24 @@
 
   .experience__section--work {
     margin-top: 5rem;
+  }
+
+  .experience__skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .experience__skill {
+    padding-top: 1rem;
+  }
+
+  .experience__skill-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .experience__section--skills .section-title {
+    margin-bottom: 1rem;
   }
 }
 
@@ -276,4 +320,26 @@
   .experience__blocks rect:nth-child(6) { animation-delay: 1.5s; }
   .experience__blocks rect:nth-child(7) { animation-delay: 1.9s; }
   .experience__blocks rect:nth-child(8) { animation-delay: 2.2s; }
+}
+
+@media (hover: hover) {
+  .experience__skill:hover .experience__skill-title {
+    color: var(--color-accent);
+    transition-delay: 0s;
+  }
+
+  .experience__skill:hover .experience__skill-list {
+    color: var(--color-text);
+    transition-delay: 0s;
+  }
+}
+
+@media (hover: none) {
+  .experience__skill:active .experience__skill-title {
+    color: var(--color-accent);
+  }
+
+  .experience__skill:active .experience__skill-list {
+    color: var(--color-text);
+  }
 }
