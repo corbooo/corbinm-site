@@ -17,7 +17,8 @@
       "Computer Networks (in progress)",
       "Software Engineering (in progress)",
       "Assembly Language (in progress)",
-      "Web Application Development (in progress)"
+      "Web Application Development (in progress)",
+      "+ electives"
     ]
   },
   {
@@ -30,7 +31,8 @@
     "coursework": [
       "Physics 1",
       "Calculus I & II",
-      "Intro to Engineering"
+      "Intro to Engineering",
+      "+ electives"
     ]
   }
 ]

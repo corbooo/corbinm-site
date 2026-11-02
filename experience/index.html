@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" href="../assets/img/favicon.png"/>
-  <link rel="stylesheet" href="../assets/css/styles.css"/>
-  <link rel="stylesheet" href="../assets/css/pages/experience.css"/>
+  <link rel="icon" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/pages/experience.css" />
 
   <script type="module" src="../assets/js/shared.js"></script>
   <script type="module" src="../assets/js/experience.js"></script>
@@ -35,7 +35,6 @@
       <button class="experience__milestone-trigger" type="button">
         <span class="experience__marker" aria-hidden="true"></span>
       </button>
-
       <h3 class="experience__milestone-title"></h3>
       <p class="experience__milestone-detail"></p>
       <p class="experience__milestone-date"></p>
@@ -52,23 +51,19 @@
   <main class="site-main">
     <section class="hero experience__hero">
       <svg class="experience__blocks" viewBox="0 0 356 260" aria-hidden="true">
-        <rect x="24"  y="172" width="68" height="68" rx="0" />
-        <rect x="104" y="172" width="68" height="68" rx="0" />
-        <rect x="184" y="172" width="68" height="68" rx="0" />
-        <rect x="104" y="92"  width="68" height="68" rx="0" />
-        <rect x="184" y="92"  width="68" height="68" rx="0" class="experience__block--shaded" />
-        <rect x="184" y="12"  width="68" height="68" rx="0" class="experience__block--shaded" />
-        <rect x="264" y="92"  width="68" height="68" rx="0" class="experience__block--future" />
-        <rect x="264" y="12"  width="68" height="68" rx="0" class="experience__block--future" />
+        <rect x="24" y="172" width="68" height="68" />
+        <rect x="104" y="172" width="68" height="68" />
+        <rect x="184" y="172" width="68" height="68" />
+        <rect x="104" y="92" width="68" height="68" />
+        <rect class="experience__block--shaded" x="184" y="92" width="68" height="68" />
+        <rect class="experience__block--shaded" x="184" y="12" width="68" height="68" />
+        <rect class="experience__block--future" x="264" y="92" width="68" height="68" />
+        <rect class="experience__block--future" x="264" y="12" width="68" height="68" />
       </svg>
 
       <div class="experience__hero-content">
         <p class="section-eyebrow hero__eyebrow">01 / Experience</p>
-  
-        <h1 class="hero__title">
-          My journey<span class="accent">.</span>
-        </h1>
-  
+        <h1 class="hero__title">My journey<span class="accent">.</span></h1>
         <p class="hero__description">
           A look at the education and experiences that have shaped who I am.
         </p>
@@ -83,9 +78,7 @@
     <div class="experience__journey">
       <section class="experience__section experience__section--education" aria-labelledby="experience-education-title">
         <p class="section-eyebrow">02 / Education</p>
-
         <h2 class="section-title" id="experience-education-title">Brain On.</h2>
-
         <div class="experience__timeline-wrap">
           <svg class="experience__timeline-line" aria-hidden="true">
             <path />
@@ -93,16 +86,14 @@
           <ol class="experience__timeline" id="experience-education"></ol>
         </div>
       </section>
-      
+
       <svg class="experience__divider scroll-reveal" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
         <path d="M50 660 C260 540 720 140 950 40" />
       </svg>
 
       <section class="experience__section experience__section--work scroll-reveal" aria-labelledby="experience-work-title">
         <p class="section-eyebrow">03 / Work Experience</p>
-
         <h2 class="section-title" id="experience-work-title">Hands On.</h2>
-
         <div class="experience__timeline-wrap">
           <svg class="experience__timeline-line" aria-hidden="true">
             <path />
@@ -120,7 +111,6 @@
           The languages, tools, and technologies I've picked up along the way.
         </p>
       </div>
-
       <div class="experience__skills-grid" id="experience-skills"></div>
     </section>
   </main>
@@ -128,7 +118,9 @@
   <dialog class="experience__dialog" id="experience-dialog" aria-labelledby="experience-dialog-title">
     <div class="experience__dialog-header">
       <p class="section-eyebrow" id="experience-dialog-category"></p>
-      <button class="experience__dialog-close" type="button" aria-label="Close details">×</button>
+      <form method="dialog">
+        <button class="experience__dialog-close" type="submit" aria-label="Close details">&times;</button>
+      </form>
     </div>
 
     <h2 class="section-title" id="experience-dialog-title"></h2>
@@ -145,11 +137,8 @@
     <svg class="signature-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 5 C0 23 30 30 100 30 H355 C420 30 440 50 500 50 C560 50 580 30 645 30 H900 C970 30 1000 23 1000 5" />
     </svg>
-
     <div class="site-footer__inner">
-      <p class="site-footer__copy">
-        © <span id="year"></span> Corbin Moseman
-      </p>
+      <p class="site-footer__copy">© <span id="year"></span> Corbin Moseman</p>
       <div class="site-footer__links">
         <a href="mailto:corbinm@pobox.com">Email</a>
         <a href="https://github.com/corbooo" target="_blank" rel="noopener">GitHub</a>
