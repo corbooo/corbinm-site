@@ -509,17 +509,18 @@
 /* Animations */
 
 @media (prefers-reduced-motion: no-preference) {
-  .experience__section--education,
-  .experience__divider {
-    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
   .experience__section--education {
-    animation-delay: 0.7s;
+    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
   }
 
-  .experience__divider {
-    animation-delay: 1s;
+  .has-scroll-reveal .experience__divider path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 2s ease-in-out;
+  }
+
+  .has-scroll-reveal .experience__divider.is-visible path {
+    stroke-dashoffset: 0;
   }
 
   .experience__blocks {
@@ -543,6 +544,19 @@
   .experience__blocks rect:nth-child(6) { animation-delay: 1.5s; }
   .experience__blocks rect:nth-child(7) { animation-delay: 1.9s; }
   .experience__blocks rect:nth-child(8) { animation-delay: 2.2s; }
+
+  .experience__timeline-line > path {
+    transition: stroke-dashoffset 1.8s ease-in-out;
+  }
+
+  .experience__timeline-arrow {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .experience__timeline-line.is-complete .experience__timeline-arrow {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -566,9 +580,9 @@
   .experience__blocks:hover rect:nth-child(3) { transform: translate(10px, 8px) scale(1.04); }
   .experience__blocks:hover rect:nth-child(4) { transform: translate(-5px, -4px) scale(1.04); }
   .experience__blocks:hover rect:nth-child(5) { transform: translate(9px, -4px) scale(1.05); }
-  .experience__blocks:hover rect:nth-child(6) { transform: translate(9px, -6px) scale(1.05); }
-  .experience__blocks:hover rect:nth-child(7) { transform: translate(14px, -4px) scale(1.03); opacity: 0.8; }
-  .experience__blocks:hover rect:nth-child(8) { transform: translate(14px, -6px) scale(1.03); opacity: 0.8; }
+  .experience__blocks:hover rect:nth-child(6) { transform: translate(9px, -18px) scale(1.05); }
+  .experience__blocks:hover rect:nth-child(7) { transform: translate(23px, -4px) scale(1.03); opacity: 0.8; }
+  .experience__blocks:hover rect:nth-child(8) { transform: translate(23px, -18px) scale(1.03); opacity: 0.8; }
 
   .experience__blocks:hover .experience__block--shaded {
     fill: rgba(3, 208, 208, 0.16);

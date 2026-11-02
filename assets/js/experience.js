@@ -4,6 +4,32 @@ import { observeReveals } from "./shared.js";
 const template = document.getElementById("experience-milestone-template");
 const dialog = document.getElementById("experience-dialog");
 
+const timelineObserver = "IntersectionObserver" in window &&
+  !matchMedia("(prefers-reduced-motion: reduce)").matches
+  ? new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+
+        const list = entry.target.parentElement;
+        const path = list.previousElementSibling.querySelector(":scope > path");
+
+        list.classList.add("is-drawn");
+
+        path.addEventListener("transitionend", (event) => {
+          if (event.propertyName === "stroke-dashoffset") {
+            list.previousElementSibling.classList.add("is-complete");
+          }
+        }, { once: true });
+
+        requestAnimationFrame(() => {
+          path.style.strokeDashoffset = 0;
+        });
+
+        observer.unobserve(entry.target);
+      }
+    }, { rootMargin: "0px 0px -20% 0px" })
+  : null;
+
 function formatDate(value) {
   if (value === "present") return "Present";
 
@@ -69,14 +95,24 @@ function drawTimeline(list) {
   const [lastX, lastY] = points.at(-1);
   const endY = lastY + 40;
 
-  path += ` L ${lastX} ${endY}
-            M ${lastX - 6} ${endY - 8}
-            L ${lastX} ${endY}
-            L ${lastX + 6} ${endY - 8}`;
+  path += ` L ${lastX} ${endY}`;
 
   const svg = list.previousElementSibling;
   svg.setAttribute("viewBox", `0 0 ${bounds.width} ${bounds.height}`);
-  svg.querySelector("path").setAttribute("d", path);
+
+  const timelinePath = svg.querySelector(":scope > path");
+  timelinePath.setAttribute("d", path);
+
+  svg.querySelector(".experience__timeline-arrow").setAttribute(
+    "d",
+    `M ${lastX - 6} ${endY - 8} L ${lastX} ${endY} L ${lastX + 6} ${endY - 8}`
+  );
+
+  if (timelineObserver) {
+    const length = timelinePath.getTotalLength();
+    timelinePath.style.strokeDasharray = length;
+    timelinePath.style.strokeDashoffset = list.classList.contains("is-drawn") ? 0 : length;
+  }
 }
 
 async function loadTimeline(type) {
@@ -104,6 +140,10 @@ async function loadTimeline(type) {
 
   list.replaceChildren(...items);
   drawTimeline(list);
+
+  if (timelineObserver && list.firstElementChild) {
+    timelineObserver.observe(list.firstElementChild);
+  }
 }
 
 async function loadSkills() {
