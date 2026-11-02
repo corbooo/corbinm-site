@@ -2,6 +2,7 @@
 import { observeReveals } from "./shared.js";
 
 const template = document.getElementById("experience-milestone-template");
+const dialog = document.getElementById("experience-dialog");
 
 function formatDate(value) {
   if (value === "present") return "Present";
@@ -12,6 +13,38 @@ function formatDate(value) {
     year: "numeric"
   });
 }
+
+function openMilestone(type, entry, dates) {
+  const education = type === "education";
+  const details = (education ? entry.coursework : entry.highlights) ?? [];
+
+  document.getElementById("experience-dialog-category").textContent =
+    education ? "Education" : "Work Experience";
+
+  document.getElementById("experience-dialog-title").textContent =
+    entry.school ?? entry.company;
+
+  document.getElementById("experience-dialog-subtitle").textContent =
+    entry.degree ?? entry.role;
+
+  document.getElementById("experience-dialog-date").textContent = dates;
+  document.getElementById("experience-dialog-heading").textContent =
+    education ? "Relevant Coursework" : "Highlights";
+
+  const list = document.getElementById("experience-dialog-list");
+  list.replaceChildren(...details.map((text) => {
+    const item = document.createElement("li");
+    item.textContent = text;
+    return item;
+  }));
+
+  dialog.querySelector(".experience__dialog-details").hidden = !details.length;
+  dialog.showModal();
+}
+
+dialog.querySelector(".experience__dialog-close").addEventListener("click", () => {
+  dialog.close();
+});
 
 function drawTimeline(list) {
   const bounds = list.getBoundingClientRect();
@@ -61,8 +94,14 @@ async function loadTimeline(type) {
 
       item.querySelector(".experience__milestone-title").textContent = entry.school ?? entry.company;
       item.querySelector(".experience__milestone-detail").textContent = entry.degree ?? entry.role;
-      item.querySelector(".experience__milestone-date").textContent =
-        `${formatDate(entry.start)} – ${formatDate(entry.end)}${entry.status === "expected" ? " (Expected)" : ""}`;
+      
+      const dates = `${formatDate(entry.start)} – ${formatDate(entry.end)}${entry.status === "expected" ? " (Expected)" : ""}`;
+
+      item.querySelector(".experience__milestone-date").textContent = dates;
+
+      const trigger = item.querySelector(".experience__milestone-trigger");
+      trigger.setAttribute("aria-label", `View details for ${entry.school ?? entry.company}`);
+      trigger.addEventListener("click", () => openMilestone(type, entry, dates));
 
       return item;
     });
