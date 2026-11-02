@@ -411,6 +411,22 @@
   font-size: 0.75rem;
 }
 
+.projects__dialog-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.projects__dialog-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
 .projects__dialog-links {
   display: flex;
   flex-wrap: wrap;

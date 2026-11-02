@@ -53,6 +53,19 @@ async function loadProjects() {
     document.getElementById("projects-dialog-description").textContent = project.description;
     renderTags(document.getElementById("projects-dialog-tags"), project.tags);
 
+    const images = project.images ?? [];
+    const gallery = document.getElementById("projects-dialog-gallery");
+
+    gallery.replaceChildren(...images.map((src, index) => {
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = `${project.title} screenshot ${index + 1}`;
+      image.loading = "lazy";
+      return image;
+    }));
+
+document.getElementById("projects-dialog-images-section").hidden = !images.length;
+
     for (const name of ["github", "demo"]) {
       const link = document.getElementById(`projects-dialog-${name}`);
       const url = project.links?.[name];
