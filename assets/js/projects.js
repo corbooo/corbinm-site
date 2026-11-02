@@ -7,6 +7,10 @@ function renderTags(container, tags) {
   }));
 }
 
+function projectLabel(project) {
+  return [project.category, project.status].filter(Boolean).join(" · ");
+}
+
 async function loadProjects() {
   const response = await fetch("../assets/data/projects.json");
   if (!response.ok) throw new Error("Could not load projects.");
@@ -37,7 +41,7 @@ async function loadProjects() {
     const card = cardTemplate.content.firstElementChild.cloneNode(true);
     card.dataset.projectId = project.id;
     card.setAttribute("aria-label", `View details for ${project.title}`);
-    card.querySelector(".projects__card-category").textContent = project.category;
+    card.querySelector(".projects__card-category").textContent = projectLabel(project);
     card.querySelector(".projects__card-title").textContent = project.title;
     card.querySelector(".projects__card-summary").textContent = project.summary;
     renderTags(card.querySelector(".projects__card-tags"), project.tags.slice(0, 3));
@@ -48,7 +52,7 @@ async function loadProjects() {
     const project = projects.find((item) => item.id === element.dataset.projectId);
     if (!project) return;
 
-    document.getElementById("projects-dialog-category").textContent = project.category;
+    document.getElementById("projects-dialog-category").textContent = projectLabel(project);
     document.getElementById("projects-dialog-title").textContent = project.title;
     document.getElementById("projects-dialog-description").textContent = project.description;
     renderTags(document.getElementById("projects-dialog-tags"), project.tags);
@@ -64,7 +68,7 @@ async function loadProjects() {
       return image;
     }));
 
-document.getElementById("projects-dialog-images-section").hidden = !images.length;
+    document.getElementById("projects-dialog-images-section").hidden = !images.length;
 
     for (const name of ["github", "demo"]) {
       const link = document.getElementById(`projects-dialog-${name}`);
@@ -93,8 +97,9 @@ document.getElementById("projects-dialog-images-section").hidden = !images.lengt
       const searchableText = [
         project.title,
         project.category,
+        project.status ?? "",
         project.summary,
-        ...project.tags
+        project.tags
       ].join(" ").toLowerCase();
 
       return matchesCategory && searchableText.includes(query);
@@ -115,7 +120,7 @@ document.getElementById("projects-dialog-images-section").hidden = !images.lengt
     for (const project of filtered) {
       const row = rowTemplate.content.firstElementChild.cloneNode(true);
       row.dataset.projectId = project.id;
-      row.querySelector(".projects__row-category").textContent = project.category;
+      row.querySelector(".projects__row-category").textContent = projectLabel(project);
       row.querySelector(".projects__row-title").textContent = project.title;
       row.querySelector(".projects__row-summary").textContent = project.summary;
       collection.append(row);

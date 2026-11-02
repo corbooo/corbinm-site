@@ -311,6 +311,19 @@
   border-bottom-color: transparent;
 }
 
+.about__lab-link {
+  margin-top: 3rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about__lab-link:hover,
+.about__lab-link:focus-visible {
+  color: var(--color-accent);
+}
+
 @media (min-width: 761px) {
   .about__chapters-title {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
