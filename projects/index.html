@@ -135,11 +135,6 @@
 
     <p class="projects__dialog-description" id="projects-dialog-description"></p>
 
-    <section class="site-dialog__section" id="projects-dialog-images-section" hidden>
-      <h3 class="projects__dialog-heading">Screenshots</h3>
-      <div class="projects__dialog-gallery" id="projects-dialog-gallery"></div>
-    </section>
-
     <section class="site-dialog__section">
       <h3 class="projects__dialog-heading">Technologies</h3>
       <div class="projects__dialog-tags" id="projects-dialog-tags"></div>
@@ -149,12 +144,30 @@
       <h3 class="projects__dialog-heading">Project links</h3>
 
       <div class="projects__dialog-links">
+        <button class="editorial-link projects__screenshots-button" id="projects-dialog-screenshots" type="button" hidden>
+          View screenshots ↗
+        </button>
+        
         <a class="editorial-link" id="projects-dialog-github" target="_blank" rel="noopener noreferrer" hidden> GitHub ↗</a>
         <a class="editorial-link" id="projects-dialog-demo" target="_blank" rel="noopener noreferrer" hidden> Live Demo ↗</a>
       </div>
     </section>
   </dialog>
 
+  <dialog class="site-dialog projects__gallery-dialog" id="projects-gallery-dialog" aria-labelledby="projects-gallery-title">
+    <div class="site-dialog__header">
+      <h2 class="projects__gallery-title" id="projects-gallery-title"></h2>
+
+      <form method="dialog">
+        <button class="site-dialog__close" type="submit" aria-label="Close screenshots">
+          &times;
+        </button>
+      </form>
+    </div>
+
+    <div class="projects__dialog-gallery" id="projects-gallery"></div>
+  </dialog>
+  
   <footer class="site-footer">
     <svg class="signature-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 5 C0 23 30 30 100 30 H355 C420 30 440 50 500 50 C560 50 580 30 645 30 H900 C970 30 1000 23 1000 5" />

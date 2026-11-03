@@ -27,6 +27,9 @@ async function loadProjects() {
   const categoryFilter = document.getElementById("projects-category");
   const results = document.getElementById("projects-results");
   const dialog = document.getElementById("projects-dialog");
+  const galleryDialog = document.getElementById("projects-gallery-dialog");
+  const screenshotsButton = document.getElementById("projects-dialog-screenshots");
+  let activeProject = null;
 
   if (featured.length === 0) {
     const empty = document.createElement("div");
@@ -49,24 +52,12 @@ async function loadProjects() {
   function openProject(element) {
     const project = projects.find((item) => item.id === element.dataset.projectId);
     if (!project) return;
+    activeProject = project;
 
     document.getElementById("projects-dialog-meta").textContent = formatProjectMeta(project);
     document.getElementById("projects-dialog-title").textContent = project.title;
     document.getElementById("projects-dialog-description").textContent = project.description;
     renderTags(document.getElementById("projects-dialog-tags"), project.tags);
-
-    const images = project.images ?? [];
-    const gallery = document.getElementById("projects-dialog-gallery");
-
-    gallery.replaceChildren(...images.map((src, index) => {
-      const image = document.createElement("img");
-      image.src = src;
-      image.alt = `${project.title} screenshot ${index + 1}`;
-      image.loading = "lazy";
-      return image;
-    }));
-
-    document.getElementById("projects-dialog-images-section").hidden = !images.length;
 
     for (const name of ["github", "demo"]) {
       const link = document.getElementById(`projects-dialog-${name}`);
@@ -75,11 +66,32 @@ async function loadProjects() {
       if (url) link.href = url;
     }
 
+    screenshotsButton.hidden = !project.images?.length;
+
     document.getElementById("projects-dialog-links-section").hidden =
-      !project.links?.github && !project.links?.demo;
+      !project.links?.github && !project.links?.demo && !project.images?.length;
 
     dialog.showModal();
   }
+
+  screenshotsButton.addEventListener("click", () => {
+    if (!activeProject?.images?.length) return;
+
+    document.getElementById("projects-gallery-title").textContent =
+      `${activeProject.title} / Screenshots`;
+
+    const gallery = document.getElementById("projects-gallery");
+
+    gallery.replaceChildren(...activeProject.images.map((src, index) => {
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = `${activeProject.title} screenshot ${index + 1}`;
+      image.loading = "lazy";
+      return image;
+    }));
+
+    galleryDialog.showModal();
+  });
 
   const categories = [...new Set(remaining.map((project) => project.category))].sort();
   for (const category of categories) {
