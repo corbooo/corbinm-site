@@ -209,7 +209,6 @@
 @media (max-width: 760px) {
   .home__hero {
     grid-template-columns: 1fr;
-    min-height: 100svh;
     align-content: space-between;
     gap: 2rem;
     padding: clamp(8rem, 18svh, 11rem) 0 clamp(6rem, 12svh, 7rem);
@@ -265,19 +264,14 @@
 
   .home__hero-bottom {
     flex-wrap: wrap;
-    margin-top: 1rem;
     margin-top: 0;
   }
-
-  /* About section */
 
   .home__about {
     grid-template-columns: 1fr;
     gap: 1.75rem;
     margin-top: 7.5rem;
   }
-
-  /* Explore section */
 
   .home__explore {
     margin-top: 6rem;
@@ -308,7 +302,6 @@
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-
   .home .site-header {
     transition: none;
   }

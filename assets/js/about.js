@@ -1,3 +1,4 @@
+import { reducedMotion } from "./shared.js";
 
 const chapters = document.querySelectorAll(".about__chapter");
 
@@ -19,7 +20,6 @@ chapters.forEach((chapter) => {
 const signature = document.querySelector(".about__closing-signature");
 const stroke = signature.querySelector(".about__closing-stroke");
 const dot = signature.querySelector(".about__closing-dot");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function updateSignature() {
   if (reducedMotion.matches) {

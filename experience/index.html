@@ -34,7 +34,7 @@
   <template id="experience-milestone-template">
     <li class="experience__milestone">
       <button class="experience__milestone-trigger" type="button">
-        <span class="experience__marker" aria-hidden="true"></span>
+        <span class="experience__milestone-marker" aria-hidden="true"></span>
       </button>
       <h3 class="experience__milestone-title"></h3>
       <p class="experience__milestone-detail"></p>
@@ -51,7 +51,7 @@
 
   <main class="site-main">
     <section class="hero experience__hero">
-      <svg class="experience__blocks" viewBox="-12 -24 394 302" aria-hidden="true">
+      <svg class="experience__hero-blocks" viewBox="-12 -24 394 302" aria-hidden="true">
         <rect x="24" y="172" width="68" height="68" />
         <rect x="104" y="172" width="68" height="68" />
         <rect x="184" y="172" width="68" height="68" />
@@ -114,15 +114,15 @@
           The languages, tools, and technologies I've picked up along the way.
         </p>
       </div>
-      <div class="experience__skills-grid" id="experience-skills"></div>
+      <div class="experience__skills" id="experience-skills"></div>
     </section>
   </main>
 
-  <dialog class="experience__dialog" id="experience-dialog" aria-labelledby="experience-dialog-title">
-    <div class="experience__dialog-header">
+  <dialog class="site-dialog experience__dialog" id="experience-dialog" aria-labelledby="experience-dialog-title">
+    <div class="site-dialog__header">
       <p class="section-eyebrow" id="experience-dialog-category"></p>
       <form method="dialog">
-        <button class="experience__dialog-close" type="submit" aria-label="Close details">&times;</button>
+        <button class="site-dialog__close" type="submit" aria-label="Close details">&times;</button>
       </form>
     </div>
 
@@ -130,7 +130,7 @@
     <p class="experience__dialog-subtitle" id="experience-dialog-subtitle"></p>
     <p class="experience__dialog-date" id="experience-dialog-date"></p>
 
-    <section class="experience__dialog-details">
+    <section class="site-dialog__section">
       <h3 class="experience__dialog-heading" id="experience-dialog-heading"></h3>
       <ul class="experience__dialog-list" id="experience-dialog-list"></ul>
     </section>

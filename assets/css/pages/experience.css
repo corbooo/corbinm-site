@@ -14,20 +14,20 @@
   grid-row: 1;
 }
 
-.experience__blocks {
+.experience__hero-blocks {
   grid-column: 1;
   grid-row: 1;
   display: block;
   width: min(100%, 440px);
   justify-self: center;
-  filter: drop-shadow(0 0 10px rgba(3, 208, 208, 0));
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--color-accent) 0%, transparent));
   transition:
     scale 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     translate 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.6s ease;
 }
 
-.experience__blocks rect {
+.experience__hero-blocks rect {
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 3;
@@ -39,11 +39,11 @@
     opacity 0.4s ease;
 }
 
-.experience__blocks .experience__block--shaded {
-  fill: rgba(3, 208, 208, 0.09);
+.experience__hero-blocks .experience__block--shaded {
+  fill: color-mix(in srgb, var(--color-accent) 9%, transparent);
 }
 
-.experience__blocks .experience__block--future {
+.experience__hero-blocks .experience__block--future {
   stroke-dasharray: 6 9;
   stroke-dashoffset: 1;
   stroke-linecap: round;
@@ -108,9 +108,6 @@
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 2;
-}
-
-.experience__divider path {
   stroke-opacity: 0.55;
 }
 
@@ -162,7 +159,7 @@
   pointer-events: none;
 }
 
-.experience__marker {
+.experience__milestone-marker {
   position: absolute;
   top: 0.35rem;
   left: 0;
@@ -174,7 +171,7 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.experience__marker::after {
+.experience__milestone-marker::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -214,7 +211,7 @@
   outline-offset: 4px;
 }
 
-.experience__milestone:focus-within .experience__marker {
+.experience__milestone:focus-within .experience__milestone-marker {
   background: var(--color-accent);
 }
 
@@ -229,80 +226,17 @@
   margin: auto;
   max-height: 85dvh;
   overflow-y: auto;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  background: var(--color-bg);
-  color: var(--color-text);
-  overscroll-behavior: contain;
-  opacity: 0;
-  transform: translateY(16px) scale(0.985);
-
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    display 0.28s allow-discrete,
-    overlay 0.28s allow-discrete;
 }
 
-.experience__dialog[open] {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-@starting-style {
-  .experience__dialog[open] {
-    opacity: 0;
-    transform: translateY(16px) scale(0.985);
-  }
-}
-
-.experience__dialog::backdrop {
-  background: rgba(10, 14, 20, 0.7);
-  backdrop-filter: blur(3px);
-  opacity: 0;
-
-  transition:
-    opacity 0.28s ease,
-    display 0.28s allow-discrete,
-    overlay 0.28s allow-discrete;
-}
-
-.experience__dialog[open]::backdrop {
-  opacity: 1;
-}
-
-@starting-style {
-  .experience__dialog[open]::backdrop {
-    opacity: 0;
-  }
-}
-
-.experience__dialog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+.experience__dialog > .site-dialog__header {
   margin-bottom: 1.5rem;
 }
 
-.experience__dialog-header .section-eyebrow {
+.experience__dialog .section-eyebrow {
   margin: 0;
 }
 
-.experience__dialog-close {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--color-text);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.experience__dialog-close:hover,
-.experience__dialog-close:focus-visible {
+.experience__dialog .site-dialog__close:focus-visible {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
@@ -320,12 +254,6 @@
   margin: 0.5rem 0 0;
   color: var(--color-muted);
   font-size: 0.875rem;
-}
-
-.experience__dialog-details {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
 }
 
 .experience__dialog-heading {
@@ -372,7 +300,7 @@
   line-height: 1.7;
 }
 
-.experience__skills-grid {
+.experience__skills {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem clamp(2rem, 6vw, 6rem);
@@ -414,12 +342,12 @@
     padding: 0 3.5rem 0 0;
   }
 
-  .experience__section--work .experience__marker {
+  .experience__section--work .experience__milestone-marker {
     left: auto;
     right: 0;
   }
 
-  .experience__section--work .experience__marker::after {
+  .experience__section--work .experience__milestone-marker::after {
     left: auto;
     right: 100%;
   }
@@ -458,7 +386,7 @@
     grid-column: 1;
   }
 
-  .experience__blocks {
+  .experience__hero-blocks {
     grid-row: 2;
     width: min(75%, 260px);
   }
@@ -476,7 +404,7 @@
     overflow-wrap: break-word;
   }
 
-  .experience__dialog-details {
+  .experience__dialog > .site-dialog__section {
     margin-top: 1.5rem;
     padding-top: 1.25rem;
   }
@@ -487,7 +415,7 @@
     max-height: min(35dvh, 15rem);
   }
 
-  .experience__skills-grid {
+  .experience__skills {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     margin-top: 2.5rem;
@@ -523,27 +451,27 @@
     stroke-dashoffset: 0;
   }
 
-  .experience__blocks {
+  .experience__hero-blocks {
     --hero-enter-distance: 24px;
     animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both;
   }
 
-  .experience__blocks rect:not(.experience__block--future) {
+  .experience__hero-blocks rect:not(.experience__block--future) {
     stroke-dasharray: 272;
     animation: block-draw 1s ease-out both;
   }
 
-  .experience__blocks .experience__block--future {
+  .experience__hero-blocks .experience__block--future {
     animation: block-appear 0.6s ease both;
   }
 
-  .experience__blocks rect:nth-child(2) { animation-delay: 0.3s; }
-  .experience__blocks rect:nth-child(3) { animation-delay: 0.6s; }
-  .experience__blocks rect:nth-child(4) { animation-delay: 0.9s; }
-  .experience__blocks rect:nth-child(5) { animation-delay: 1.2s; }
-  .experience__blocks rect:nth-child(6) { animation-delay: 1.5s; }
-  .experience__blocks rect:nth-child(7) { animation-delay: 1.9s; }
-  .experience__blocks rect:nth-child(8) { animation-delay: 2.2s; }
+  .experience__hero-blocks rect:nth-child(2) { animation-delay: 0.3s; }
+  .experience__hero-blocks rect:nth-child(3) { animation-delay: 0.6s; }
+  .experience__hero-blocks rect:nth-child(4) { animation-delay: 0.9s; }
+  .experience__hero-blocks rect:nth-child(5) { animation-delay: 1.2s; }
+  .experience__hero-blocks rect:nth-child(6) { animation-delay: 1.5s; }
+  .experience__hero-blocks rect:nth-child(7) { animation-delay: 1.9s; }
+  .experience__hero-blocks rect:nth-child(8) { animation-delay: 2.2s; }
 
   .experience__timeline-line > path {
     transition: stroke-dashoffset 1.8s ease-in-out;
@@ -559,33 +487,26 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .experience__dialog,
-  .experience__dialog::backdrop {
-    transition: none;
-  }
-}
-
 /* Hover */
 
 @media (hover: hover) {
-  .experience__blocks:hover {
+  .experience__hero-blocks:hover {
     scale: 1.025;
     translate: 0 -8px;
-    filter: drop-shadow(0 0 12px rgba(3, 208, 208, 0.3));
+    filter: drop-shadow(0 0 12px color-mix(in srgb, var(--color-accent) 30%, transparent));
   }
 
-  .experience__blocks:hover rect:nth-child(1) { transform: translate(-10px, 8px) scale(1.04); }
-  .experience__blocks:hover rect:nth-child(2) { transform: translate(0, 8px) scale(1.04); }
-  .experience__blocks:hover rect:nth-child(3) { transform: translate(10px, 8px) scale(1.04); }
-  .experience__blocks:hover rect:nth-child(4) { transform: translate(-5px, -4px) scale(1.04); }
-  .experience__blocks:hover rect:nth-child(5) { transform: translate(9px, -4px) scale(1.05); }
-  .experience__blocks:hover rect:nth-child(6) { transform: translate(9px, -18px) scale(1.05); }
-  .experience__blocks:hover rect:nth-child(7) { transform: translate(23px, -4px) scale(1.03); opacity: 0.8; }
-  .experience__blocks:hover rect:nth-child(8) { transform: translate(23px, -18px) scale(1.03); opacity: 0.8; }
+  .experience__hero-blocks:hover rect:nth-child(1) { transform: translate(-10px, 8px) scale(1.04); }
+  .experience__hero-blocks:hover rect:nth-child(2) { transform: translate(0, 8px) scale(1.04); }
+  .experience__hero-blocks:hover rect:nth-child(3) { transform: translate(10px, 8px) scale(1.04); }
+  .experience__hero-blocks:hover rect:nth-child(4) { transform: translate(-5px, -4px) scale(1.04); }
+  .experience__hero-blocks:hover rect:nth-child(5) { transform: translate(9px, -4px) scale(1.05); }
+  .experience__hero-blocks:hover rect:nth-child(6) { transform: translate(9px, -18px) scale(1.05); }
+  .experience__hero-blocks:hover rect:nth-child(7) { transform: translate(23px, -4px) scale(1.03); opacity: 0.8; }
+  .experience__hero-blocks:hover rect:nth-child(8) { transform: translate(23px, -18px) scale(1.03); opacity: 0.8; }
 
-  .experience__blocks:hover .experience__block--shaded {
-    fill: rgba(3, 208, 208, 0.16);
+  .experience__hero-blocks:hover .experience__block--shaded {
+    fill: color-mix(in srgb, var(--color-accent) 16%, transparent);
   }
 
   .experience__skill:hover .experience__skill-title,
@@ -601,11 +522,11 @@
     transition-delay: 0s;
   }
 
-  .experience__milestone:hover .experience__marker {
+  .experience__milestone:hover .experience__milestone-marker {
     background: var(--color-accent);
-    box-shadow: 0 0 0 5px rgba(3, 208, 208, 0.12);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 12%, transparent);
   }
-  
+
   .experience__milestone:hover::after {
     opacity: 1;
   }

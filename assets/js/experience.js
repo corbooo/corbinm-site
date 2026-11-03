@@ -1,11 +1,10 @@
+import { loadData, observeReveals, reducedMotion } from "./shared.js";
 
-import { observeReveals } from "./shared.js";
-
-const template = document.getElementById("experience-milestone-template");
+const milestoneTemplate = document.getElementById("experience-milestone-template");
 const dialog = document.getElementById("experience-dialog");
 
 const timelineObserver = "IntersectionObserver" in window &&
-  !matchMedia("(prefers-reduced-motion: reduce)").matches
+  !reducedMotion.matches
   ? new IntersectionObserver((entries, observer) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
@@ -41,15 +40,15 @@ function formatDate(value) {
 }
 
 function openMilestone(type, entry, dates) {
-  const education = type === "education";
-  const details = (education ? entry.coursework : entry.highlights) ?? [];
+  const isEducation = type === "education";
+  const details = (isEducation ? entry.coursework : entry.highlights) ?? [];
   dialog.dataset.type = type;
 
-  document.getElementById("experience-dialog-category").textContent = education ? "Education" : "Work Experience";
+  document.getElementById("experience-dialog-category").textContent = isEducation ? "Education" : "Work Experience";
   document.getElementById("experience-dialog-title").textContent = entry.school ?? entry.company;
   document.getElementById("experience-dialog-subtitle").textContent = entry.degree ?? entry.role;
   document.getElementById("experience-dialog-date").textContent = dates;
-  document.getElementById("experience-dialog-heading").textContent = education ? "Relevant Coursework" : "Highlights";
+  document.getElementById("experience-dialog-heading").textContent = isEducation ? "Relevant Coursework" : "Highlights";
 
   const list = document.getElementById("experience-dialog-list");
   list.replaceChildren(...details.map((text) => {
@@ -58,21 +57,13 @@ function openMilestone(type, entry, dates) {
     return item;
   }));
 
-  dialog.querySelector(".experience__dialog-details").hidden = !details.length;
+  dialog.querySelector(".site-dialog__section").hidden = !details.length;
   dialog.showModal();
 }
 
-dialog.addEventListener("click", (event) => {
-  const rect = dialog.getBoundingClientRect();
-  if (
-    event.clientX < rect.left || event.clientX > rect.right ||
-    event.clientY < rect.top || event.clientY > rect.bottom
-  ) dialog.close();
-});
-
 function drawTimeline(list) {
   const bounds = list.getBoundingClientRect();
-  const points = [...list.querySelectorAll(".experience__marker")].map((marker) => {
+  const points = [...list.querySelectorAll(".experience__milestone-marker")].map((marker) => {
     const rect = marker.getBoundingClientRect();
     return [
       rect.left + rect.width / 2 - bounds.left,
@@ -117,14 +108,11 @@ function drawTimeline(list) {
 
 async function loadTimeline(type) {
   const list = document.getElementById(`experience-${type}`);
-  const response = await fetch(`../assets/data/${type}.json`);
-  if (!response.ok) throw new Error(`Could not load ${type}.`);
-
-  const entries = await response.json();
+  const entries = await loadData(type);
   const items = entries
     .sort((a, b) => a.start.localeCompare(b.start))
     .map((entry, index) => {
-      const item = template.content.firstElementChild.cloneNode(true);
+      const item = milestoneTemplate.content.firstElementChild.cloneNode(true);
       item.style.setProperty("--progress", index / Math.max(entries.length - 1, 1));
       item.querySelector(".experience__milestone-title").textContent = entry.school ?? entry.company;
       item.querySelector(".experience__milestone-detail").textContent = entry.degree ?? entry.role;
@@ -147,12 +135,9 @@ async function loadTimeline(type) {
 }
 
 async function loadSkills() {
-  const response = await fetch("../assets/data/skills.json");
-  if (!response.ok) throw new Error("Could not load skills.");
-
-  const entries = await response.json();
+  const entries = await loadData("skills");
   const skillTemplate = document.getElementById("experience-skill-template");
-  const grid = document.getElementById("experience-skills");
+  const skillsGrid = document.getElementById("experience-skills");
   const groups = entries.map((entry, index) => {
     const group = skillTemplate.content.firstElementChild.cloneNode(true);
     group.classList.add(index % 2 === 0 ? "scroll-reveal--left" : "scroll-reveal--right");
@@ -161,7 +146,7 @@ async function loadSkills() {
     return group;
   });
 
-  grid.replaceChildren(...groups);
+  skillsGrid.replaceChildren(...groups);
   observeReveals(groups);
 }
 

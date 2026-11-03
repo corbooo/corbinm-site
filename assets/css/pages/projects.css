@@ -128,9 +128,9 @@
   pointer-events: none;
 }
 
-.projects__card-category,
-.projects__row-category,
-.projects__dialog-category {
+.projects__card-meta,
+.projects__row-meta,
+.projects__dialog-meta {
   color: var(--color-accent);
   font-size: 0.7rem;
   font-weight: 600;
@@ -259,7 +259,7 @@
   outline-offset: -2px;
 }
 
-.projects__row-category {
+.projects__row-meta {
   letter-spacing: 0.08em;
 }
 
@@ -304,84 +304,22 @@
 .projects__dialog {
   width: min(640px, calc(100% - 2rem));
   max-height: 85vh;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  background: var(--color-bg);
-  color: var(--color-text);
-  overscroll-behavior: contain;
-
-  opacity: 0;
-  transform: translateY(16px) scale(0.985);
-
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    display 0.28s allow-discrete,
-    overlay 0.28s allow-discrete;
-}
-
-.projects__dialog[open] {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-@starting-style {
-  .projects__dialog[open] {
-    opacity: 0;
-    transform: translateY(16px) scale(0.985);
-  }
 }
 
 .projects__dialog::backdrop {
-  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
-  backdrop-filter: blur(3px);
-  opacity: 0;
   overflow: hidden;
   overscroll-behavior: contain;
-
-  transition:
-    opacity 0.28s ease,
-    display 0.28s allow-discrete,
-    overlay 0.28s allow-discrete;
 }
 
-.projects__dialog[open]::backdrop {
-  opacity: 1;
-}
-
-@starting-style {
-  .projects__dialog[open]::backdrop {
-    opacity: 0;
-  }
-}
-
-.projects__card-header,
-.projects__dialog-header {
+.projects__card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.projects__dialog-category {
+.projects__dialog-meta {
   font-size: 0.75rem;
-}
-
-.projects__dialog-close {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--color-text);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.projects__dialog-close:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
 }
 
 .projects__dialog-title {
@@ -435,15 +373,9 @@
 }
 
 .projects__card:focus-visible,
-.projects__dialog-close:focus-visible {
+.site-dialog__close:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
-}
-
-.projects__dialog-section {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
 }
 
 .projects__dialog-heading {
@@ -488,7 +420,7 @@
     gap: 1.25rem;
   }
 
-  .projects__card-category {
+  .projects__card-meta {
     font-size: 0.65rem;
   }
 
@@ -521,7 +453,7 @@
     padding: 1.1rem 0.5rem;
   }
 
-  .projects__row-category {
+  .projects__row-meta {
     grid-column: 1 / -1;
   }
 }
@@ -531,9 +463,6 @@
 @media (prefers-reduced-motion: reduce) {
   .projects__hero-mark path {
     animation: none;
-  }
-
-  .projects__hero-mark path {
     stroke-dashoffset: 0;
   }
 
@@ -541,8 +470,6 @@
   .projects__card-arrow,
   .projects__row,
   .projects__row-arrow,
-  .projects__dialog,
-  .projects__dialog::backdrop,
   .projects__mark-brace,
   .projects__mark-inner {
     transition: none;

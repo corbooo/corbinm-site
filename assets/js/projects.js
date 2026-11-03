@@ -1,3 +1,4 @@
+import { loadData } from "./shared.js";
 
 function renderTags(container, tags) {
   container.replaceChildren(...tags.map((tag) => {
@@ -7,15 +8,12 @@ function renderTags(container, tags) {
   }));
 }
 
-function projectLabel(project) {
+function formatProjectMeta(project) {
   return [project.category, project.status].filter(Boolean).join(" · ");
 }
 
 async function loadProjects() {
-  const response = await fetch("../assets/data/projects.json");
-  if (!response.ok) throw new Error("Could not load projects.");
-
-  const projects = await response.json();
+  const projects = await loadData("projects");
   const featured = projects.filter((project) => project.featured).slice(0, 3);
   const remaining = projects
     .filter((project) => !featured.includes(project))
@@ -41,7 +39,7 @@ async function loadProjects() {
     const card = cardTemplate.content.firstElementChild.cloneNode(true);
     card.dataset.projectId = project.id;
     card.setAttribute("aria-label", `View details for ${project.title}`);
-    card.querySelector(".projects__card-category").textContent = projectLabel(project);
+    card.querySelector(".projects__card-meta").textContent = formatProjectMeta(project);
     card.querySelector(".projects__card-title").textContent = project.title;
     card.querySelector(".projects__card-summary").textContent = project.summary;
     renderTags(card.querySelector(".projects__card-tags"), project.tags.slice(0, 3));
@@ -52,7 +50,7 @@ async function loadProjects() {
     const project = projects.find((item) => item.id === element.dataset.projectId);
     if (!project) return;
 
-    document.getElementById("projects-dialog-category").textContent = projectLabel(project);
+    document.getElementById("projects-dialog-meta").textContent = formatProjectMeta(project);
     document.getElementById("projects-dialog-title").textContent = project.title;
     document.getElementById("projects-dialog-description").textContent = project.description;
     renderTags(document.getElementById("projects-dialog-tags"), project.tags);
@@ -120,7 +118,7 @@ async function loadProjects() {
     for (const project of filtered) {
       const row = rowTemplate.content.firstElementChild.cloneNode(true);
       row.dataset.projectId = project.id;
-      row.querySelector(".projects__row-category").textContent = projectLabel(project);
+      row.querySelector(".projects__row-meta").textContent = formatProjectMeta(project);
       row.querySelector(".projects__row-title").textContent = project.title;
       row.querySelector(".projects__row-summary").textContent = project.summary;
       collection.append(row);
@@ -144,17 +142,6 @@ async function loadProjects() {
     if (card && event.target === card) {
       event.preventDefault();
       openProject(card);
-    }
-  });
-
-  // Compare bounds so clicks inside the dialog's padding do not close it.
-  dialog.addEventListener("click", (event) => {
-    const rect = dialog.getBoundingClientRect();
-    if (
-      event.clientX < rect.left || event.clientX > rect.right ||
-      event.clientY < rect.top || event.clientY > rect.bottom
-    ) {
-      dialog.close();
     }
   });
 

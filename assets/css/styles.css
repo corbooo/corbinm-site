@@ -1,6 +1,6 @@
 :root {
   color-scheme: dark;
-  
+
   --color-bg: #0a0e14;
   --color-text: #e9eef3;
   --color-muted: #a8b3be;
@@ -187,7 +187,7 @@ html {
   .hero__eyebrow { animation-delay: 0.1s; }
   .hero__title { animation-delay: 0.25s; }
   .hero__description { animation-delay: 0.45s; }
-  
+
   .has-scroll-reveal .scroll-reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -207,6 +207,83 @@ html {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Dialogs */
+
+.site-dialog {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overscroll-behavior: contain;
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    display 0.28s allow-discrete,
+    overlay 0.28s allow-discrete;
+}
+
+.site-dialog[open] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.site-dialog::backdrop {
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition:
+    opacity 0.28s ease,
+    display 0.28s allow-discrete,
+    overlay 0.28s allow-discrete;
+}
+
+.site-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .site-dialog[open] {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+
+  .site-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+.site-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-dialog__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.site-dialog__close:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.site-dialog__section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
 /* Navigation */
@@ -396,7 +473,7 @@ html {
   .signature-line--hero {
     height: 56px;
   }
-  
+
   .signature-line__pulse {
     animation-duration: 3s;
   }
@@ -408,6 +485,11 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-dialog,
+  .site-dialog::backdrop {
+    transition: none;
+  }
+
   .signature-line--draw path {
     animation: none;
     stroke-dashoffset: 0;

@@ -252,10 +252,14 @@
 
 /* Closing */
 
-.about__closing {
+.about__closing,
+.about__closing-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.about__closing {
   margin: clamp(7rem, 12vw, 10rem) 0 0;
   text-align: center;
 }
@@ -284,12 +288,6 @@
 
 .about__closing-signature.is-animating .about__closing-dot {
   opacity: 0;
-}
-
-.about__closing-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .about__closing-prompt {
@@ -338,8 +336,6 @@
 /* Responsive layout */
 
 @media (max-width: 760px) {
-  /* Hero */
-
   .about__hero {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -355,8 +351,6 @@
     font-size: clamp(3rem, 12vw, 5rem);
   }
 
-  /* Chapters */
-
   .about__chapters {
     flex-direction: column;
     height: auto;
@@ -365,7 +359,6 @@
   .about__chapter {
     flex: none;
     height: 160px;
-    min-height: 0;
     padding: 2rem;
     transition: height 0.5s ease-in-out;
   }

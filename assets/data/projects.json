@@ -107,7 +107,10 @@
       "github": null,
       "demo": null
     },
-    "images": []
+    "images": [
+      "../assets/img/projects/listmanager/ListManager-Start.png",
+      "../assets/img/projects/listmanager/ListManager-Managing.png"
+    ]
   },
   {
     "id": "expense-tracker",

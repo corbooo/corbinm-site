@@ -73,7 +73,7 @@
       <template id="projects-card-template">
         <article class="projects__card" tabindex="0" role="button" aria-haspopup="dialog">
           <div class="projects__card-header">
-            <span class="projects__card-category"></span>
+            <span class="projects__card-meta"></span>
             <span class="projects__card-arrow" aria-hidden="true">↗</span>
           </div>
 
@@ -107,7 +107,7 @@
 
       <template id="projects-row-template">
         <button class="projects__row" type="button">
-          <span class="projects__row-category"></span>
+          <span class="projects__row-meta"></span>
 
           <span class="projects__row-content">
             <span class="projects__row-title"></span>
@@ -120,12 +120,12 @@
     </section>
   </main>
 
-  <dialog class="projects__dialog" id="projects-dialog" aria-labelledby="projects-dialog-title">
-    <div class="projects__dialog-header">
-      <span class="projects__dialog-category" id="projects-dialog-category"></span>
+  <dialog class="site-dialog projects__dialog" id="projects-dialog" aria-labelledby="projects-dialog-title">
+    <div class="site-dialog__header">
+      <span class="projects__dialog-meta" id="projects-dialog-meta"></span>
 
       <form method="dialog">
-        <button class="projects__dialog-close" type="submit" aria-label="Close project details">
+        <button class="site-dialog__close" type="submit" aria-label="Close project details">
           &times;
         </button>
       </form>
@@ -134,18 +134,18 @@
     <h2 class="projects__dialog-title" id="projects-dialog-title"></h2>
 
     <p class="projects__dialog-description" id="projects-dialog-description"></p>
-    
-    <section class="projects__dialog-section" id="projects-dialog-images-section" hidden>
+
+    <section class="site-dialog__section" id="projects-dialog-images-section" hidden>
       <h3 class="projects__dialog-heading">Screenshots</h3>
       <div class="projects__dialog-gallery" id="projects-dialog-gallery"></div>
     </section>
 
-    <section class="projects__dialog-section">
+    <section class="site-dialog__section">
       <h3 class="projects__dialog-heading">Technologies</h3>
       <div class="projects__dialog-tags" id="projects-dialog-tags"></div>
     </section>
 
-    <section class="projects__dialog-section" id="projects-dialog-links-section">
+    <section class="site-dialog__section" id="projects-dialog-links-section">
       <h3 class="projects__dialog-heading">Project links</h3>
 
       <div class="projects__dialog-links">
