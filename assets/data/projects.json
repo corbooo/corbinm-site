@@ -1,6 +1,26 @@
 
 [
   {
+    "id": "onhand",
+    "title": "onhand",
+    "category": "Mobile Application",
+    "status": "In Development",
+    "featured": false,
+    "date": "2026-11-06",
+    "summary": "A mobile-first app for organizing lists, with shared spaces and optional inventory tracking planned.",
+    "description": "onhand is a mobile application I'm developing with React Native, Expo Router, and TypeScript. The current prototype supports creating, renaming, and deleting independent lists, managing their items, and marking purchases. I'm building toward shared Spaces and optional inventory tracking, with persistent storage through FastAPI and PostgreSQL planned. Working on onhand is helping me develop a full-stack application with a maintainable architecture.",
+    "tags": [
+      "React Native",
+      "Expo",
+      "TypeScript"
+    ],
+    "links": {
+      "github": null,
+      "demo": null
+    },
+    "images": []
+  },
+  {
     "id": "macrocoach-gui",
     "title": "MacroCoachGUI",
     "category": "Desktop Application",
